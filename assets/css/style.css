@@ -1,0 +1,104 @@
+a.navbar-brand{
+    margin-left: 10px;
+    padding: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+
+h3{
+    color: rgb(0, 0, 0);
+    font-family: 'Times New Roman', Times, serif;
+    padding: 20px;
+    font-weight: bold;
+}
+
+
+.img{
+    padding:10px;
+    border: none;
+}
+
+body{
+    background-color: rgb(174, 209, 243);
+}
+
+p{
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: large;
+   padding:10px;
+}
+
+
+
+.col-md-12{
+    padding-top: 20px;
+    padding-bottom:40px;
+}
+
+
+.pic{
+    color: rgb(0, 0, 0);
+}
+
+.navbar{
+    padding-top:0px;
+    padding-bottom: 0px;
+    padding-right:40px;
+}
+
+.navbar-toggler{
+    border: rgb(141, 7, 7)
+}
+
+.dropdown-menu {
+    margin: 0;
+}
+
+
+.content {
+    padding-top: 50px;
+    padding-bottom: 80px;
+    overflow: hidden;
+}
+
+.content.bg-white {
+    margin-top: 15px;
+}
+
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+
+.page-footer{
+    background-color: rgb(92, 90, 90);
+    margin-top: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-copyright{
+    color:white;
+    border-top: 5px solid rgb(224, 6, 6)
+}
+/* small screen adjustments*/
+@media(max-width:800px){
+    .navbar.bg-light{
+        background-color: rgb(224, 6, 6);    
+    }
+
+    .navbar{
+        padding:inherit;
+    }
+
+    
+
+}
