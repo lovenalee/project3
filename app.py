@@ -1,8 +1,15 @@
 # set dependencies
 import pymongo
 import pandas as pd
-import jsonify
-from flask import Flask, render_template
+import os
+from flask import (
+    Flask,
+    render_template,
+    jsonify,
+    request,
+    redirect)
+
+app = Flask(__name__)
 
 # Initialize PyMongo to work with MongoDBs
 conn = 'mongodb://localhost:27017'
@@ -21,7 +28,7 @@ def main():
 @app.route("mongodb://localhost:27017")
 def firstRoute():
     db.session.query().all()
-    return jsonify(thisdict)
+    return jsonify(coll)
 
 if __name__ == "__main__":
     app.run(debug=True)
