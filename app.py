@@ -20,12 +20,12 @@ db = client['Proj2_NBA_db']
 coll = db['PlayerPerGamesStats']
 
 ## frontend routes
-@app.route("/")
+@app.route("/conn")
 def main():
     return render_template("index.html")
 
 ## service routes
-@app.route("mongodb://localhost:27017")
+@app.route("/conn")
 def firstRoute():
     db.session.query().all()
     return jsonify(coll)
