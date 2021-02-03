@@ -20,11 +20,11 @@ db = client['Proj2_NBA_db']
 coll = db['PlayerPerGamesStats']
 
 ## frontend routes
-@app.route("/conn")
+@app.route("/")
 def main():
     return render_template("index.html")
 
-## service routes
+# ## service routes
 @app.route("/conn")
 def firstRoute():
     db.session.query().all()
