@@ -10,7 +10,7 @@ from flask import (
     redirect)
 
 # Initiate confiquration 
-app = Flask(__name__)
+# app = Flask(__name__)
 
 # Initialize PyMongo to work with MongoDBs
 conn = 'mongodb://localhost:27017'
@@ -20,13 +20,24 @@ client = pymongo.MongoClient(conn)
 db = client['Proj2_NBA_db']
 coll = db['PlayerPerGamesStats']
 
+cursor = coll.find()
+
+mongo_docs = list(cursor)
+
+docs = pd.DataFrame(columns=[])
+
+for num, doc in enumerate(mongo_docs):
+    doc_id = doc["_id"]
+    series_obj = pd.Series(doc, name=doc_id)
+    docs = docs.append(series_obj)
+
 # render a list from mongoDB into jsonified route
-@app.route("/conn")
-def pStats():
-    mylist = []
-    for item in coll.find(): 
-        mylist.append(item)
-    return jsonify(mylist)
+# @app.route("/conn")
+# def pStats():
+#     mylist = []
+#     for item in coll.find(): 
+#         mylist.append(item)
+#     return jsonify(mylist)
 
 # render a list from mongoDB into HTML
 # @app.route("/conn")
@@ -45,5 +56,5 @@ def pStats():
 #     db.session.query().all()
 #     return jsonify(coll)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# if __name__ == "__main__":
+#     app.run(debug=True)
