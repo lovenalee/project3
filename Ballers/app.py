@@ -12,7 +12,7 @@ from flask_sqlalchemy import SQLAlchemy
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///sqlite.db"
 db = SQLAlchemy(app)
 
-print(db)
+print(app)
 
 
 if __name__ == "__main__":
