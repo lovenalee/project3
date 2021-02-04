@@ -1,6 +1,6 @@
 # set dependencies
 import json
-import pymongo
+from flask_pymongo import Pymongo
 import pandas as pd
 import os
 from flask import (
