@@ -9,10 +9,9 @@ from flask import (
 app = Flask(__name__)
 
 from flask_sqlalchemy import SQLAlchemy
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///sqlite.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///BallersP3.db"
 db = SQLAlchemy(app)
 
-print(app)
 
 
 if __name__ == "__main__":
