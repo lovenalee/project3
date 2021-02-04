@@ -25,24 +25,24 @@ class tStats(db.tStats):
     Losses = db.Column(db.Float)
     WPct = db.Column(db.Float)
 
-def __repr__(self):
-    return '<tStats %r>' % (self.name)
+    def __repr__(self):
+        return '<tStats %r>' % (self.name)
 
 @app.route("/")
 def home():
     return render_template("index.html")
 
 @app.route("/api/nba")
-def pals():
-    results = db.session.query(Team_Stats.Team, 
-    Team_Stats.Year, 
-    Team_Stats.TeamPoints, 
-    Team_Stats.Assists, 
-    Team_Stats.FieldGoals, 
-    Team_Stats.TeamName, 
-    Team_Stats.Wins, 
-    Team_Stats.Losses, 
-    Team_Stats.WPct).all()
+def nba():
+    results = db.session.query(tStats.Team, 
+    tStats.Year, 
+    tStats.TeamPoints, 
+    tStats.Assists, 
+    tStats.FieldGoals, 
+    tStats.TeamName, 
+    tStats.Wins, 
+    tStats.Losses, 
+    tStats.WPct).all()
 
 if __name__ == "__main__":
     app.run(debug=True)
