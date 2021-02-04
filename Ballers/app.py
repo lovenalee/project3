@@ -34,7 +34,7 @@ def home():
 
 @app.route("/api/nba")
 def nba():
-    results = db.session.query(tStats.Team, 
+    db.session.query(tStats.Team, 
     tStats.Year, 
     tStats.TeamPoints, 
     tStats.Assists, 
