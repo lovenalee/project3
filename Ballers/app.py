@@ -23,10 +23,10 @@ class tStats(db.tStats):
     TeamName = db.Column(db.String(64))
     Wins = db.Column(db.Float)
     Losses = db.Column(db.Float)
-    WinPct = db.Column(db.Float)
+    WPct = db.Column(db.Float)
 
-    def __repr__(self):
-        return '<tStats %r>' % (self.name)
+def __repr__(self):
+    return '<tStats %r>' % (self.name)
 
 @app.route("/")
 def home():
@@ -40,9 +40,9 @@ def pals():
     Team_Stats.Assists, 
     Team_Stats.FieldGoals, 
     Team_Stats.TeamName, 
-    Team_Stats.W, 
-    Team_Stats.L, 
-    Team_Stats.%).all()
+    Team_Stats.Wins, 
+    Team_Stats.Losses, 
+    Team_Stats.WPct).all()
 
 if __name__ == "__main__":
     app.run(debug=True)
