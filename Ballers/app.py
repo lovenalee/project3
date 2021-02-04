@@ -18,7 +18,7 @@ client = pymongo.MongoClient(conn)
 
 # connect to mongo db and collection
 db = client['Proj2_NBA_db']
-coll = db['PlayerPerGamesStats']
+coll = db['Team_Stats']
 
 cursor = coll.find()
 
