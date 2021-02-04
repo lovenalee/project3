@@ -32,5 +32,17 @@ class tStats(db.tStats):
 def home():
     return render_template("index.html")
 
+@app.route("/api/nba")
+def pals():
+    results = db.session.query(Team_Stats.Team, 
+    Team_Stats.Year, 
+    Team_Stats.TeamPoints, 
+    Team_Stats.Assists, 
+    Team_Stats.FieldGoals, 
+    Team_Stats.TeamName, 
+    Team_Stats.W, 
+    Team_Stats.L, 
+    Team_Stats.%).all()
+
 if __name__ == "__main__":
     app.run(debug=True)
