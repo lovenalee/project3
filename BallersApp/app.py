@@ -84,6 +84,7 @@ def goat():
 
     return jsonify(results2)
 
+class pStats(db.Model):
     __tablename__ = 'NBA_Season_Data'
 
     Player = db.Column(db.String(64), primary_key=True)
