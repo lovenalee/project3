@@ -31,7 +31,7 @@ class tStats(db.Model):
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("index1.html")
 
 @app.route("/api/tStats")
 def nba():
@@ -83,6 +83,33 @@ def goat():
     gStats.STL).all()
 
     return jsonify(results2)
+
+    __tablename__ = 'NBA_Season_Data'
+
+    Player = db.Column(db.String(64), primary_key=True)
+    Tm = db.Column(db.String(10))
+    Year = db.Column(db.Float)
+    Age = db.Column(db.Float)
+    G = db.Column(db.Float)
+    MP = db.Column(db.Float)
+    PER = db.Column(db.Float)
+   
+
+    def __repr__(self):
+        return '<pStats %r>' % (self.name)
+
+@app.route("/api/position")
+def position():
+    results3 = db.session.query(pStats.Player, 
+    pStats.Tm, 
+    pStats.Year, 
+    pStats.Age, 
+    pStats.G, 
+    pStats.MP, 
+    pStats.PER).all()
+
+    return jsonify(results3)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
