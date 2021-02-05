@@ -1,3 +1,3 @@
-d3.json("/conn").then(function(data) {
+d3.json("/api/tStats").then(function(data) {
     console.log(data)
 })
