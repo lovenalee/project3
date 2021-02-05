@@ -33,7 +33,7 @@ class tStats(db.Model):
 def home():
     return render_template("index.html")
 
-@app.route("/api/nba")
+@app.route("/api/tStats")
 def nba():
     results = db.session.query(tStats.Team, 
     tStats.Year, 
