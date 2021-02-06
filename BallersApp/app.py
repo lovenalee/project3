@@ -12,6 +12,24 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///BallersP3.db"
 db = SQLAlchemy(app)
 
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+
+@app.route("/tStats")
+def tStats():
+    return render_template("tStats.html")
+
+@app.route("/goat")
+def GOAT():
+    return render_template("GOAT.html")
+
+@app.route("/WS")
+def WS():
+    return render_template("WS.html")
+
+
 class tStats(db.Model):
     __tablename__ = 'Team_Stats'
 
@@ -167,17 +185,7 @@ def ws():
 
     return jsonify(result_list3)
 
-@app.route("/tStats")
-def tStats():
-    return render_template("tStats.html")
 
-@app.route("/goat")
-def GOAT():
-    return render_template("GOAT.html")
-
-@app.route("/WS")
-def WS():
-    return render_template("WS.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
