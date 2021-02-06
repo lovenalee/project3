@@ -1,11 +1,14 @@
 d3.json("/api/tStats",function (data) {
   // json section
+    console.log(data)
+    
     var body = d3.select('body')
     var selectData = [ { "text" : "Seasons" },
                        { "text" : "Points" },
                        { "text" : "Wins" },
                      ]
-  
+    
+
     // Select X-axis Variable
     var span = body.append('span')
       .text('Select X-Axis variable: ')
@@ -114,7 +117,7 @@ d3.json("/api/tStats",function (data) {
         .attr('x',w)
         .attr('dy','.71em')
         .style('text-anchor','end')
-        .text('Annualized Return')
+        .text('Seasons')
     // Y-axis
     svg.append('g')
         .attr('class','axis')
@@ -127,7 +130,7 @@ d3.json("/api/tStats",function (data) {
         .attr('y',5)
         .attr('dy','.71em')
         .style('text-anchor','end')
-        .text('Annualized Return')
+        .text('Seasons')
   
     function yChange() {
       var value = this.value // get the new y value
