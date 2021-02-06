@@ -45,6 +45,7 @@ def nba():
     tStats.Losses, 
     tStats.WPct).all()
 
+    print(results)
     return jsonify(results)
 
 
@@ -114,6 +115,8 @@ def position():
 @app.route("/goat")
 def GOAT():
     return render_template("GOAT.html")
+
+
 
 
 if __name__ == "__main__":
