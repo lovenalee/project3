@@ -9,3 +9,7 @@ var margin = {
     bottom: 100,
     left: 30
   };
+
+  //Declare graphing area (relative to SVG)
+  var width = svgWidth - margin.left - margin.right;
+  var height = svgHeight - margin.top - margin.bottom;
