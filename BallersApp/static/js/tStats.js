@@ -1,5 +1,5 @@
 // Set chart range
-var svgWidth = 9000;
+var svgWidth = 1000;
 var svgHeight = 500;
 
 var margin = {
@@ -24,14 +24,14 @@ var chartGroup = svg.append("g")
 .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 // Initial Params
-var chosenXAxis = "Team_Points";
+var chosenXAxis = "Wins";
 
 // function used for updating x-scale var upon click on axis label
 function xScale(tStatsData, chosenXAxis) {
     // create scales
     var xLinearScale = d3.scaleLinear()
-      .domain([d3.min(tStatsData, d => d[chosenXAxis]) * 0.8,
-        d3.max(tStatsData, d => d[chosenXAxis]) * 1.2
+      .domain([d3.min(tStatsData, tStatsData => tStatsData[chosenXAxis]) * 0.8,
+        d3.max(tStatsData, tStatsData => tStatsData[chosenXAxis]) * 1.2
       ])
       .range([0, width]);
   
@@ -55,7 +55,7 @@ function renderCircles(circlesGroup, newXScale, chosenXAxis) {
 
     circlesGroup.transition()
       .duration(1000)
-      .attr("cx", d => newXScale(d[chosenXAxis]));
+      .attr("cx", tStatsData => newXScale(tStatsData[chosenXAxis]));
   
     return circlesGroup;
   }
@@ -65,11 +65,11 @@ function updateToolTip(chosenXAxis, circlesGroup) {
 
     var label;
   
-    if (chosenXAxis === "Team_Points") {
-      label = "Team Points:";
+    if (chosenXAxis === "Wins") {
+      label = "Team Wins:";
     }
     else {
-      label = "Wins:";
+      label = "Team Losses:";
     }
   
     var toolTip = d3.tip()
@@ -100,9 +100,9 @@ d3.json("/api/tStats").then(function(tStatsdata, err) {
 
   // parse data
   hairData.forEach(function(tStatsData) {
-    tStatsData.TeamPoints = +tStatsData.TeamPoints;
     tStatsData.Wins = +tStatsData.Wins;
     tStatsData.Losses = +tStatsData.Losses;
+    tStatsData.Points = +tStatsData.Points;
   });
   
   // xLinearScale function above csv import
@@ -110,7 +110,7 @@ d3.json("/api/tStats").then(function(tStatsdata, err) {
 
   // Create y scale function
   var yLinearScale = d3.scaleLinear()
-    .domain([0, d3.max(tStatsData, d => d.Wins)])
+    .domain([0, d3.max(tStatsData, d => tStatsdata.Points)])
     .range([height, 0]);
 
   // Create initial axis functions
@@ -129,41 +129,41 @@ d3.json("/api/tStats").then(function(tStatsdata, err) {
 
   // append initial circles
   var circlesGroup = chartGroup.selectAll("circle")
-    .data(tStatshairData)
+    .data(tStatsData)
     .enter()
     .append("circle")
-    .attr("cx", d => xLinearScale(d[chosenXAxis]))
-    .attr("cy", d => yLinearScale(d.Wins))
+    .attr("cx", tStatsData => xLinearScale(tStatsData[chosenXAxis]))
+    .attr("cy", tStatsData => yLinearScale(tStatsData.Points))
     .attr("r", 20)
     .attr("fill", "blue")
     .attr("opacity", ".5");
 
   // Create group for two x-axis labels
   var labelsGroup = chartGroup.append("g")
-    .attr("transform", `translate(${width / 2}, ${height + 20})`);
-
-  var TeamPointsLabel = labelsGroup.append("text")
-    .attr("x", 0)
-    .attr("y", 20)
-    .attr("value", "TeamPoints") // value to grab for event listener
-    .classed("active", true)
-    .text("Team Points");
+    .attr("transform", `translate(${width / 2}, ${height + 30})`);
 
   var WinsLabel = labelsGroup.append("text")
+    .attr("x", 0)
+    .attr("y", 20)
+    .attr("value", "Wins") // value to grab for event listener
+    .classed("active", true)
+    .text("Team Wins");
+
+  var LossesLabel = labelsGroup.append("text")
     .attr("x", 0)
     .attr("y", 40)
     .attr("value", "Losses") // value to grab for event listener
     .classed("inactive", true)
-    .text("Wins");
+    .text("Losses");
 
   // append y axis
   chartGroup.append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 0 - margin.left)
+    .attr("y", 0 - margin.left + 50)
     .attr("x", 0 - (height / 2))
     .attr("dy", "1em")
     .classed("axis-text", true)
-    .text("Teams");
+    .text("Points");
 
   // updateToolTip function above csv import
   var circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
@@ -194,7 +194,7 @@ d3.json("/api/tStats").then(function(tStatsdata, err) {
         circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
 
         // changes classes to change bold text
-        if (chosenXAxis === "Losses") {
+        if (chosenXAxis === "Points") {
           albumsLabel
             .classed("active", true)
             .classed("inactive", false);
