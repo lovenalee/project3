@@ -57,7 +57,7 @@ class gStats(db.Model):
     Minutes_Played = db.Column(db.Float)
     Feild_Goals = db.Column(db.Float)
     Total_Blocks = db.Column(db.Float)
-    Total_Steals = db.Column(db.String(64))
+    Total_Steals = db.Column(db.Float)
     Total_Rebounds = db.Column(db.Float)
     Total_Assists = db.Column(db.Float)
     Total_Points = db.Column(db.Float)
