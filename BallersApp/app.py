@@ -111,6 +111,10 @@ def position():
 
     return jsonify(results3)
 
+@app.route("/goat")
+def GOAT():
+    return render_template("GOAT.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
