@@ -50,38 +50,49 @@ def nba():
 
 
 class gStats(db.Model):
-    __tablename__ = 'GOAT_Stats'
+    __tablename__ = 'GOAT'
 
-    name = db.Column(db.String(64), primary_key=True)
-    MATCHUP = db.Column(db.String(64))
-    WL = db.Column(db.String(10))
-    FG3_PCT = db.Column(db.Float)
-    FGM = db.Column(db.Float)
-    FTM = db.Column(db.String(64))
-    MIN = db.Column(db.Float)
-    REB = db.Column(db.Float)
-    AST = db.Column(db.Float)
-    PTS = db.Column(db.Float)
-    BLK = db.Column(db.Float)
-    STL = db.Column(db.Float)
+    Players = db.Column(db.String(64), primary_key=True)
+    Total_Games = db.Column(db.Float)
+    Minutes_Played = db.Column(db.Float)
+    Feild_Goals = db.Column(db.Float)
+    Total_Blocks = db.Column(db.Float)
+    Total_Steals = db.Column(db.String(64))
+    Total_Rebounds = db.Column(db.Float)
+    Total_Assists = db.Column(db.Float)
+    Total_Points = db.Column(db.Float)
+    Average_Points = db.Column(db.Float)
+    Average_Assists = db.Column(db.Float)
+    Average_Rebounds = db.Column(db.Float)
+    Average_Steals = db.Column(db.Float)
+    Average_Blocks = db.Column(db.Float)
+    Average_Feild_Goals = db.Column(db.Float)
+    WINS = db.Column(db.Float)
+    LOSSES = db.Column(db.Float)
+
+
 
     def __repr__(self):
         return '<gStats %r>' % (self.name)
 
 @app.route("/api/goat")
 def goat():
-    results2 = db.session.query(gStats.name, 
-    gStats.MATCHUP, 
-    gStats.WL, 
-    gStats.FG3_PCT, 
-    gStats.FGM, 
-    gStats.FTM, 
-    gStats.MIN, 
-    gStats.REB, 
-    gStats.AST,
-    gStats.PTS,
-    gStats.BLK,
-    gStats.STL).all()
+    results2 = db.session.query(gStats.Players, 
+    gStats.Total_Games, 
+    gStats.Minutes_Played, 
+    gStats.Feild_Goals, 
+    gStats.Total_Blocks, 
+    gStats.Total_Rebounds, 
+    gStats.Total_Assists, 
+    gStats.Total_Points, 
+    gStats.Average_Points,
+    gStats.Average_Assists,
+    gStats.Average_Rebounds,
+    gStats.Average_Steals,
+    gStats.Average_Blocks,
+    gStats.Average_Feild_Goals,
+    gStats.WINS,
+    gStats.LOSSES).all()
 
     return jsonify(results2)
 
