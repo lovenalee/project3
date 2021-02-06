@@ -86,34 +86,28 @@ def goat():
     return jsonify(results2)
 
 class pStats(db.Model):
-    __tablename__ = 'NBA_Season_Data'
+    __tablename__ = 'WSData'
 
     Player = db.Column(db.String(64), primary_key=True)
     Tm = db.Column(db.String(10))
     Year = db.Column(db.Float)
     Age = db.Column(db.Float)
-    G = db.Column(db.Float)
-    MP = db.Column(db.Float)
-    PER = db.Column(db.Float)
+    Rounded_Position = db.Column(db.Float)
     WS = db.Column(db.Float)
    
-
     def __repr__(self):
         return '<pStats %r>' % (self.name)
 
-@app.route("/api/position")
-def position():
+@app.route("/api/ws")
+def ws():
     results3 = db.session.query(pStats.Player, 
     pStats.Tm, 
     pStats.Year, 
     pStats.Age, 
-    pStats.G, 
-    pStats.MP, 
-    pStats.PER,
+    pStats.Rounded_Position, 
     pStats.WS).all()
 
     return jsonify(results3)
-
 
 
 
@@ -121,8 +115,9 @@ def position():
 def GOAT():
     return render_template("GOAT.html")
 
-
-
+@app.route("/WS")
+def WS():
+    return render_template("WS.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
