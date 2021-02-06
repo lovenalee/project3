@@ -44,8 +44,8 @@ def nba():
     tStats.Wins, 
     tStats.Losses, 
     tStats.WPct).all()
-
-    print(results)
+    
+    
     return jsonify(results)
 
 
