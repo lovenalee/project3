@@ -60,120 +60,124 @@ def nba():
 
     return jsonify(result_list1)
 
-# class gStats(db.Model):
-#     __tablename__ = 'GOAT'
+class gStats(db.Model):
+    __tablename__ = 'GOAT'
 
-#     Players = db.Column(db.String(64), primary_key=True)
-#     Total_Games = db.Column(db.Float)
-#     Minutes_Played = db.Column(db.Float)
-#     Feild_Goals = db.Column(db.Float)
-#     Total_Blocks = db.Column(db.Float)
-#     Total_Steals = db.Column(db.Float)
-#     Total_Rebounds = db.Column(db.Float)
-#     Total_Assists = db.Column(db.Float)
-#     Total_Points = db.Column(db.Float)
-#     Average_Points = db.Column(db.Float)
-#     Average_Assists = db.Column(db.Float)
-#     Average_Rebounds = db.Column(db.Float)
-#     Average_Steals = db.Column(db.Float)
-#     Average_Blocks = db.Column(db.Float)
-#     Average_Feild_Goals = db.Column(db.Float)
-#     WINS = db.Column(db.Float)
-#     LOSSES = db.Column(db.Float)
+    Players = db.Column(db.String(64), primary_key=True)
+    Total_Games = db.Column(db.Float)
+    Minutes_Played = db.Column(db.Float)
+    Feild_Goals = db.Column(db.Float)
+    Total_Blocks = db.Column(db.Float)
+    Total_Steals = db.Column(db.Float)
+    Total_Rebounds = db.Column(db.Float)
+    Total_Assists = db.Column(db.Float)
+    Total_Points = db.Column(db.Float)
+    Average_Points = db.Column(db.Float)
+    Average_Assists = db.Column(db.Float)
+    Average_Rebounds = db.Column(db.Float)
+    Average_Steals = db.Column(db.Float)
+    Average_Blocks = db.Column(db.Float)
+    Average_Feild_Goals = db.Column(db.Float)
+    WINS = db.Column(db.Float)
+    LOSSES = db.Column(db.Float)
 
-#     def __repr__(self):
-#         return '<gStats %r>' % (self.name)
+    def __repr__(self):
+        return '<gStats %r>' % (self.name)
 
-# @app.route("/api/goat")
-# def goat():
-#     results2 = db.session.query(gStats.Players, 
-#     gStats.Total_Games, 
-#     gStats.Minutes_Played, 
-#     gStats.Feild_Goals, 
-#     gStats.Total_Blocks, 
-#     gStats.Total_Rebounds, 
-#     gStats.Total_Assists, 
-#     gStats.Total_Points, 
-#     gStats.Average_Points,
-#     gStats.Average_Assists,
-#     gStats.Average_Rebounds,
-#     gStats.Average_Steals,
-#     gStats.Average_Blocks,
-#     gStats.Average_Feild_Goals,
-#     gStats.WINS,
-#     gStats.LOSSES).all()
+@app.route("/api/goat")
+def goat():
+    results2 = db.session.query(gStats.Players, 
+    gStats.Total_Games, 
+    gStats.Minutes_Played, 
+    gStats.Feild_Goals, 
+    gStats.Total_Blocks, 
+    gStats.Total_Rebounds, 
+    gStats.Total_Assists, 
+    gStats.Total_Points, 
+    gStats.Average_Points,
+    gStats.Average_Assists,
+    gStats.Average_Rebounds,
+    gStats.Average_Steals,
+    gStats.Average_Blocks,
+    gStats.Average_Feild_Goals,
+    gStats.WINS,
+    gStats.LOSSES).all()
 
-#     result_list2 = []
+    result_list2 = []
     
-#     for result2 in results2:
-#         goatdata = {
-#             "Name": result2[0],
-#             "Matchup": result2[1],
-#             "WL": result2[2],
-#             "FG3_PCT": result2[3],
-#             "FGM": result2[4],
-#             "FTM": result2[5],
-#             "MIN": result2[6],
-#             "REB": result2[7],
-#             "AST": result2[8],
-#             "PTS": result2[9],
-#             "BLK": result2[10],
-#             "STL": result2[11]
-#         }
+    for result2 in results2:
+        goatdata = {
+            "Player": result2[0],
+            "Total_Games": result2[1],
+            "Minutes_Played": result2[2],
+            "Feild_Goals": result2[3],
+            "Total_Blocks": result2[4],
+            "Total_Rebounds": result2[5],
+            "Total_Assists": result2[6],
+            "Total_Points": result2[7],
+            "Average_Points": result2[8],
+            "Average_Assists": result2[9],
+            "Average_Rebounds": result2[10],
+            "Average_Steals": result2[11],
+            "Average_Blocks": result2[12],
+            "Average_Feild_Goals": result2[13],
+            "WINS": result2[14],
+            "LOSSES": result2[15],
+        }
 
-#         result_list2.append(goatdata)
+        result_list2.append(goatdata)
 
-#     return jsonify(result_list2)
+    return jsonify(result_list2)
 
-# class pStats(db.Model):
-#     __tablename__ = 'WSData'
+class pStats(db.Model):
+    __tablename__ = 'WSData'
 
-#     Player = db.Column(db.String(64), primary_key=True)
-#     Tm = db.Column(db.String(10))
-#     Year = db.Column(db.Float)
-#     Age = db.Column(db.Float)
-#     Rounded_Position = db.Column(db.Float)
-#     WS = db.Column(db.Float)
+    Player = db.Column(db.String(64), primary_key=True)
+    Tm = db.Column(db.String(10))
+    Year = db.Column(db.Float)
+    Age = db.Column(db.Float)
+    Rounded_Position = db.Column(db.Float)
+    WS = db.Column(db.Float)
    
-#     def __repr__(self):
-#         return '<pStats %r>' % (self.name)
+    def __repr__(self):
+        return '<pStats %r>' % (self.name)
 
-# @app.route("/api/ws")
-# def ws():
-#     results3 = db.session.query(pStats.Player, 
-#     pStats.Tm, 
-#     pStats.Year, 
-#     pStats.Age, 
-#     pStats.Rounded_Position, 
-#     pStats.WS).all()
+@app.route("/api/ws")
+def ws():
+    results3 = db.session.query(pStats.Player, 
+    pStats.Tm, 
+    pStats.Year, 
+    pStats.Age, 
+    pStats.Rounded_Position, 
+    pStats.WS).all()
 
-#     result_list3 = []
+    result_list3 = []
     
-#     for result3 in results3:
-#         wsdata = {
-#             "Player": result3[0],
-#             "Tm": result3[1],
-#             "Year": result3[2],
-#             "Age": result3[3],
-#             "Rounded_Position": result3[4],
-#             "WS": result3[5]
-#         }
+    for result3 in results3:
+        wsdata = {
+            "Player": result3[0],
+            "Tm": result3[1],
+            "Year": result3[2],
+            "Age": result3[3],
+            "Rounded_Position": result3[4],
+            "WS": result3[5]
+        }
 
-#         result_list3.append(wsdata)
+        result_list3.append(wsdata)
 
-#     return jsonify(result_list3)
+    return jsonify(result_list3)
 
 @app.route("/tStats")
 def tStats():
     return render_template("tStats.html")
 
-# @app.route("/goat")
-# def GOAT():
-#     return render_template("GOAT.html")
+@app.route("/goat")
+def GOAT():
+    return render_template("GOAT.html")
 
-# @app.route("/WS")
-# def WS():
-#     return render_template("WS.html")
+@app.route("/WS")
+def WS():
+    return render_template("WS.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
