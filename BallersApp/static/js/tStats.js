@@ -12,10 +12,10 @@ reversedData = slicedData.reverse();
 
 // Trace1 for the Greek Data
 var trace1 = {
-  x: reversedData.map(object => object.greekSearchResults),
-  y: reversedData.map(object => object.greekName),
-  text: reversedData.map(object => object.greekName),
-  name: "Greek",
+  x: reversedData.map(object => object.data[5]),
+  y: reversedData.map(object => object.data[2]),
+  text: reversedData.map(object => object.data[3]),
+  name: "TeamPoints",
   type: "bar",
   orientation: "h"
 };
@@ -25,7 +25,7 @@ var data = [trace1];
 
 // Apply the group bar mode to the layout
 var layout = {
-  title: "Greek gods search results",
+  title: "Team Stats",
   margin: {
     l: 100,
     r: 100,
