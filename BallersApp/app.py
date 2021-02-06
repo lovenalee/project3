@@ -122,7 +122,7 @@ def goat():
             "Average_Blocks": result2[12],
             "Average_Feild_Goals": result2[13],
             "WINS": result2[14],
-            "LOSSES": result2[15],
+            "LOSSES": result2[15]
         }
 
         result_list2.append(goatdata)
