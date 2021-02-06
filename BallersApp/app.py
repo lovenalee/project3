@@ -95,6 +95,7 @@ class pStats(db.Model):
     G = db.Column(db.Float)
     MP = db.Column(db.Float)
     PER = db.Column(db.Float)
+    WS = db.Column(db.Float)
    
 
     def __repr__(self):
@@ -108,9 +109,13 @@ def position():
     pStats.Age, 
     pStats.G, 
     pStats.MP, 
-    pStats.PER).all()
+    pStats.PER,
+    pStats.WS).all()
 
     return jsonify(results3)
+
+
+
 
 @app.route("/goat")
 def GOAT():
