@@ -24,18 +24,14 @@ class tStats(db.Model):
     Wins = db.Column(db.Float)
     Losses = db.Column(db.Float)
     WPct = db.Column(db.Float)
-
+    
     def __repr__(self):
         return '<tStats %r>' % (self.name)
 
-
-@app.route("/")
-def home():
-    return render_template("index.html")
-
 @app.route("/api/tStats")
 def nba():
-    results = db.session.query(tStats.Team, 
+    results1 = db.session.query(
+    tStats.Team, 
     tStats.Year, 
     tStats.TeamPoints, 
     tStats.Assists, 
@@ -45,9 +41,24 @@ def nba():
     tStats.Losses, 
     tStats.WPct).all()
     
+    result_list1 = []
     
-    return jsonify(results)
+    for result1 in results1:
+        tStatsdata = {
+            "TeamAbbr": result1[0],
+            "Seasons": result1[1],
+            "Points": result1[2],
+            "Assists": result1[3],
+            "FieldGoals": result1[4],
+            "TeamName": result1[5],
+            "Wins": result1[6],
+            "Losses": result1[7],
+            "WinPct": result1[8]
+        }
 
+        result_list1.append(tStatsdata)
+
+    return jsonify(result_list1)
 
 class gStats(db.Model):
     __tablename__ = 'GOAT'
@@ -94,7 +105,27 @@ def goat():
     gStats.WINS,
     gStats.LOSSES).all()
 
-    return jsonify(results2)
+    result_list2 = []
+    
+    for result2 in results2:
+        goatdata = {
+            "Name": result2[0],
+            "Matchup": result2[1],
+            "WL": result2[2],
+            "FG3_PCT": result2[3],
+            "FGM": result2[4],
+            "FTM": result2[5],
+            "MIN": result2[6],
+            "REB": result2[7],
+            "AST": result2[8],
+            "PTS": result2[9],
+            "BLK": result2[10],
+            "STL": result2[11]
+        }
+
+        result_list2.append(goatdata)
+
+    return jsonify(result_list2)
 
 class pStats(db.Model):
     __tablename__ = 'WSData'
@@ -118,9 +149,25 @@ def ws():
     pStats.Rounded_Position, 
     pStats.WS).all()
 
-    return jsonify(results3)
+    result_list3 = []
+    
+    for result3 in results3:
+        wsdata = {
+            "Player": result3[0],
+            "Tm": result3[1],
+            "Year": result3[2],
+            "Age": result3[3],
+            "Rounded_Position": result3[4],
+            "WS": result3[5]
+        }
 
+        result_list3.append(wsdata)
 
+    return jsonify(result_list3)
+
+@app.route("/tStats")
+def tStats():
+    return render_template("tStats.html")
 
 @app.route("/goat")
 def GOAT():

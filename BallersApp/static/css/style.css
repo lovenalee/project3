@@ -89,6 +89,27 @@ p{
     color:white;
     border-top: 5px solid rgb(224, 6, 6)
 }
+
+.active {
+    font-weight: bold;
+    fill: #000;
+    fill: #551aaf;
+    transition: fill 0.3s ease-out;
+    text-anchor: middle;
+  }
+  
+  .inactive {
+    font-weight: lighter;
+    fill: #551aaf;
+    transition: fill 0.3s ease-out;
+    text-anchor: middle;
+  }
+  
+  .inactive:hover {
+    fill: #e75480;
+    cursor: pointer;
+  }
+  
 /* small screen adjustments*/
 @media(max-width:800px){
     .navbar.bg-light{
@@ -98,7 +119,4 @@ p{
     .navbar{
         padding:inherit;
     }
-
-    
-
 }
