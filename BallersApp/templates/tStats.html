@@ -13,10 +13,14 @@
 <body>
     <h2>Team Stats</h2>
     <select id="selDataset" onchange="getData(this.value)">
-        <option value="year">Select Year</option>
+        <option value="season">2014</option>
+        <option value="season">2015</option>
+        <option value="season">2016</option>
+        <option value="season">2017</option>
+        <option value="season">2018</option>
     </select>
 
-    <div id="scatter"></div>
+    <div class="scatter"></div>
 
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -27,3 +31,5 @@
     <script src="{{ url_for('static', filename='js/tStats.js') }}"></script>
 </body>
 </html>
+
+

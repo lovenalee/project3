@@ -98,17 +98,17 @@ p{
     text-anchor: middle;
   }
   
-  .inactive {
-    font-weight: lighter;
-    fill: #551aaf;
-    transition: fill 0.3s ease-out;
-    text-anchor: middle;
-  }
-  
-  .inactive:hover {
-    fill: #e75480;
-    cursor: pointer;
-  }
+.inactive {
+font-weight: lighter;
+fill: #551aaf;
+transition: fill 0.3s ease-out;
+text-anchor: middle;
+}
+
+.inactive:hover {
+fill: #e75480;
+cursor: pointer;
+}
   
 /* small screen adjustments*/
 @media(max-width:800px){
