@@ -23,7 +23,40 @@ h3{
 
 body{
     background-color: rgb(174, 209, 243);
+    /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    position: relative;
+    width: 960px;
+    height: 100%;
+    padding: 10;
+    margin: 15; */
 }
+
+.axis text {
+    font: 10px sans-serif;
+  }
+  
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+  
+  .bar {
+    fill: steelblue;
+    fill-opacity: .9;
+  }
+  
+  .bar:hover {
+    fill: orange;
+  }
+  
+  label {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
 
 p{
    font-family: Arial, Helvetica, sans-serif;
@@ -89,6 +122,27 @@ p{
     color:white;
     border-top: 5px solid rgb(224, 6, 6)
 }
+
+.active {
+    font-weight: bold;
+    fill: #000;
+    fill: #551aaf;
+    transition: fill 0.3s ease-out;
+    text-anchor: middle;
+  }
+  
+.inactive {
+font-weight: lighter;
+fill: #551aaf;
+transition: fill 0.3s ease-out;
+text-anchor: middle;
+}
+
+.inactive:hover {
+fill: #e75480;
+cursor: pointer;
+}
+  
 /* small screen adjustments*/
 @media(max-width:800px){
     .navbar.bg-light{
@@ -98,7 +152,4 @@ p{
     .navbar{
         padding:inherit;
     }
-
-    
-
 }
