@@ -12,17 +12,16 @@ var globaldata;
 // d3.json("/api/tStats").then(function(data) {
 d3.csv("/assets/Team_Stats.csv").then(function(data) {
     // get data
-     
+  
       globaldata = data;
         console.log(globaldata);
-        
-      var season = Object.values(data.Seasons);
+
+      // var season = Object.values(data.Year);
 
       var body = d3.select('body')
-      var selectData = [ { "text" : "Annualized Return" },
-                         { "text" : "Annualized Standard Deviation" },
-                         { "text" : "Maximum Drawdown" },
-                         { "text" : "Year" },
+      var selectData = [ { "text" : "TeamPoints" },
+                         { "text" : "Wins" },
+                         { "text" : "Losses" },
                        ]
     
       // Select X-axis Variable
@@ -63,14 +62,14 @@ d3.csv("/assets/Team_Stats.csv").then(function(data) {
       var colorScale = d3.scale.category20()
       var xScale = d3.scale.linear()
         .domain([
-          d3.min([0,d3.min(data,function (d) { return d['Annualized Return'] })]),
-          d3.max([0,d3.max(data,function (d) { return d['Annualized Return'] })])
+          d3.min([0,d3.min(data,function (d) { return d['TeamPoints'] })]),
+          d3.max([0,d3.max(data,function (d) { return d['TeamPoints'] })])
           ])
         .range([0,w])
       var yScale = d3.scale.linear()
         .domain([
-          d3.min([0,d3.min(data,function (d) { return d['Annualized Return'] })]),
-          d3.max([0,d3.max(data,function (d) { return d['Annualized Return'] })])
+          d3.min([0,d3.min(data,function (d) { return d['TeamPoints'] })]),
+          d3.max([0,d3.max(data,function (d) { return d['TeamPoints'] })])
           ])
         .range([h,0])
       // SVG
@@ -96,8 +95,8 @@ d3.csv("/assets/Team_Stats.csv").then(function(data) {
           .data(data)
           .enter()
         .append('circle')
-          .attr('cx',function (d) { return xScale(d['Annualized Return']) })
-          .attr('cy',function (d) { return yScale(d['Annualized Return']) })
+          .attr('cx',function (d) { return xScale(d['TeamPoints']) })
+          .attr('cy',function (d) { return yScale(d['TeamPoints']) })
           .attr('r','10')
           .attr('stroke','black')
           .attr('stroke-width',1)
@@ -117,10 +116,10 @@ d3.csv("/assets/Team_Stats.csv").then(function(data) {
               .attr('stroke-width',1)
           })
         .append('title') // Tooltip
-          .text(function (d) { return d.variable +
-                               '\nReturn: ' + formatPercent(d['Annualized Return']) +
-                               '\nStd. Dev.: ' + formatPercent(d['Annualized Standard Deviation']) +
-                               '\nMax Drawdown: ' + formatPercent(d['Maximum Drawdown']) })
+          .text(function (d) { return d.TeamName +
+                               '\nTeamPoints: ' + formatPercent(d['TeamPoints']) +
+                               '\nWins: ' + formatPercent(d['Wins']) +
+                               '\nLosses: ' + formatPercent(d['Losses']) })
       // X-axis
       svg.append('g')
           .attr('class','axis')
@@ -133,7 +132,7 @@ d3.csv("/assets/Team_Stats.csv").then(function(data) {
           .attr('x',w)
           .attr('dy','.71em')
           .style('text-anchor','end')
-          .text('Annualized Return')
+          .text('TeamPoints')
       // Y-axis
       svg.append('g')
           .attr('class','axis')
@@ -146,7 +145,7 @@ d3.csv("/assets/Team_Stats.csv").then(function(data) {
           .attr('y',5)
           .attr('dy','.71em')
           .style('text-anchor','end')
-          .text('Annualized Return')
+          .text('TeamPoints')
     
       function yChange() {
         var value = this.value // get the new y value
