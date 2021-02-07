@@ -1,4 +1,4 @@
-// d3.json("http://127.0.0.1:5000/api/tStats/tStats").then(function(data) {
+// d3.json("http://127.0.0.1:5000/api/tStats").then(function(data) {
 //   console.log(data);
 // })
 
@@ -57,7 +57,7 @@ d3.csv("/assets/Team_Stats.csv").then(function(data) {
       var margin = { top: 50, right: 50, bottom: 50, left: 50 }
       var h = 550 - margin.top - margin.bottom
       var w = 550 - margin.left - margin.right
-      var formatPercent = d3.format('0')
+      var formatNumber = d3.format('0')
       // Scales
       var colorScale = d3.scale.category20()
       var xScale = d3.scale.linear()
@@ -81,13 +81,13 @@ d3.csv("/assets/Team_Stats.csv").then(function(data) {
       // X-axis
       var xAxis = d3.svg.axis()
         .scale(xScale)
-        .tickFormat(formatPercent)
+        .tickFormat(formatNumber)
         .ticks(10)
         .orient('bottom')
       // Y-axis
       var yAxis = d3.svg.axis()
         .scale(yScale)
-        .tickFormat(formatPercent)
+        .tickFormat(formatNumber)
         .ticks(10)
         .orient('left')
       // Circles
@@ -117,9 +117,9 @@ d3.csv("/assets/Team_Stats.csv").then(function(data) {
           })
         .append('title') // Tooltip
           .text(function (d) { return d.TeamName +
-                               '\nTeamPoints: ' + formatPercent(d['TeamPoints']) +
-                               '\nWins: ' + formatPercent(d['Wins']) +
-                               '\nLosses: ' + formatPercent(d['Losses']) })
+                               '\nTeamPoints: ' + formatNumber(d['TeamPoints']) +
+                               '\nWins: ' + formatNumber(d['Wins']) +
+                               '\nLosses: ' + formatNumber(d['Losses']) })
       // X-axis
       svg.append('g')
           .attr('class','axis')
