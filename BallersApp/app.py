@@ -20,7 +20,7 @@ def home():
 
 @app.route("/tStats")
 def tStats():
-    return render_template("indexTstat.html")
+    return render_template("tStats.html")
 
 @app.route("/goat")
 def GOAT():

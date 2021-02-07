@@ -1,227 +1,197 @@
-// Set chart range
-var svgWidth = 1000;
-var svgHeight = 500;
+// d3.json("http://127.0.0.1:5000/api/tStats/tStats").then(function(data) {
+//   console.log(data);
+// })
 
-var margin = {
-  top: 20,
-  right: 40,
-  bottom: 60,
-  left: 100
-};
+// d3.csv("/assets/Team_Stats.csv").then(function(data) {
+//   console.log(data)
+// })
 
-var width = svgWidth - margin.left - margin.right;
-var height = svgHeight - margin.top - margin.bottom;
 
-// Create an SVG wrapper, append an SVG group that will hold our chart, and shift the latter by left and top margins.
-var svg = d3
-    .select(".scatter")
-    .append("svg")
-    .attr("width", svgWidth)
-    .attr("height", svgHeight);
+var globaldata;
 
-// Append an SVG group
-var chartGroup = svg.append("g")
-.attr("transform", `translate(${margin.left}, ${margin.top})`);
+// d3.json("/api/tStats").then(function(data) {
+d3.csv("/assets/Team_Stats.csv").then(function(data) {
+    // get data
+     
+      globaldata = data;
+        console.log(globaldata);
+        
+      var season = Object.values(data.Seasons);
 
-// Initial Params
-var chosenXAxis = "Wins";
-
-// function used for updating x-scale var upon click on axis label
-function xScale(tStatsData, chosenXAxis) {
-    // create scales
-    var xLinearScale = d3.scaleLinear()
-      .domain([d3.min(tStatsData, tStatsData => tStatsData[chosenXAxis]) * 0.8,
-        d3.max(tStatsData, tStatsData => tStatsData[chosenXAxis]) * 1.2
-      ])
-      .range([0, width]);
-  
-    return xLinearScale;
-  }
-
-// function used for updating xAxis var upon click on axis label
-function renderAxes(newXScale, xAxis) {
-    var bottomAxis = d3.axisBottom(newXScale);
-  
-    xAxis.transition()
-      .duration(1000)
-      .call(bottomAxis);
-  
-    return xAxis;
-  }
-
-// function used for updating circles group with a transition to
-// new circles
-function renderCircles(circlesGroup, newXScale, chosenXAxis) {
-
-    circlesGroup.transition()
-      .duration(1000)
-      .attr("cx", tStatsData => newXScale(tStatsData[chosenXAxis]));
-  
-    return circlesGroup;
-  }
-
-// function used for updating circles group with new tooltip
-function updateToolTip(chosenXAxis, circlesGroup) {
-
-    var label;
-  
-    if (chosenXAxis === "Wins") {
-      label = "Team Wins:";
-    }
-    else {
-      label = "Team Losses:";
-    }
-  
-    var toolTip = d3.tip()
-      .attr("class", "tooltip")
-      .offset([80, -60])
-      .html(function(d) {
-        return (`${d.Team}<br>${label} ${d[chosenXAxis]}`);
-      });
-  
-    circlesGroup.call(toolTip);
-  
-    circlesGroup.on("mouseover", function(tStatsdata) {
-      toolTip.show(tStatsdata);
-    })
-      // onmouseout event
-      .on("mouseout", function(tStatsdata, index) {
-        toolTip.hide(tStatsdata);
-      });
-  
-    return circlesGroup;
-  }
-
-// Get Data
-d3.json("/api/tStats").then(function(tStatsdata, err) {
-    if (err) throw err;
-
-    console.log(tStatsData)
-
-  // parse data
-  tStatsData.forEach(function(tStatsData) {
-    tStatsData.Wins = +tStatsData.Wins;
-    tStatsData.Losses = +tStatsData.Losses;
-    tStatsData.Points = +tStatsData.Points;
-    tStatsdata.TeamAbbr = +tStatsdata.TeamAbbr;
-  });
-  
-  // xLinearScale function above csv import
-  var xLinearScale = xScale(tStatsData, chosenXAxis);
-
-  // Create y scale function
-  var yLinearScale = d3.scaleLinear()
-    .domain([0, d3.max(tStatsData, d => tStatsdata.Points)])
-    .range([height, 0]);
-
-  // Create initial axis functions
-  var bottomAxis = d3.axisBottom(xLinearScale);
-  var leftAxis = d3.axisLeft(yLinearScale);
-
-  // append x axis
-  var xAxis = chartGroup.append("g")
-    .classed("x-axis", true)
-    .attr("transform", `translate(0, ${height})`)
-    .call(bottomAxis);
-
-  // append y axis
-  chartGroup.append("g")
-    .call(leftAxis);
-
-  // append initial circles
-  var circlesGroup = chartGroup.selectAll("circle")
-    .data(tStatsData)
-    .enter()
-    .append("circle")
-    .attr("cx", tStatsData => xLinearScale(tStatsData[chosenXAxis]))
-    .attr("cy", tStatsData => yLinearScale(tStatsData.Points))
-    .attr("r", 20)
-    .attr("fill", "blue")
-    .attr("opacity", ".5");
-
-  // Create group for two x-axis labels
-  var labelsGroup = chartGroup.append("g")
-    .attr("transform", `translate(${width / 2}, ${height + 30})`);
-
-  var WinsLabel = labelsGroup.append("text")
-    .attr("x", 0)
-    .attr("y", 20)
-    .attr("value", "Wins") // value to grab for event listener
-    .classed("active", true)
-    .text("Team Wins");
-
-  var LossesLabel = labelsGroup.append("text")
-    .attr("x", 0)
-    .attr("y", 40)
-    .attr("value", "Losses") // value to grab for event listener
-    .classed("inactive", true)
-    .text("Losses");
-
-  // append y axis
-  chartGroup.append("text")
-    .attr("transform", "rotate(-90)")
-    .attr("y", 0 - margin.left + 50)
-    .attr("x", 0 - (height / 2))
-    .attr("dy", "1em")
-    .classed("axis-text", true)
-    .text("Points");
-
-  // updateToolTip function above csv import
-  var circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
-
-  // x axis labels event listener
-  labelsGroup.selectAll("text")
-    .on("click", function() {
-      // get value of selection
-      var value = d3.select(this).attr("value");
-      if (value !== chosenXAxis) {
-
-        // replaces chosenXAxis with value
-        chosenXAxis = value;
-
-        // console.log(chosenXAxis)
-
-        // functions here found above csv import
-        // updates x scale for new data
-        xLinearScale = xScale(tStatsData, chosenXAxis);
-
-        // updates x axis with transition
-        xAxis = renderAxes(xLinearScale, xAxis);
-
-        // updates circles with new x values
-        circlesGroup = renderCircles(circlesGroup, xLinearScale, chosenXAxis);
-
-        // updates tooltips with new info
-        circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
-
-        // changes classes to change bold text
-        if (chosenXAxis === "Points") {
-          PointsLabel
-            .classed("active", true)
-            .classed("inactive", false);
-          WinsLabel
-            .classed("active", false)
-            .classed("inactive", true);
-        }
-        else {
-          PointsLabel
-            .classed("active", false)
-            .classed("inactive", true);
-          LossesLabel
-            .classed("active", true)
-            .classed("inactive", false);
-        }
+      var body = d3.select('body')
+      var selectData = [ { "text" : "Annualized Return" },
+                         { "text" : "Annualized Standard Deviation" },
+                         { "text" : "Maximum Drawdown" },
+                         { "text" : "Year" },
+                       ]
+    
+      // Select X-axis Variable
+      var span = body.append('span')
+        .text('Select X-Axis variable: ')
+      var yInput = body.append('select')
+          .attr('id','xSelect')
+          .on('change',xChange)
+        .selectAll('option')
+          .data(selectData)
+          .enter()
+        .append('option')
+          .attr('value', function (d) { return d.text })
+          .text(function (d) { return d.text ;})
+      body.append('br')
+    
+      // Select Y-axis Variable
+      var span = body.append('span')
+          .text('Select Y-Axis variable: ')
+      var yInput = body.append('select')
+          .attr('id','ySelect')
+          .on('change',yChange)
+        .selectAll('option')
+          .data(selectData)
+          .enter()
+        .append('option')
+          .attr('value', function (d) { return d.text })
+          .text(function (d) { return d.text ;})
+      body.append('br')
+    
+      // Variables
+      var body = d3.select('body')
+      var margin = { top: 50, right: 50, bottom: 50, left: 50 }
+      var h = 550 - margin.top - margin.bottom
+      var w = 550 - margin.left - margin.right
+      var formatPercent = d3.format('0')
+      // Scales
+      var colorScale = d3.scale.category20()
+      var xScale = d3.scale.linear()
+        .domain([
+          d3.min([0,d3.min(data,function (d) { return d['Annualized Return'] })]),
+          d3.max([0,d3.max(data,function (d) { return d['Annualized Return'] })])
+          ])
+        .range([0,w])
+      var yScale = d3.scale.linear()
+        .domain([
+          d3.min([0,d3.min(data,function (d) { return d['Annualized Return'] })]),
+          d3.max([0,d3.max(data,function (d) { return d['Annualized Return'] })])
+          ])
+        .range([h,0])
+      // SVG
+      var svg = body.append('svg')
+          .attr('height',h + margin.top + margin.bottom)
+          .attr('width',w + margin.left + margin.right)
+        .append('g')
+          .attr('transform','translate(' + margin.left + ',' + margin.top + ')')
+      // X-axis
+      var xAxis = d3.svg.axis()
+        .scale(xScale)
+        .tickFormat(formatPercent)
+        .ticks(10)
+        .orient('bottom')
+      // Y-axis
+      var yAxis = d3.svg.axis()
+        .scale(yScale)
+        .tickFormat(formatPercent)
+        .ticks(10)
+        .orient('left')
+      // Circles
+      var circles = svg.selectAll('circle')
+          .data(data)
+          .enter()
+        .append('circle')
+          .attr('cx',function (d) { return xScale(d['Annualized Return']) })
+          .attr('cy',function (d) { return yScale(d['Annualized Return']) })
+          .attr('r','10')
+          .attr('stroke','black')
+          .attr('stroke-width',1)
+          .attr('fill',function (d,i) { return colorScale(i) })
+          .on('mouseover', function () {
+            d3.select(this)
+              .transition()
+              .duration(500)
+              .attr('r',20)
+              .attr('stroke-width',3)
+          })
+          .on('mouseout', function () {
+            d3.select(this)
+              .transition()
+              .duration(500)
+              .attr('r',10)
+              .attr('stroke-width',1)
+          })
+        .append('title') // Tooltip
+          .text(function (d) { return d.variable +
+                               '\nReturn: ' + formatPercent(d['Annualized Return']) +
+                               '\nStd. Dev.: ' + formatPercent(d['Annualized Standard Deviation']) +
+                               '\nMax Drawdown: ' + formatPercent(d['Maximum Drawdown']) })
+      // X-axis
+      svg.append('g')
+          .attr('class','axis')
+          .attr('id','xAxis')
+          .attr('transform', 'translate(0,' + h + ')')
+          .call(xAxis)
+        .append('text') // X-axis Label
+          .attr('id','xAxisLabel')
+          .attr('y',-10)
+          .attr('x',w)
+          .attr('dy','.71em')
+          .style('text-anchor','end')
+          .text('Annualized Return')
+      // Y-axis
+      svg.append('g')
+          .attr('class','axis')
+          .attr('id','yAxis')
+          .call(yAxis)
+        .append('text') // y-axis Label
+          .attr('id', 'yAxisLabel')
+          .attr('transform','rotate(-90)')
+          .attr('x',0)
+          .attr('y',5)
+          .attr('dy','.71em')
+          .style('text-anchor','end')
+          .text('Annualized Return')
+    
+      function yChange() {
+        var value = this.value // get the new y value
+        yScale // change the yScale
+          .domain([
+            d3.min([0,d3.min(data,function (d) { return d[value] })]),
+            d3.max([0,d3.max(data,function (d) { return d[value] })])
+            ])
+        yAxis.scale(yScale) // change the yScale
+        d3.select('#yAxis') // redraw the yAxis
+          .transition().duration(1000)
+          .call(yAxis)
+        d3.select('#yAxisLabel') // change the yAxisLabel
+          .text(value)    
+        d3.selectAll('circle') // move the circles
+          .transition().duration(1000)
+          .delay(function (d,i) { return i*100})
+            .attr('cy',function (d) { return yScale(d[value]) })
       }
-    });
-
-}).catch(function(error) {
-    console.log(error)
-});
+    
+      function xChange() {
+        var value = this.value // get the new x value
+        xScale // change the xScale
+          .domain([
+            d3.min([0,d3.min(data,function (d) { return d[value] })]),
+            d3.max([0,d3.max(data,function (d) { return d[value] })])
+            ])
+        xAxis.scale(xScale) // change the xScale
+        d3.select('#xAxis') // redraw the xAxis
+          .transition().duration(1000)
+          .call(xAxis)
+        d3.select('#xAxisLabel') // change the xAxisLabel
+          .transition().duration(1000)
+          .text(value)
+        d3.selectAll('circle') // move the circles
+          .transition().duration(1000)
+          .delay(function (d,i) { return i*100})
+            .attr('cx',function (d) { return xScale(d[value]) })
+      }
+    })
 
 function getData(thisvalue) {
- 
+
   console.log(thisvalue);
-  
+
     var dropdownMenu = d3.select("#selDataset");
     // Assign the value of the dropdown menu option to a variable
     var dataset = dropdownMenu.property("value");
