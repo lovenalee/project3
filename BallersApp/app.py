@@ -188,5 +188,107 @@ def ws():
 
 
 
+
+
+
+
+
+class rStats(db.Model):
+    __tablename__ = 'goat_rings'
+
+    Player = db.Column(db.String(64), primary_key=True)
+    Championships = db.Column(db.Float)
+  
+   
+    def __repr__(self):
+        return '<rStats %r>' % (self.name)
+
+@app.route("/api/rings")
+def rings():
+    results4 = db.session.query(rStats.Player, 
+    rStats.Championships).all()
+
+    result_list4 = []
+    
+    for result4 in results4:
+        ringdata = {
+            "Player": result4[0],
+            "Titles": result4[1]
+        }
+
+        result_list4.append(ringdata)
+
+    return jsonify(result_list4)
+
+class g2Stats(db.Model):
+    __tablename__ = 'goat_totals'
+
+    STATS = db.Column(db.String(64), primary_key=True)
+    bill = db.Column(db.Float)
+    wilt = db.Column(db.Float)
+    kareem = db.Column(db.Float)
+    magic = db.Column(db.Float)
+    larry = db.Column(db.Float)
+    michael = db.Column(db.Float)
+    scottie = db.Column(db.Float)
+    shaquille = db.Column(db.Float)
+    kobe = db.Column(db.Float)
+    lebron = db.Column(db.Float)
+    stephen = db.Column(db.Float)
+    kevin = db.Column(db.Float)
+    kawhi = db.Column(db.Float)
+
+
+  
+   
+    def __repr__(self):
+        return '<g2Stats %r>' % (self.name)
+
+@app.route("/api/totals")
+def totals():
+    results5 = db.session.query(g2Stats.STATS, 
+    g2Stats.bill,
+    g2Stats.wilt,
+    g2Stats.kareem,
+    g2Stats.magic,
+    g2Stats.larry,
+    g2Stats.michael,
+    g2Stats.scottie,
+    g2Stats.shaquille,
+    g2Stats.kobe,
+    g2Stats.lebron,
+    g2Stats.stephen,
+    g2Stats.kevin,
+    g2Stats.kawhi).all()
+
+    result_list5 = []
+    
+    for result5 in results5:
+        totaldata = {
+            "Stats": result5[0],
+            "bill": result5[1],
+            "wilt": result5[2],
+            "kareem": result5[3],
+            "magic": result5[4],
+            "larry": result5[5],
+            "michael": result5[6],
+            "scottie": result5[7],
+            "shqauille": result5[8],
+            "kobe": result5[9],
+            "lebron": result5[10],
+            "stephen": result5[11],
+            "kevin": result5[12],
+            "kawhi": result5[13]
+        }
+
+        result_list5.append(totaldata)
+
+    return jsonify(result_list5)
+
+
+
+
+
+
 if __name__ == "__main__":
     app.run(debug=True)
