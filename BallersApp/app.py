@@ -4,7 +4,8 @@ from flask import (
     render_template,
     jsonify,
     request,
-    redirect)
+    redirect,
+    url_for)
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -19,7 +20,7 @@ def home():
 
 @app.route("/tStats")
 def tStats():
-    return render_template("tStats.html")
+    return render_template("indexTstat.html")
 
 @app.route("/goat")
 def GOAT():

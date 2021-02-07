@@ -1,13 +1,24 @@
+
+
+var globaldata; //global var
+
+// Function called by DOM changes
 d3.json("/api/tStats",function (data) {
+
+  globaldata = data;
   // json section
-    console.log(data)
-    
+    console.log(globaldata);
+  // var for drop down values
+  var season = Object.values(data.Seasons);
+
+  // On change to the DOM, call getData()
+  d3.selectAll("#selDataset").on("change", getData);
+
     var body = d3.select('body')
     var selectData = [ { "text" : "Seasons" },
                        { "text" : "Points" },
                        { "text" : "Wins" },
                      ]
-    
 
     // Select X-axis Variable
     var span = body.append('span')
@@ -170,5 +181,22 @@ d3.json("/api/tStats",function (data) {
         .delay(function (d,i) { return i*100})
           .attr('cx',function (d) { return xScale(d[value]) })
     }
-  })
+  });
+  
+function getData(thisvalue) {
+ 
+console.log(thisvalue);
 
+
+
+
+  var dropdownMenu = d3.select("#selDataset");
+  // Assign the value of the dropdown menu option to a variable
+  var dataset = dropdownMenu.property("value");
+  // Initialize an empty array for the data
+
+  if (dataset === 'season') {
+    //globaldata = globaldata.Seasons;
+    console.log('dataset is season')
+    }
+};

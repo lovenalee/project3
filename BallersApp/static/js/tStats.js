@@ -1,22 +1,3 @@
-// var for drop down values
-var season = Object.values(tStatsData.Seasons);
-
-// On change to the DOM, call getData()
-d3.selectAll("#selDataset").on("change", getData);
-
-// Function called by DOM changes
-function getData() {
-  var dropdownMenu = d3.select("#selDataset");
-  // Assign the value of the dropdown menu option to a variable
-  var dataset = dropdownMenu.property("value");
-  // Initialize an empty array for the country's data
-  var data = [];
-
-  If (dataset === 'season') {
-    data = tStatsData.Seasons
-    };
-}
-
 // Set chart range
 var svgWidth = 1000;
 var svgHeight = 500;
@@ -237,3 +218,17 @@ d3.json("/api/tStats").then(function(tStatsdata, err) {
     console.log(error)
 });
 
+function getData(thisvalue) {
+ 
+  console.log(thisvalue);
+  
+    var dropdownMenu = d3.select("#selDataset");
+    // Assign the value of the dropdown menu option to a variable
+    var dataset = dropdownMenu.property("value");
+    // Initialize an empty array for the data
+  
+    if (dataset === 'season') {
+      //globaldata = globaldata.Seasons;
+      console.log('dataset is season')
+      }
+  };
