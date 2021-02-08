@@ -3,7 +3,6 @@
 <html>
   <head>
     <title>Team Stats</title>
-    <script src="https://d3js.org/d3.v4.js" charset="utf-8"></script>
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> -->
     <link rel='stylesheet' href='/static/css/style.css'>
@@ -17,10 +16,15 @@
       </a>
     </nav>
   <h2>Team Stats</h2>
-  <select id="selectButton"></select>
-  <br>
-  <br>
-  <script type='text/javascript' src='/static/js/tStats.js'></script>
+  <div class="col-md-4">
+  <select id="selDataset" onchange="getData(this.value)">
+  <option value="season">2014</option>
+  <option value="season">2015</option>
+  <option value="season">2016</option>
+  <option value="season">2017</option>
+  <option value="season">2018</option>
+  </div>
+  <script type='text/javascript' src='/static/js/tStats2.js'></script>
   <!-- <script src="{{ url_for('static', filename='js/tStats.js') }}"></script> -->
   </body>
 </html>

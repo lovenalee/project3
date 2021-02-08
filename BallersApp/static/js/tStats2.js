@@ -6,7 +6,6 @@
 //   console.log(data)
 // })
 
-//===============================================================================
 
 d3.csv('/assets/Team_Stats.csv',function (data) {
   console.log(data)
@@ -17,29 +16,6 @@ d3.csv('/assets/Team_Stats.csv',function (data) {
 
       // var season = Object.values(data.Seasons);
 
-      var allGroup = d3.map(data, function(d){return(d.Seasons)}).keys();
-
-      // add the options to the button
-      d3.select("#selectButton")
-      .selectAll('myOptions')
-      .data(allGroup)
-      .enter()
-      .append('option')
-      .text(function (d) { return d; }) // text showed in the menu
-      .attr("value", function (d) { return d; }) // corresponding value returned by the button
-
-      var dataFilter = ( data
-        .filter(function(d){ return d.Seasons == "2014"})
-        .map(function(d){  return +d.Wins; })
-      )
-
-      // Listen to the slider?
-      d3.select("#selectButton").on("change", function(d){
-        selectedGroup = this.value
-        updateChart(selectedGroup)
-      })
-
-      
       var body = d3.select('body')
       var selectData = [ { "text" : "TeamPoints" },
                          { "text" : "Wins" },
@@ -208,22 +184,18 @@ d3.csv('/assets/Team_Stats.csv',function (data) {
             .attr('cx',function (d) { return xScale(d[value]) })
       }
     })
-    
-// ==================================================================================
 
-// function getData(thisvalue) {
+function getData(thisvalue) {
 
-//   console.log(thisvalue);
+  console.log(thisvalue);
 
-//     var dropdownMenu = d3.select("#selDataset");
-//     // Assign the value of the dropdown menu option to a variable
-//     var dataset = dropdownMenu.property("value");
-//     // Initialize an empty array for the data
+    var dropdownMenu = d3.select("#selDataset");
+    // Assign the value of the dropdown menu option to a variable
+    var dataset = dropdownMenu.property("value");
+    // Initialize an empty array for the data
   
-//     if (dataset === 'season') {
-//       //globaldata = globaldata.Seasons;
-//       console.log('dataset is season')
-//       }
-  // };
-
-//===============================================================================
+    if (dataset === 'season') {
+      //globaldata = globaldata.Seasons;
+      console.log('dataset is season')
+      }
+  };
