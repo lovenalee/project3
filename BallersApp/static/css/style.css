@@ -33,6 +33,7 @@ body{
 
 .axis text {
     font: 10px sans-serif;
+    stroke: black;
   }
   
   .axis path,

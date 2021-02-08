@@ -7,16 +7,14 @@
 // })
 
 
-var globaldata;
+d3.csv('/assets/Team_Stats.csv',function (data) {
+  console.log(data)
+    // CSV section
 
-// d3.json("api/tStats").then(function(data) {
-d3.csv("/assets/Team_Stats.csv").then(function(data) {
-    // get data
-  
-      globaldata = data;
-        console.log(globaldata);
+      // globaldata = data;
+      //   console.log(globaldata);
 
-      // var season = Object.values(data.Year);
+      // var season = Object.values(data.Seasons);
 
       var body = d3.select('body')
       var selectData = [ { "text" : "TeamPoints" },
