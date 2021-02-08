@@ -9,12 +9,12 @@
 
 var globaldata;
 
-// d3.json("/api/tStats").then(function(data) {
-d3.csv("/assets/Team_Stats.csv").then(function(data) {
+d3.json("/api/tStats").then(function(data) {
+// d3.csv("/assets/Team_Stats.csv").then(function(data) {
     // get data
   
       globaldata = data;
-        console.log(globaldata);
+        console.log([globaldata]);
 
       // var season = Object.values(data.Year);
 
