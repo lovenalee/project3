@@ -170,7 +170,7 @@ d3.csv('/assets/Team_Stats.csv',function (data) {
             .attr('x',w)
             .attr('dy','.71em')
             .style('text-anchor','end')
-            .text('TeamPoints')
+            .text('wins')
         // Y-axis
         svg.append('g')
             .attr('class','axis')
@@ -183,7 +183,7 @@ d3.csv('/assets/Team_Stats.csv',function (data) {
             .attr('y',5)
             .attr('dy','.71em')
             .style('text-anchor','end')
-            .text('TeamPoints')
+            .text('Wins')
       
         function yChange() {
           var value = this.value // get the new y value
