@@ -149,11 +149,11 @@ def goat():
     return jsonify(result_list2)
 
 class pStats(db.Model):
-    __tablename__ = 'WS_avg'
+    __tablename__ = 'WS_Avg'
 
-    Year = db.Column(db.Float)
+    Year = db.Column(db.Float, primary_key=True)
     Rounded_Position = db.Column(db.Float)
-    WS|mean = db.Column(db.Float)
+    WSmean = db.Column(db.Float)
    
     def __repr__(self):
         return '<pStats %r>' % (self.name)
@@ -163,15 +163,15 @@ def ws():
     results3 = db.session.query(
     pStats.Year, 
     pStats.Rounded_Position, 
-    pStats.WS|mean).all()
+    pStats.WSmean).all()
 
     result_list3 = []
     
     for result3 in results3:
         wsdata = {
-            "Year": result3[1],
-            "Rounded_Position": result3[2],
-            "WS|mean": result3[3]
+            "Year": result3[0],
+            "Rounded_Position": result3[1],
+            "WSmean": result3[2]
         }
         result_list3.append(wsdata)
 
