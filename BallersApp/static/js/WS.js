@@ -1,97 +1,91 @@
-// Chart Params
-var svgWidth = 960;
-var svgHeight = 500;
+// set the dimensions and margins of the graph
+var margin = {top: 50, right: 300, bottom: 50, left: 100},
+    width = 1000 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
 
-var margin = { top: 20, right: 40, bottom: 60, left: 50 };
-
-var width = svgWidth - margin.left - margin.right;
-var height = svgHeight - margin.top - margin.bottom;
-
-// Create an SVG wrapper, append an SVG group that will hold our chart, and shift the latter by left and top margins.
-var svg = d3
-  .select("body")
+// append the svg object to the body of the page
+var svg = d3.select("#my_dataviz")
   .append("svg")
-  .attr("width", svgWidth)
-  .attr("height", svgHeight);
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
 
-var chartGroup = svg.append("g")
-  .attr("transform", `translate(${margin.left}, ${margin.top})`);
-
-// Import data from an external CSV file
+//Read the data
 d3.json("api/ws").then(function(wsdata) {
-  console.log(wsdata);
-  console.log([wsdata]);
+    console.log(wsdata);
+    console.log([wsdata]);
 
-    // group the data: I want to draw one line per group
-  var sumstat = d3.nest() // nest function allows to group the calculation per level of a factor
-    .key(function(d) { return d.Rounded_Position;})
-    .entries(wsdata);
+    // List of groups (here I have one group per column)
+    var allGroup = d3.map(wsdata, function(d){return(d.Rounded_Position)}).keys()
 
-  // Format the data
-  wsdata.forEach(function(data) {
-    data.date = data.Year;
-    data.ws = +data.WS;
-  });
+    // add the options to the button
+    d3.select("#selectButton")
+      .selectAll('myOptions')
+     	.data(allGroup)
+      .enter()
+    	.append('option')
+      .text(function (d) { return d; }) // text showed in the menu
+      .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
-  // // Create scaling functions
-  // var xLinearScale = d3.scaleLinear()
-  //   .domain(d3.extent(wsdata, d => d.Year))
-  //   .range([0, width]);
+    // A color scale: one color for each group
+    var myColor = d3.scaleOrdinal()
+      .domain(allGroup)
+      .range(d3.schemeSet2);
 
-  // var yLinearScale1 = d3.scaleLinear()
-  //   .domain([0, d3.max(wsdata, d => d.WS)])
-  //   .range([height, 0]);
-
-
-  // // Create axis functions
-  // var bottomAxis = d3.axisBottom(xLinearScale);
-  // var leftAxis = d3.axisLeft(yLinearScale1);
-
-  var x = d3.scaleLinear()
-    .domain(d3.extent(wsdata, function(d) { return d.Year; }))
-    .range([ 0, width ]);
-  svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x).ticks(5));
+    // Add X axis --> it is a date format
+    var x = d3.scaleLinear()
+      .domain(d3.extent(wsdata, function(d) { return d.Year; }))
+      .range([ 0, width ]);
+    svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x).ticks(7));
 
     // Add Y axis
-  var y = d3.scaleLinear()
-    .domain([0, d3.max(wsdata, function(d) { return +d.WS; })])
-    .range([ height, 0 ]);
-  svg.append("g")
-    .call(d3.axisLeft(y));
+    var y = d3.scaleLinear()
+      .domain([0, d3.max(wsdata, function(d) { return +d.WSmean; })])
+      .range([ height, 0 ]);
+    svg.append("g")
+      .call(d3.axisLeft(y));
 
-
-  // // Add x-axis
-  // chartGroup.append("g")
-  //   .attr("transform", `translate(0, ${height})`)
-  //   .call(bottomAxis);
-
-  // // Add y1-axis to the left side of the display
-  // chartGroup.append("g")
-  //   // Define the color of the axis text
-  //   .classed("green", true)
-  //   .call(leftAxis);
-
-
-      // color palette
-  var res = sumstat.map(function(d){ return d.key }) // list of group names
-  var color = d3.scaleOrdinal()
-    .domain(res)
-    .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00'])
-
-  // Draw the line
-  svg.selectAll(".line")
-      .data(sumstat)
-      .enter()
+    // Initialize line with first group of the list
+    var line = svg
+      .append('g')
       .append("path")
-        .attr("fill", "none")
-        .attr("stroke", function(d){ return color(d.key) })
-        .attr("stroke-width", 1.5)
-        .attr("d", function(d){
-          return d3.line()
-            .x(function(d) { return x(d.Year); })
-            .y(function(d) { return y(+d.WS); })
-            (d.values)
-        })
+        .datum(wsdata.filter(function(d){return d.Rounded_Position==allGroup[0]}))
+        .attr("d", d3.line()
+          .x(function(d) { return x(d.Year) })
+          .y(function(d) { return y(+d.WSmean) })
+        )
+        .attr("stroke", function(d){ return myColor("valueA") })
+        .style("stroke-width", 4)
+        .style("fill", "none")
+
+    // A function that update the chart
+    function update(selectedGroup) {
+
+      // Create new data with the selection?
+      var dataFilter = wsdata.filter(function(d){return d.Rounded_Position==selectedGroup})
+
+      // Give these new data to update line
+      line
+          .datum(dataFilter)
+          .transition()
+          .duration(1000)
+          .attr("d", d3.line()
+            .x(function(d) { return x(d.Year) })
+            .y(function(d) { return y(+d.WSmean) })
+          )
+          .attr("stroke", function(d){ return myColor(selectedGroup) })
+    }
+
+    // When the button is changed, run the updateChart function
+    d3.select("#selectButton").on("change", function(d) {
+        // recover the option that has been chosen
+        var selectedOption = d3.select(this).property("value")
+        // run the updateChart function with this selected option
+        update(selectedOption)
+    })
+
 })

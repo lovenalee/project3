@@ -149,47 +149,33 @@ def goat():
     return jsonify(result_list2)
 
 class pStats(db.Model):
-    __tablename__ = 'WSData'
+    __tablename__ = 'WS_Avg'
 
-    Player = db.Column(db.String(64), primary_key=True)
-    Tm = db.Column(db.String(10))
-    Year = db.Column(db.Float)
-    Age = db.Column(db.Float)
+    Year = db.Column(db.Float, primary_key=True)
     Rounded_Position = db.Column(db.Float)
-    WS = db.Column(db.Float)
+    WSmean = db.Column(db.Float)
    
     def __repr__(self):
         return '<pStats %r>' % (self.name)
 
 @app.route("/api/ws")
 def ws():
-    results3 = db.session.query(pStats.Player, 
-    pStats.Tm, 
+    results3 = db.session.query(
     pStats.Year, 
-    pStats.Age, 
     pStats.Rounded_Position, 
-    pStats.WS).all()
+    pStats.WSmean).all()
 
     result_list3 = []
     
     for result3 in results3:
         wsdata = {
-            "Player": result3[0],
-            "Tm": result3[1],
-            "Year": result3[2],
-            "Age": result3[3],
-            "Rounded_Position": result3[4],
-            "WS": result3[5]
+            "Year": result3[0],
+            "Rounded_Position": result3[1],
+            "WSmean": result3[2]
         }
-
         result_list3.append(wsdata)
 
     return jsonify(result_list3)
-
-
-
-
-
 
 
 
