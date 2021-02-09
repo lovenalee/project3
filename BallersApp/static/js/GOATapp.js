@@ -11,7 +11,7 @@ var chartMargin = {
   left: 30
 };
 
-var nestedData = [];
+var selection = [];
 
 // Define dimensions of the chart area
 var chartWidth = svgWidth - chartMargin.left - chartMargin.right;
@@ -80,8 +80,11 @@ d3.json("/api/rings").then(function(ringsdata) {
     .attr("width", xBandScale.bandwidth())
     .attr("height", d => chartHeight - yLinearScale(d.Titles))
     .on("click", function(d){
-      var selection = d3.select(this).data(ringsdata.Player)
+
+      
+      selection = d3.select(this).data(ringsdata.Player)
       console.log(selection)
+
     });
 
 
@@ -89,3 +92,4 @@ d3.json("/api/rings").then(function(ringsdata) {
   console.log(error)
 });
 
+console.log(selection)
