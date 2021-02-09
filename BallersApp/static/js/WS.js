@@ -32,20 +32,7 @@ d3.json("api/ws").then(function(wsdata) {
     data.date = data.Year;
     data.ws = +data.WS;
   });
-
-  // // Create scaling functions
-  // var xLinearScale = d3.scaleLinear()
-  //   .domain(d3.extent(wsdata, d => d.Year))
-  //   .range([0, width]);
-
-  // var yLinearScale1 = d3.scaleLinear()
-  //   .domain([0, d3.max(wsdata, d => d.WS)])
-  //   .range([height, 0]);
-
-
-  // // Create axis functions
-  // var bottomAxis = d3.axisBottom(xLinearScale);
-  // var leftAxis = d3.axisLeft(yLinearScale1);
+  
 
   var x = d3.scaleLinear()
     .domain(d3.extent(wsdata, function(d) { return d.Year; }))
@@ -60,18 +47,6 @@ d3.json("api/ws").then(function(wsdata) {
     .range([ height, 0 ]);
   svg.append("g")
     .call(d3.axisLeft(y));
-
-
-  // // Add x-axis
-  // chartGroup.append("g")
-  //   .attr("transform", `translate(0, ${height})`)
-  //   .call(bottomAxis);
-
-  // // Add y1-axis to the left side of the display
-  // chartGroup.append("g")
-  //   // Define the color of the axis text
-  //   .classed("green", true)
-  //   .call(leftAxis);
 
 
       // color palette
