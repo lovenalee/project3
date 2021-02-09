@@ -93,3 +93,4 @@ d3.json("/api/rings").then(function(ringsdata) {
 });
 
 console.log(selection)
+
