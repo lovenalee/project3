@@ -48,7 +48,7 @@ class tStats(db.Model):
         return '<tStats %r>' % (self.name)
 
 @app.route("/api/tStats")
-def nba():
+def tStats():
     results1 = db.session.query(
     tStats.Team, 
     tStats.Year, 
