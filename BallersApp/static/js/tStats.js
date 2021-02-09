@@ -1,4 +1,4 @@
-// d3.json("http://127.0.0.1:5000/api/tStats").then(function(data) {
+// d3.json("/api/tStats").then(function(data) {
 //   console.log(data);
 // })
 
@@ -17,31 +17,31 @@ d3.csv('/assets/Team_Stats.csv',function (data) {
 
       // var season = Object.values(data.Seasons);
 
-      var allGroup = d3.map(data, function(d){return(d.Seasons)}).keys();
+      // var allGroup = d3.map(data, function(d){return(d.Seasons)}).keys();
 
-      // add the options to the button
-      d3.select("#selectButton")
-      .selectAll('myOptions')
-      .data(allGroup)
-      .enter()
-      .append('option')
-      .text(function (d) { return d; }) // text showed in the menu
-      .attr("value", function (d) { return d; }) // corresponding value returned by the button
+      // // add the options to the button
+      // d3.select("#selectButton")
+      // .selectAll('myOptions')
+      // .data(allGroup)
+      // .enter()
+      // .append('option')
+      // .text(function (d) { return d; }) // text showed in the menu
+      // .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
-      var dataFilter = ( data
-        .filter(function(d){ return d.Seasons == "2014"})
-        .map(function(d){  return +d.Wins; })
-      )
+      // var dataFilter = ( data
+      //   .filter(function(d){ return d.Seasons == "2014"})
+      //   .map(function(d){  return +d.Wins; })
+      // )
 
       // Listen to the slider?
-      d3.select("#selectButton").on("change", function(d){
-        selectedGroup = this.value;
-        console.log(selectedGroup)
-        // updateChart(selectedGroup);
-        var dataFilter = data
-          .filter(function(d){ return d.Seasons == selectedGroup})
-          .map(function(d){  return +d.Wins; });
-          console.log(dataFilter);
+      // d3.select("#selectButton").on("change", function(d){
+      //   selectedGroup = this.value;
+      //   console.log(selectedGroup)
+      //   // updateChart(selectedGroup);
+      //   var dataFilter = data
+      //     .filter(function(d){ return d.Seasons == selectedGroup})
+      //     .map(function(d){  return +d.Wins; });
+      //     console.log(dataFilter);
 
           //1 filter losses by year
           //2 filter teampoints by yearr
@@ -52,9 +52,7 @@ d3.csv('/assets/Team_Stats.csv',function (data) {
           // //4 rebuild chart here
           // buildChart(); //pass in new data here
 
-
-
-      })
+      
       
         // function buildChart() {
         var body = d3.select('body')
@@ -223,29 +221,4 @@ d3.csv('/assets/Team_Stats.csv',function (data) {
             .delay(function (d,i) { return i*100})
               .attr('cx',function (d) { return xScale(d[value]) })
         }
-
-      //}
-
-      // rebuildChart(); //double check if data or d object needs to be passed in
-
-      })
-  
-
-// ==================================================================================
-
-// function getData(thisvalue) {
-
-//   console.log(thisvalue);
-
-//     var dropdownMenu = d3.select("#selDataset");
-//     // Assign the value of the dropdown menu option to a variable
-//     var dataset = dropdownMenu.property("value");
-//     // Initialize an empty array for the data
-  
-//     if (dataset === 'season') {
-//       //globaldata = globaldata.Seasons;
-//       console.log('dataset is season')
-//       }
-  // };
-
-//===============================================================================
+})
