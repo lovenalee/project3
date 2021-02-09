@@ -58,8 +58,7 @@ d3.csv('/assets/Team_Stats.csv',function (data) {
       
         // function buildChart() {
         var body = d3.select('body')
-        var selectData = [ { "text" : "TeamPoints" },
-                          { "text" : "Wins" },
+        var selectData = [ { "text" : "Wins" },
                           { "text" : "Losses" },
                         ]
       
@@ -101,14 +100,14 @@ d3.csv('/assets/Team_Stats.csv',function (data) {
         var colorScale = d3.scale.category20()
         var xScale = d3.scale.linear()
           .domain([
-            d3.min([0,d3.min(data,function (d) { return d['TeamPoints'] })]),
-            d3.max([0,d3.max(data,function (d) { return d['TeamPoints'] })])
+            d3.min([0,d3.min(data,function (d) { return d['Wins'] })]),
+            d3.max([0,d3.max(data,function (d) { return d['Wins'] })])
             ])
           .range([0,w])
         var yScale = d3.scale.linear()
           .domain([
-            d3.min([0,d3.min(data,function (d) { return d['TeamPoints'] })]),
-            d3.max([0,d3.max(data,function (d) { return d['TeamPoints'] })])
+            d3.min([0,d3.min(data,function (d) { return d['Wins'] })]),
+            d3.max([0,d3.max(data,function (d) { return d['Wins'] })])
             ])
           .range([h,0])
         // SVG
@@ -134,8 +133,8 @@ d3.csv('/assets/Team_Stats.csv',function (data) {
             .data(data)
             .enter()
           .append('circle')
-            .attr('cx',function (d) { return xScale(d['TeamPoints']) })
-            .attr('cy',function (d) { return yScale(d['TeamPoints']) })
+            .attr('cx',function (d) { return xScale(d['Wins']) })
+            .attr('cy',function (d) { return yScale(d['Wins']) })
             .attr('r','10')
             .attr('stroke','black')
             .attr('stroke-width',1)
@@ -156,7 +155,7 @@ d3.csv('/assets/Team_Stats.csv',function (data) {
             })
           .append('title') // Tooltip
             .text(function (d) { return d.TeamName +
-                                '\nTeamPoints: ' + formatNumber(d['TeamPoints']) +
+                                '\nSeason: ' + formatNumber(d['Seasons']) +
                                 '\nWins: ' + formatNumber(d['Wins']) +
                                 '\nLosses: ' + formatNumber(d['Losses']) })
         // X-axis
