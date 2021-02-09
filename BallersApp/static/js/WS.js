@@ -48,6 +48,21 @@ d3.json("api/ws").then(function(wsdata) {
       .range([ height, 0 ]);
     svg.append("g")
       .call(d3.axisLeft(y));
+    
+    // Add X axis label:
+    svg.append("text")
+      .attr("text-anchor", "end")
+      .attr("x", width/2 + margin.left)
+      .attr("y", height + margin.top)
+      .text("Year");
+
+    // Y axis label:
+    svg.append("text")
+      .attr("text-anchor", "end")
+      .attr("transform", "rotate(-90)")
+      .attr("y", -margin.left + 50)
+      .attr("x", -margin.top - height/2 + 100)
+      .text("Average Win Share")
 
     // Initialize line with first group of the list
     var line = svg
@@ -87,5 +102,6 @@ d3.json("api/ws").then(function(wsdata) {
         // run the updateChart function with this selected option
         update(selectedOption)
     })
+    
 
 })
