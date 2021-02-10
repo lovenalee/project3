@@ -1,5 +1,5 @@
 // set the dimensions and margins of the graph
-var margin = {top: 50, right: 300, bottom: 50, left: 100},
+var margin = {top: 0, right: 200, bottom: 100, left: 300},
     width = 1000 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 
@@ -52,16 +52,16 @@ d3.json("api/ws").then(function(wsdata) {
     // Add X axis label:
     svg.append("text")
       .attr("text-anchor", "end")
-      .attr("x", width/2 + margin.left)
-      .attr("y", height + margin.top)
+      .attr("x", width/2 + margin.left - 250)
+      .attr("y", height + margin.top +50)
       .text("Year");
 
     // Y axis label:
     svg.append("text")
       .attr("text-anchor", "end")
       .attr("transform", "rotate(-90)")
-      .attr("y", -margin.left + 50)
-      .attr("x", -margin.top - height/2 + 100)
+      .attr("y", -margin.left + 250)
+      .attr("x", -margin.top - height/2 + 90)
       .text("Average Win Share")
 
     // Initialize line with first group of the list

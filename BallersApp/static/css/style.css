@@ -12,6 +12,10 @@ a.navbar-brand{
     font-weight: bold;
 }
 
+select {
+    margin-left: 700px;
+    margin-top: 80px; 
+}
 
 
 h3{
