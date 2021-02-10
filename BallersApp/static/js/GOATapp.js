@@ -8,14 +8,24 @@ var chartMargin = {
   top: 30,
   right: 30,
   bottom: 30,
-  left: 30
+  left: 100
 };
 
 var selection = [];
+var nestedData = [];
 
 // Define dimensions of the chart area
 var chartWidth = svgWidth - chartMargin.left - chartMargin.right;
 var chartHeight = svgHeight - chartMargin.top - chartMargin.bottom;
+
+function extractValue(arr, prop) {
+
+  // extract value from property
+  let extractedValue = arr.map(item => item[prop]);
+
+  return extractedValue;
+
+}
 
 // Select body, append SVG area to it, and set the dimensions
 var svg = d3.select("#goatbar1")
@@ -40,7 +50,7 @@ d3.json("/api/rings").then(function(ringsdata) {
   });
 
   nestedData = d3.nest()
-        .key(function(d){return d})
+        .key(function(d){return d.Player})
         .entries(ringsdata);
 
    // Configure a band scale for the horizontal axis with a padding of 0.1 (10%)
@@ -83,14 +93,20 @@ d3.json("/api/rings").then(function(ringsdata) {
 
       
       selection = d3.select(this).data(ringsdata.Player)
+      playerselect = selection.filter(function(d){return d.key = d.Player})
+      
+
+      result = extractValue(selection, 'Player');
+      console.log(result);
+
       console.log(selection)
 
+      
+      
+      
     });
 
 
 }).catch(function(error) {
   console.log(error)
 });
-
-console.log(selection)
-
