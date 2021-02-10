@@ -1,6 +1,6 @@
 
 // Define SVG area dimensions
-var svgWidth = 960;
+var svgWidth = 460;
 var svgHeight = 660;
 
 // Define the chart's margins as an object
@@ -8,7 +8,7 @@ var chartMargin = {
   top: 30,
   right: 30,
   bottom: 30,
-  left: 100
+  left: 60
 };
 
 var selection = [];
@@ -91,7 +91,8 @@ d3.json("/api/rings").then(function(ringsdata) {
     .attr("height", d => chartHeight - yLinearScale(d.Titles))
     .on("click", function(d){
 
-      
+     
+      result = []
       selection = d3.select(this).data(ringsdata.Player)
       playerselect = selection.filter(function(d){return d.key = d.Player})
       
@@ -102,6 +103,99 @@ d3.json("/api/rings").then(function(ringsdata) {
       console.log(selection)
 
       
+// Define SVG area dimensions
+var svgWidth2 = 1060;
+var svgHeight2 = 660;
+
+// Define the chart's margins as an object
+var chartMargin2 = {
+  top2: 30,
+  right2: 30,
+  bottom2: 30,
+  left2: 230
+};
+
+var selection = [];
+
+// Define dimensions of the chart area
+var chartWidth2 = svgWidth2 - chartMargin2.left2 - chartMargin2.right2;
+var chartHeight2 = svgHeight2 - chartMargin2.top2 - chartMargin2.bottom2;
+
+// Select body, append SVG area to it, and set the dimensions
+
+var svg2 = d3.select("#goatbar2")
+  .append("svg")
+  .attr("height", svgHeight2)
+  .attr("width", svgWidth2);
+
+
+
+var chartGroup2 = svg2.append("g")
+  .attr("transform", `translate(${chartMargin2.left2}, ${chartMargin2.top2})`);
+
+
+
+
+
+d3.json("/api/totals").then(function(ringsdata2) {
+  console.log(ringsdata2)
+
+  
+
+  ringsdata2.forEach(function(d) {
+    d[result] =+ d[result];
+  });
+
+
+  svg2.selectAll(".bar")
+  .data(ringsdata2).exit()
+.remove();
+   // Configure a band scale for the horizontal axis with a padding of 0.1 (10%)
+   var xBandScale2 = d3.scaleBand()
+   .domain(ringsdata2.map(d => d.Stats))
+   .range([0, chartWidth2])
+   .padding(0.1);
+
+     // Create a linear scale for the vertical axis.
+  var yLinearScale2 = d3.scaleLinear()
+  .domain([0, d3.max(ringsdata2, d => d[result])])
+  .range([chartHeight2, 0]);
+
+  
+  // Create two new functions passing our scales in as arguments
+  // These will be used to create the chart's axes
+  var bottomAxis2 = d3.axisBottom(xBandScale2);
+  var leftAxis2 = d3.axisLeft(yLinearScale2).ticks(20);
+
+  // Append two SVG group elements to the chartGroup area,
+  // and create the bottom and left axes inside of them
+  chartGroup2.append("g")
+    .call(leftAxis2);
+
+  chartGroup2.append("g")
+    .attr("transform", `translate(0, ${chartHeight2})`)
+    .call(bottomAxis2);
+
+  
+    chartGroup2.selectAll(".bar")
+    
+    .data(ringsdata2)
+    .enter()
+    .append("rect")
+    .attr("class", "bar")
+    .attr("x", d => xBandScale2(d.Stats))
+    .attr("y", d => yLinearScale2(d[result]))
+    .attr("width", xBandScale2.bandwidth())
+    .attr("height", d => chartHeight2 - yLinearScale2(d[result]))
+    
+    
+
+
+}).catch(function(error) {
+  console.log(error)
+});
+
+
       
       
     });
