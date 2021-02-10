@@ -52,12 +52,12 @@ body{
   }
   
   .bar {
-    fill: steelblue;
+    fill: rgb(248, 250, 252);
     fill-opacity: .9;
   }
   
   .bar:hover {
-    fill: orange;
+    fill: rgb(238, 255, 0);
   }
   
   label {
