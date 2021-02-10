@@ -1,36 +1,31 @@
 d3.json("/api/tStats").then(function(data) {
     console.log(data);
 
-      // globaldata = data;
-      //   console.log(globaldata);
-
-      // var season = Object.values(data.Seasons);
-
       var allGroup = d3.map(data, function(d){return(d.Seasons)}).keys();
-
+        console.log(allGroup)
       // // add the options to the button
       d3.select("#selectButton")
-      .selectAll('myOptions')
-      .data(allGroup)
-      .enter()
-      .append('option')
-      .text(function (d) { return d; }) // text showed in the menu
-      .attr("value", function (d) { return d; }) // corresponding value returned by the button
-
-      var dataFilter = ( data
-        .filter(function(d){ return d.Seasons == "2014"})
-        .map(function(d){  return +d.Wins; })
-      )
-
+        .selectAll('myOptions')
+        .data(allGroup)
+        .enter()
+        .append('option')
+        .text(function (d) { return d; }) // text showed in the menu
+        .attr("value", function (d) { return d; }) // corresponding value returned by the button
+      
+      // var dataFilter = data
+      //   .filter(function(d){ return d.Seasons == "2014"})
+      //   .map(function(d){  return +d.Wins; }
+      // )
+      //   console.log(dataFilter)
       // Listen to the slider?
-      d3.select("#selectButton").on("change", function(d){
-        selectedGroup = this.value;
-        console.log(selectedGroup)
-        // updateChart(selectedGroup);
-        var dataFilter = data
-          .filter(function(d){ return d.Seasons == selectedGroup})
-          .map(function(d){  return +d.Wins; });
-          console.log(dataFilter);
+      // d3.select("#selectButton").on("change", function(d){
+      //   selectedGroup = this.value;
+      //   console.log(selectedGroup)
+      //   // updateChart(selectedGroup);
+      //   var dataFilter = data
+      //     .filter(function(d){ return d.Seasons == selectedGroup})
+      //     .map(function(d){  return +d.Wins; });
+      //     console.log(dataFilter);
 
           //1 filter losses by year
           //2 filter teampoints by yearr
@@ -40,13 +35,11 @@ d3.json("/api/tStats").then(function(data) {
 
           // //4 rebuild chart here
           // buildChart(); //pass in new data here
-
-      
       
         // function buildChart() {
         var body = d3.select('body')
         var selectData = [ { "text" : "Wins" },
-                          { "text" : "Losses" },
+                          { "text" : "Points" },
                         ]
       
         // Select X-axis Variable
@@ -211,3 +204,4 @@ d3.json("/api/tStats").then(function(data) {
               .attr('cx',function (d) { return xScale(d[value]) })
         }
 })
+
