@@ -30,6 +30,9 @@ def GOAT():
 def WS():
     return render_template("WS.html")
 
+@app.route("/teams")
+def teams():
+    return render_template("Teams.html")
 
 class tStats(db.Model):
     __tablename__ = 'Team_Stats'

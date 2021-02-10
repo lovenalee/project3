@@ -22,7 +22,7 @@ h3{
 }
 
 body{
-    background-color: rgb(174, 209, 243);
+    background-color: rgb(187, 216, 245);
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     position: relative;
     width: 960px;
@@ -118,7 +118,7 @@ p{
 
 .footer-copyright{
     color:white;
-    border-top: 5px solid rgb(224, 6, 6)
+    border-top: 5px solid rgb(9, 47, 218)
 }
 
 .active {
