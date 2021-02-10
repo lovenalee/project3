@@ -73,6 +73,7 @@ d3.json("/api/rings").then(function(ringsdata) {
   // Append two SVG group elements to the chartGroup area,
   // and create the bottom and left axes inside of them
   chartGroup.append("g")
+    
     .call(leftAxis);
 
   chartGroup.append("g")
@@ -174,7 +175,8 @@ d3.json("/api/totals").then(function(ringsdata2) {
 
   chartGroup2.append("g")
     .attr("transform", `translate(0, ${chartHeight2})`)
-    .call(bottomAxis2);
+    .call(bottomAxis2)
+    .style("font-weight", "bold");
 
   
     chartGroup2.selectAll(".bar")
