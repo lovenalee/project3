@@ -1,11 +1,11 @@
 
 // Define SVG area dimensions
-var svgWidth = 900;
+var svgWidth = 1000;
 var svgHeight = 660;
 
 // Define the chart's margins as an object
 var chartMargin = {
-  top: 30,
+  top: 200,
   right: 30,
   bottom: 30,
   left: 60
@@ -104,12 +104,12 @@ d3.json("/api/rings").then(function(ringsdata) {
 
       
 // Define SVG area dimensions
-var svgWidth2 = 1060;
+var svgWidth2 = 1000;
 var svgHeight2 = 660;
 
 // Define the chart's margins as an object
 var chartMargin2 = {
-  top2: 30,
+  top2: 200,
   right2: 30,
   bottom2: 30,
   left2: 230
