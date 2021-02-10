@@ -1,10 +1,10 @@
 
 // Define SVG area dimensions
-var svgWidth2 = 3560;
+var svgWidth2 = 560;
 var svgHeight2 = 660;
 
 // Define the chart's margins as an object
-var chartMargin = {
+var chartMargin2 = {
   top: 30,
   right: 30,
   bottom: 30,
@@ -14,8 +14,8 @@ var chartMargin = {
 var selection = [];
 
 // Define dimensions of the chart area
-var chartWidth2 = svgWidth2 - chartMargin.left - chartMargin.right;
-var chartHeight2 = svgHeight2 - chartMargin.top - chartMargin.bottom;
+var chartWidth2 = svgWidth2 - chartMargin2.left - chartMargin2.right;
+var chartHeight2 = svgHeight2 - chartMargin2.top - chartMargin2.bottom;
 
 // Select body, append SVG area to it, and set the dimensions
 var svg2 = d3.select("#goatbar2")
@@ -25,12 +25,12 @@ var svg2 = d3.select("#goatbar2")
 
 
 var chartGroup2 = svg2.append("g")
-  .attr("transform", `translate(${chartMargin.left}, ${chartMargin.top})`);
+  .attr("transform", `translate(${chartMargin2.left}, ${chartMargin2.top})`);
 
 
 
 
-d3.json("/api/tStats").then(function(ringsdata2) {
+d3.json("/api/goat").then(function(ringsdata2) {
   console.log(ringsdata2)
 
   
@@ -83,4 +83,3 @@ d3.json("/api/tStats").then(function(ringsdata2) {
   console.log(error)
 });
 
-console.log(selection)
