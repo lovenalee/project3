@@ -1,6 +1,7 @@
 .navbar{
     position: fixed;
     width:100%;
+    z-index: 10000;
 }
 
 a.navbar-brand{
@@ -19,7 +20,9 @@ h3{
     padding: 20px;
     font-weight: bold;
 }
-
+.container{
+    background: rgb(248, 247, 247, 0.3); 
+}
 
 .img{
     padding:10px;
