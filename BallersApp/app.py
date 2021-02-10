@@ -22,6 +22,10 @@ def home():
 def tStats():
     return render_template("tStats.html")
 
+@app.route("/teamStats")
+def teamStats():
+    return render_template("teamStats.html")
+
 @app.route("/goat")
 def GOAT():
     return render_template("GOAT.html")
@@ -42,7 +46,7 @@ class tStats(db.Model):
     __tablename__ = 'Team_Stats'
 
     Team = db.Column(db.String(64), primary_key=True)
-    Year = db.Column(db.Float)
+    Year = db.Column(db.String(4))
     TeamPoints = db.Column(db.Float)
     Assists = db.Column(db.Float)
     FieldGoals = db.Column(db.Float)
