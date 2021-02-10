@@ -199,7 +199,13 @@ d3.json("/api/totals").then(function(ringsdata2) {
       
       
     });
-
+    chartGroup.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -50)
+    .attr("x", -300)
+    .attr("dy", "1em")
+    .style("font-weight", "bold")
+    .text("# of Championships ");
 
 }).catch(function(error) {
   console.log(error)
