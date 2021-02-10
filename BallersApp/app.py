@@ -17,7 +17,6 @@ db = SQLAlchemy(app)
 def home():
     return render_template("index.html")
 
-
 @app.route("/tStats")
 def tStats():
     return render_template("tStats.html")
