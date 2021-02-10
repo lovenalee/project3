@@ -1,13 +1,13 @@
 
 // Define SVG area dimensions
 var svgWidth = 1000;
-var svgHeight = 660;
+var svgHeight = 700;
 
 // Define the chart's margins as an object
 var chartMargin = {
   top: 200,
   right: 30,
-  bottom: 30,
+  bottom: 100,
   left: 60
 };
 
@@ -111,8 +111,8 @@ var svgHeight2 = 660;
 var chartMargin2 = {
   top2: 200,
   right2: 30,
-  bottom2: 30,
-  left2: 230
+  bottom2: 75,
+  left2: 60
 };
 
 var selection = [];
@@ -206,6 +206,15 @@ d3.json("/api/totals").then(function(ringsdata2) {
     .attr("dy", "1em")
     .style("font-weight", "bold")
     .text("# of Championships ");
+
+    chartGroup.append("text")
+    .attr("y", 450)
+    .attr("x", 350)
+    .style("font-weight", "bold")
+    .text("Greatest Players");
+
+}).catch(function(error) {
+console.log(error);
 
 }).catch(function(error) {
   console.log(error)
