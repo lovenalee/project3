@@ -34,6 +34,10 @@ def WS():
 def teams():
     return render_template("Teams.html")
 
+@app.route("/introduction")
+def introduction():
+    return render_template("introduction.html")
+
 class tStats(db.Model):
     __tablename__ = 'Team_Stats'
 
