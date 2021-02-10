@@ -1,207 +1,113 @@
+// set the dimensions and margins of the graph
+var margin = {top: 30, right: 30, bottom: 30, left: 50},
+    width = 460 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+// append the svg object to the body of the page
+var svg = d3.select("#my_dataviz")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+// get the data
 d3.json("/api/tStats").then(function(data) {
-    console.log(data);
+  console.log(data);
+  console.log([data]);
 
-      var allGroup = d3.map(data, function(d){return(d.Seasons)}).keys();
-        console.log(allGroup)
-      // // add the options to the button
-      d3.select("#selectButton")
-        .selectAll('myOptions')
-        .data(allGroup)
-        .enter()
-        .append('option')
-        .text(function (d) { return d; }) // text showed in the menu
-        .attr("value", function (d) { return d; }) // corresponding value returned by the button
-      
-      // var dataFilter = data
-      //   .filter(function(d){ return d.Seasons == "2014"})
-      //   .map(function(d){  return +d.Wins; }
-      // )
-      //   console.log(dataFilter)
-      // Listen to the slider?
-      // d3.select("#selectButton").on("change", function(d){
-      //   selectedGroup = this.value;
-      //   console.log(selectedGroup)
-      //   // updateChart(selectedGroup);
-      //   var dataFilter = data
-      //     .filter(function(d){ return d.Seasons == selectedGroup})
-      //     .map(function(d){  return +d.Wins; });
-      //     console.log(dataFilter);
+  // List of groups (here I have one group per column)
+  var allGroup = d3.map(data, function(d){return(d.Seasons)}).keys()
 
-          //1 filter losses by year
-          //2 filter teampoints by yearr
+  // add the options to the button
+  d3.select("#selectButton")
+    .selectAll('myOptions')
+    .data(allGroup)
+    .enter()
+    .append('option')
+    .text(function (d) { return d; }) // text showed in the menu
+    .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
-          // //3 clear html
-          // body.html("");
+  // add the x Axis
+  var x = d3.scaleLinear()
+    .domain([0, 90])
+    .range([0, width]);
+  svg.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x));
 
-          // //4 rebuild chart here
-          // buildChart(); //pass in new data here
-      
-        // function buildChart() {
-        var body = d3.select('body')
-        var selectData = [ { "text" : "Wins" },
-                          { "text" : "Points" },
-                        ]
-      
-        // Select X-axis Variable
-        var span = body.append('span')
-          .text('Select X-Axis variable: ')
-        var yInput = body.append('select')
-            .attr('id','xSelect')
-            .on('change',xChange)
-          .selectAll('option')
-            .data(selectData)
-            .enter()
-          .append('option')
-            .attr('value', function (d) { return d.text })
-            .text(function (d) { return d.text ;})
-        body.append('br')
-      
-        // Select Y-axis Variable
-        var span = body.append('span')
-            .text('Select Y-Axis variable: ')
-        var yInput = body.append('select')
-            .attr('id','ySelect')
-            .on('change',yChange)
-          .selectAll('option')
-            .data(selectData)
-            .enter()
-          .append('option')
-            .attr('value', function (d) { return d.text })
-            .text(function (d) { return d.text ;})
-        body.append('br')
-      
-        // Variables
-        var body = d3.select('body')
-        var margin = { top: 50, right: 50, bottom: 50, left: 50 }
-        var h = 550 + margin.top + margin.bottom
-        var w = 550 + margin.left + margin.right
-        var formatNumber = d3.format('0')
-        // Scales
-        var colorScale = d3.scale.category20()
-        var xScale = d3.scale.linear()
-          .domain([
-            d3.min([0,d3.min(data,function (d) { return d['Wins'] })]),
-            d3.max([0,d3.max(data,function (d) { return d['Wins'] })])
-            ])
-          .range([0,w])
-        var yScale = d3.scale.linear()
-          .domain([
-            d3.min([0,d3.min(data,function (d) { return d['Wins'] })]),
-            d3.max([0,d3.max(data,function (d) { return d['Wins'] })])
-            ])
-          .range([h,0])
-        // SVG
-        var svg = body.append('svg')
-            .attr('height',h + margin.top + margin.bottom)
-            .attr('width',w + margin.left + margin.right)
-          .append('g')
-            .attr('transform','translate(' + margin.left + ',' + margin.top + ')')
-        // X-axis
-        var xAxis = d3.svg.axis()
-          .scale(xScale)
-          .tickFormat(formatNumber)
-          .ticks(10)
-          .orient('bottom')
-        // Y-axis
-        var yAxis = d3.svg.axis()
-          .scale(yScale)
-          .tickFormat(formatNumber)
-          .ticks(10)
-          .orient('left')
-        // Circles
-        var circles = svg.selectAll('circle')
-            .data(data)
-            .enter()
-          .append('circle')
-            .attr('cx',function (d) { return xScale(d['Wins']) })
-            .attr('cy',function (d) { return yScale(d['Wins']) })
-            .attr('r','10')
-            .attr('stroke','black')
-            .attr('stroke-width',1)
-            .attr('fill',function (d,i) { return colorScale(i) })
-            .on('mouseover', function () {
-              d3.select(this)
-                .transition()
-                .duration(500)
-                .attr('r',20)
-                .attr('stroke-width',3)
-            })
-            .on('mouseout', function () {
-              d3.select(this)
-                .transition()
-                .duration(500)
-                .attr('r',10)
-                .attr('stroke-width',1)
-            })
-          .append('title') // Tooltip
-            .text(function (d) { return d.TeamName +
-                                '\nSeason: ' + formatNumber(d['Seasons']) +
-                                '\nWins: ' + formatNumber(d['Wins']) +
-                                '\nLosses: ' + formatNumber(d['Losses']) })
-        // X-axis
-        svg.append('g')
-            .attr('class','axis')
-            .attr('id','xAxis')
-            .attr('transform', 'translate(0,' + h + ')')
-            .call(xAxis)
-          .append('text') // X-axis Label
-            .attr('id','xAxisLabel')
-            .attr('y',-10)
-            .attr('x',w)
-            .attr('dy','.71em')
-            .style('text-anchor','end')
-            .text('wins')
-        // Y-axis
-        svg.append('g')
-            .attr('class','axis')
-            .attr('id','yAxis')
-            .call(yAxis)
-          .append('text') // y-axis Label
-            .attr('id', 'yAxisLabel')
-            .attr('transform','rotate(-90)')
-            .attr('x',0)
-            .attr('y',5)
-            .attr('dy','.71em')
-            .style('text-anchor','end')
-            .text('Wins')
-      
-        function yChange() {
-          var value = this.value // get the new y value
-          yScale // change the yScale
-            .domain([
-              d3.min([0,d3.min(data,function (d) { return d[value] })]),
-              d3.max([0,d3.max(data,function (d) { return d[value] })])
-              ])
-          yAxis.scale(yScale) // change the yScale
-          d3.select('#yAxis') // redraw the yAxis
-            .transition().duration(1000)
-            .call(yAxis)
-          d3.select('#yAxisLabel') // change the yAxisLabel
-            .text(value)    
-          d3.selectAll('circle') // move the circles
-            .transition().duration(1000)
-            .delay(function (d,i) { return i*100})
-              .attr('cy',function (d) { return yScale(d[value]) })
-        }
-      
-        function xChange() {
-          var value = this.value // get the new x value
-          xScale // change the xScale
-            .domain([
-              d3.min([0,d3.min(data,function (d) { return d[value] })]),
-              d3.max([0,d3.max(data,function (d) { return d[value] })])
-              ])
-          xAxis.scale(xScale) // change the xScale
-          d3.select('#xAxis') // redraw the xAxis
-            .transition().duration(1000)
-            .call(xAxis)
-          d3.select('#xAxisLabel') // change the xAxisLabel
-            .transition().duration(1000)
-            .text(value)
-          d3.selectAll('circle') // move the circles
-            .transition().duration(1000)
-            .delay(function (d,i) { return i*100})
-              .attr('cx',function (d) { return xScale(d[value]) })
-        }
-})
+  // add the y Axis
+  var y = d3.scaleLinear()
+    .range([height, 0])
+    .domain([0, 9000]);
+  svg.append("g")
+    .call(d3.axisLeft(y));
 
+  // Compute kernel density estimation for the first group called Setosa
+  var kde = kernelDensityEstimator(kernelEpanechnikov(3), x.ticks(140))
+  var density =  kde( data
+    .filter(function(d){ return d.Seasons == "2014"})
+    .map(function(d){  return +d.Wins; })
+  )
+
+  // Plot the area
+  var curve = svg
+    .append('g')
+    .append("path")
+      .attr("class", "mypath")
+      .datum(density)
+      .attr("fill", "#69b3a2")
+      .attr("opacity", ".8")
+      .attr("stroke", "#000")
+      .attr("stroke-width", 1)
+      .attr("stroke-linejoin", "round")
+      .attr("d",  d3.line()
+        .curve(d3.curveBasis)
+          .x(function(d) { return x(d[4]); })
+          .y(function(d) { return y(d[8]); })
+      );
+    
+  // A function that update the chart when slider is moved?
+  function updateChart(selectedGroup) {
+    // recompute density estimation
+    kde = kernelDensityEstimator(kernelEpanechnikov(3), x.ticks(40))
+    var density =  kde( data
+      .filter(function(d){ return d.Seasons == selectedGroup})
+      .map(function(d){  return +d.Wins; })
+    )
+
+    // update the chart
+    curve
+      .datum(density)
+      .transition()
+      .duration(1000)
+      .attr("d",  d3.line()
+        .curve(d3.curveBasis)
+          .x(function(d) { return x(d[4]); })
+          .y(function(d) { return y(d[8]); })
+      );
+  }
+
+  // Listen to the slider?
+  d3.select("#selectButton").on("change", function(d){
+    selectedGroup = this.value
+    updateChart(selectedGroup)
+  })
+
+});
+
+
+// Function to compute density
+function kernelDensityEstimator(kernel, X) {
+  return function(V) {
+    return X.map(function(x) {
+      return [x, d3.mean(V, function(v) { return kernel(x - v); })];
+    });
+  };
+}
+function kernelEpanechnikov(k) {
+  return function(v) {
+    return Math.abs(v /= k) <= 1 ? 0.75 * (1 - v * v) / k : 0;
+  };
+}

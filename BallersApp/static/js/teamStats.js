@@ -40,7 +40,8 @@ d3.json("/api/tStats").then(function(data) {
   // Highlight the season that is hovered
   var highlight = function(d){
 
-    selected_season = Object.keys(d.Seasons);
+    // selected_season = d.Seasons
+    selected_season = d3.map(data, function(d){return(d.Seasons)}).keys();
     console.log(selected_season)
     
     d3.selectAll(".dot")
