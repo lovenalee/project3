@@ -1,47 +1,36 @@
-// d3.json("/api/tStats").then(function(data) {
-//   console.log(data);
-// })
-
-// d3.csv("/assets/Team_Stats.csv").then(function(data) {
-//   console.log(data)
-// })
-
-//===============================================================================
-
-d3.csv('/assets/Team_Stats.csv',function (data) {
-  console.log(data)
-    // CSV section
+d3.json("/api/tStats").then(function(data) {
+    console.log(data);
 
       // globaldata = data;
       //   console.log(globaldata);
 
       // var season = Object.values(data.Seasons);
 
-      // var allGroup = d3.map(data, function(d){return(d.Seasons)}).keys();
+      var allGroup = d3.map(data, function(d){return(d.Seasons)}).keys();
 
       // // add the options to the button
-      // d3.select("#selectButton")
-      // .selectAll('myOptions')
-      // .data(allGroup)
-      // .enter()
-      // .append('option')
-      // .text(function (d) { return d; }) // text showed in the menu
-      // .attr("value", function (d) { return d; }) // corresponding value returned by the button
+      d3.select("#selectButton")
+      .selectAll('myOptions')
+      .data(allGroup)
+      .enter()
+      .append('option')
+      .text(function (d) { return d; }) // text showed in the menu
+      .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
-      // var dataFilter = ( data
-      //   .filter(function(d){ return d.Seasons == "2014"})
-      //   .map(function(d){  return +d.Wins; })
-      // )
+      var dataFilter = ( data
+        .filter(function(d){ return d.Seasons == "2014"})
+        .map(function(d){  return +d.Wins; })
+      )
 
       // Listen to the slider?
-      // d3.select("#selectButton").on("change", function(d){
-      //   selectedGroup = this.value;
-      //   console.log(selectedGroup)
-      //   // updateChart(selectedGroup);
-      //   var dataFilter = data
-      //     .filter(function(d){ return d.Seasons == selectedGroup})
-      //     .map(function(d){  return +d.Wins; });
-      //     console.log(dataFilter);
+      d3.select("#selectButton").on("change", function(d){
+        selectedGroup = this.value;
+        console.log(selectedGroup)
+        // updateChart(selectedGroup);
+        var dataFilter = data
+          .filter(function(d){ return d.Seasons == selectedGroup})
+          .map(function(d){  return +d.Wins; });
+          console.log(dataFilter);
 
           //1 filter losses by year
           //2 filter teampoints by yearr
@@ -91,8 +80,8 @@ d3.csv('/assets/Team_Stats.csv',function (data) {
         // Variables
         var body = d3.select('body')
         var margin = { top: 50, right: 50, bottom: 50, left: 50 }
-        var h = 550 - margin.top - margin.bottom
-        var w = 550 - margin.left - margin.right
+        var h = 550 + margin.top + margin.bottom
+        var w = 550 + margin.left + margin.right
         var formatNumber = d3.format('0')
         // Scales
         var colorScale = d3.scale.category20()

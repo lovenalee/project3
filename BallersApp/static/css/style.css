@@ -23,12 +23,9 @@ h3{
 
 body{
     background-color: rgb(174, 209, 243);
-    /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     position: relative;
     width: 960px;
-    height: 100%;
-    padding: 10;
-    margin: 15; */
 }
 
 .axis text {
