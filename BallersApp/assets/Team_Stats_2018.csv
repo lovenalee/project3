@@ -1,0 +1,31 @@
+Team,Year,WINorLOSS,TeamPoints,Assists,FieldGoals,TotalRebounds,TeamName,Season,Division,Franchise,Wins,Losses,WPct
+ATL,2018,W,1468,357,552,629,Atlanta Hawks,(2018-19),Southeast Division,Atlanta Hawks,29,53,35.40%
+BOS,2018,W,2674,596,1005,1171,Boston Celtics,(2018-19),Atlantic Division,Boston Celtics,49,33,59.80%
+BRK,2018,W,1663,397,598,657,Brooklyn Nets,(2018-19),Atlantic Division,Brooklyn Nets,42,40,51.20%
+CHI,2018,W,1597,353,580,620,Chicago Bulls,(2018-19),Central Division,Chicago Bulls,22,60,26.80%
+CHO,2018,W,2759,582,989,1087,Charlotte Hornets,(2018-19),Southeast Division,Charlotte Hornets,39,43,47.60%
+CLE,2018,W,3075,649,1120,1138,Cleveland Cavaliers,(2018-19),Central Division,Cleveland Cavaliers,19,63,23.20%
+DAL,2018,W,1232,269,447,478,Dallas Mavericks,(2018-19),Southwest Division,Dallas Mavericks,33,49,40.20%
+DEN,2018,W,3144,758,1152,1186,Denver Nuggets,(2018-19),Pacific Division,Denver Nuggets,54,28,65.90%
+DET,2018,W,2109,459,800,906,Detroit Pistons,(2018-19),Central Division,Detroit Pistons,41,41,50.00%
+GSW,2018,W,3437,887,1291,1276,Golden State Warriors,(2018-19),Northwest Division,Golden State Warriors,57,25,69.50%
+HOU,2018,W,4377,837,1518,1722,Houston Rockets,(2018-19),Southwest Division,Houston Rockets,53,29,64.60%
+IND,2018,W,3131,672,1214,1261,Indiana Pacers,(2018-19),Central Division,Indiana Pacers,48,34,58.50%
+LAC,2018,W,3019,626,1111,1166,Los Angeles Clippers,(2018-19),Northwest Division,Los Angeles Clippers,48,34,58.50%
+LAL,2018,W,2695,617,1016,1173,Los Angeles Lakers,(2018-19),Northwest Division,Los Angeles Lakers,37,45,45.10%
+MEM,2018,W,1104,240,401,432,Memphis Grizzlies,(2018-19),Southwest Division,Memphis Grizzlies,33,49,40.20%
+MIA,2018,W,2692,616,1018,1147,Miami Heat,(2018-19),Southeast Division,Miami Heat,39,43,47.60%
+MIL,2018,W,2790,639,1043,1068,Milwaukee Bucks,(2018-19),Central Division,Milwaukee Bucks,60,22,73.20%
+MIN,2018,W,2760,585,1024,1069,Minnesota Timberwolves,(2018-19),Pacific Division,Minnesota Timberwolves,36,46,43.90%
+NOP,2018,W,3572,866,1382,1412,New Orleans Pelicans,(2018-19),Southwest Division,New Orleans Pelicans,33,49,40.20%
+NYK,2018,W,1241,288,473,540,New York Knicks,(2018-19),Atlantic Division,New York Knicks,17,65,20.70%
+OKC,2018,W,3275,649,1198,1301,Oklahoma City Thunder,(2018-19),Pacific Division,Oklahoma City Thunder,49,33,59.80%
+ORL,2018,W,1421,332,520,582,Orlando Magic,(2018-19),Southeast Division,Orlando Magic,42,40,51.20%
+PHI,2018,W,3992,1030,1515,1708,Philadelphia 76ers,(2018-19),Atlantic Division,Philadelphia 76ers,51,31,62.20%
+PHO,2018,W,759,171,279,318,Phoenix Suns,(2018-19),Northwest Division,Phoenix Suns,19,63,23.20%
+POR,2018,W,3472,660,1287,1472,Portland Trail Blazers,(2018-19),Pacific Division,Portland Trail Blazers,53,29,64.60%
+SAC,2018,W,1544,342,618,663,Sacramento Kings,(2018-19),Northwest Division,Sacramento Kings,39,43,47.60%
+SAS,2018,W,2353,508,886,1000,San Antonio Spurs,(2018-19),Southwest Division,San Antonio Spurs,48,34,58.50%
+TOR,2018,W,3955,911,1466,1631,Toronto Raptors,(2018-19),Atlantic Division,Toronto Raptors,58,24,70.70%
+UTA,2018,W,3550,804,1314,1477,Utah Jazz,(2018-19),Pacific Division,Utah Jazz,50,32,61.00%
+WAS,2018,W,2516,662,954,960,Washington Wizards,(2018-19),Southeast Division,Washington Wizards,32,50,39.00%
