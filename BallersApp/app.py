@@ -115,10 +115,10 @@ def tStats_2018():
     tStats2018.Assists, 
     tStats2018.FieldGoals,
     tStats2018.TotalRebounds,
-    tStats.TeamName, 
-    tStats.Wins, 
-    tStats.Losses, 
-    tStats.WPct).all()
+    tStats2018.TeamName, 
+    tStats2018.Wins, 
+    tStats2018.Losses, 
+    tStats2018.WPct).all()
     
     result_list6 = []
     

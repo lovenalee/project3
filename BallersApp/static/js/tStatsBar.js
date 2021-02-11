@@ -1,10 +1,10 @@
-var filename = d3.json("/api/tStats2018").then(function(data) {
-    console.log(data)});
-var allStats = ["Assists", "FieldGoals", "Points", "TotalRebounds"]
+d3.json("/api/tStats2018").then(function(data) {
+    var allStats = ["Assists", "FieldGoals", "Points", "TotalRebounds"] 
+    var teamMap = {};
+
+    console.log(data);
     console.log(allStats);
 
-d3.json(filename, function(error, data) {
-    var teamMap = {};
     data.forEach(function(d) {
         var teams = d.TeamName;
         teamMap[teams] = [];
@@ -15,10 +15,9 @@ d3.json(filename, function(error, data) {
         });
     });
     makeVis(teamMap);
-    console.log(teamMap)
 });
 
-var makeVis = function(seasonMap) {
+var makeVis = function(teamMap) {
     // Define dimensions of vis
     var margin = { top: 30, right: 50, bottom: 30, left: 50 },
         width  = 550 - margin.left - margin.right,
@@ -26,7 +25,7 @@ var makeVis = function(seasonMap) {
 
     // Make x scale
     var xScale = d3.scale.ordinal()
-        .domain(stats)
+        .domain(allStats)
         .rangeRoundBands([0, width], 0.1);
 
     // Make y scale, the domain will be defined on bar update
@@ -78,7 +77,7 @@ var makeVis = function(seasonMap) {
         bars.enter()
         .append("rect")
             .attr("class", "bar")
-            .attr("x", function(d,i) { return xScale( stats[i] ); })
+            .attr("x", function(d,i) { return xScale( allStats[i] ); })
             .attr("width", xScale.rangeBand())
             .attr("y", function(d,i) { return yScale(d); })
             .attr("height", function(d,i) { return height - yScale(d); });
@@ -95,28 +94,28 @@ var makeVis = function(seasonMap) {
 
     // Handler for dropdown value change
     var dropdownChange = function() {
-        var newSeasons = d3.select(this).property('value'),
-            newData   = seasonMap[newSeasons];
+        var newTeams = d3.select(this).property('value'),
+            newData   = seasonMap[newTeams];
 
         updateBars(newData);
     };
 
     // Get names of cereals, for dropdown
-    var seasons = Object.keys(seasonMap).sort();
+    var teams = Object.keys(teamMap).sort();
 
     var dropdown = d3.select("#vis-container")
         .insert("select", "svg")
         .on("change", dropdownChange);
 
     dropdown.selectAll("option")
-        .data(seasons)
+        .data(teams)
     .enter().append("option")
         .attr("value", function (d) { return d; })
         .text(function (d) {
             return d[0].toUpperCase() + d.slice(1,d.length); // capitalize 1st letter
         });
 
-    var initialData = seasonMap[ seasons[4] ];
+    var initialData = teamMap[ teams[4] ];
     updateBars(initialData);
 };
 
