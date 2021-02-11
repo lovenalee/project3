@@ -321,7 +321,7 @@ def totals():
             "larry": result5[5],
             "michael": result5[6],
             "scottie": result5[7],
-            "shqauille": result5[8],
+            "shaquille": result5[8],
             "kobe": result5[9],
             "lebron": result5[10],
             "stephen": result5[11],
