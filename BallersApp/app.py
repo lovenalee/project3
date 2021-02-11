@@ -26,7 +26,7 @@ def teamStats():
     return render_template("teamStats.html")
 
 @app.route("/teamStats2")
-def teamStats():
+def teamStats2():
     return render_template("tStatScatterLine.html")
 
 @app.route("/goat")
@@ -113,31 +113,21 @@ class tStats2018(db.Model):
 @app.route("/api/tStats2018")
 def tStats_2018():
     results6 = db.session.query(
-    tStats2018.Team, 
-    tStats2018.Year, 
+    tStats2018.Team,
     tStats2018.TeamPoints, 
     tStats2018.Assists, 
     tStats2018.FieldGoals,
-    tStats2018.TotalRebounds,
-    tStats2018.TeamName, 
-    tStats2018.Wins, 
-    tStats2018.Losses, 
-    tStats2018.WPct).all()
+    tStats2018.TotalRebounds).all()
     
     result_list6 = []
     
     for result6 in results6:
         tStatsdata2018 = {
-            "TeamAbbr": result6[0],
-            "Seasons": result6[1],
-            "Points": result6[2],
-            "Assists": result6[3],
-            "FieldGoals": result6[4],
-            "TotalRebounds": result6[5],
-            "TeamName": result6[6],
-            "Wins": result6[7],
-            "Losses": result6[8],
-            "WinPct": result6[9]
+            "Team": result6[0],
+            "Points": result6[1],
+            "Assists": result6[2],
+            "FieldGoals": result6[3],
+            "Rebounds": result6[4]
         }
 
         result_list6.append(tStatsdata2018)

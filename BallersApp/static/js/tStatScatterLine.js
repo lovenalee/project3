@@ -1,6 +1,6 @@
 // set the dimensions and margins of the graph
-var margin = {top: 30, right: 30, bottom: 30, left: 50},
-    width = 460 - margin.left - margin.right,
+var margin = {top: 100, right: 200, bottom: 30, left: 100},
+    width = 800 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
@@ -12,102 +12,90 @@ var svg = d3.select("#my_dataviz")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
-// get the data
-d3.json("/api/tStats").then(function(data) {
-  console.log(data);
-  console.log([data]);
+//Read the data
+d3.json("/api/tStats2018").then(function(data) {
+    console.log(data)
+    // List of groups (here I have one group per column)
+    var allGroup = ["Assists", "FieldGoals", "Points", "Rebounds"]
 
-  // List of groups (here I have one group per column)
-  var allGroup = d3.map(data, function(d){return(d.Seasons)}).keys()
+    // add the options to the button
+    d3.select("#selectButton")
+      .selectAll('myOptions')
+     	.data(allGroup)
+      .enter()
+    	.append('option')
+      .text(function (d) { return d; }) // text showed in the menu
+      .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
-  // add the options to the button
-  d3.select("#selectButton")
-    .selectAll('myOptions')
-    .data(allGroup)
-    .enter()
-    .append('option')
-    .text(function (d) { return d; }) // text showed in the menu
-    .attr("value", function (d) { return d; }) // corresponding value returned by the button
+    // Add X axis
+    var x = d3.scaleLinear()
+      .domain([0,30])
+      .range([ 0, width ]);
+    svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
 
-  // add the x Axis
-  var x = d3.scaleLinear()
-    .domain([0, 90])
-    .range([0, width]);
-  svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x));
+    // Add Y axis
+    var y = d3.scaleLinear()
+      .domain( [0,5000])
+      .range([ height, 0 ]);
+    svg.append("g")
+      .call(d3.axisLeft(y));
 
-  // add the y Axis
-  var y = d3.scaleLinear()
-    .range([height, 0])
-    .domain([0, 9000]);
-  svg.append("g")
-    .call(d3.axisLeft(y));
+    // Initialize line with group a
+    var line = svg
+      .append('g')
+      .append("path")
+        .datum(data)
+        .attr("d", d3.line()
+          .x(function(d) { return x(+d.Team) })
+          .y(function(d) { return y(+d.Assists) })
+        )
+        .attr("stroke", "black")
+        .style("stroke-width", 4)
+        .style("fill", "none")
 
-  // Compute kernel density estimation for the first group called Setosa
-  var kde = kernelDensityEstimator(kernelEpanechnikov(3), x.ticks(140))
-  var density =  kde( data
-    .filter(function(d){ return d.Seasons == "2014"})
-    .map(function(d){  return +d.Wins; })
-  )
-
-  // Plot the area
-  var curve = svg
-    .append('g')
-    .append("path")
-      .attr("class", "mypath")
-      .datum(density)
-      .attr("fill", "#69b3a2")
-      .attr("opacity", ".8")
-      .attr("stroke", "#000")
-      .attr("stroke-width", 1)
-      .attr("stroke-linejoin", "round")
-      .attr("d",  d3.line()
-        .curve(d3.curveBasis)
-          .x(function(d) { return x(d[4]); })
-          .y(function(d) { return y(d[8]); })
-      );
-    
-  // A function that update the chart when slider is moved?
-  function updateChart(selectedGroup) {
-    // recompute density estimation
-    kde = kernelDensityEstimator(kernelEpanechnikov(3), x.ticks(40))
-    var density =  kde( data
-      .filter(function(d){ return d.Seasons == selectedGroup})
-      .map(function(d){  return +d.Wins; })
-    )
-
-    // update the chart
-    curve
-      .datum(density)
-      .transition()
-      .duration(1000)
-      .attr("d",  d3.line()
-        .curve(d3.curveBasis)
-          .x(function(d) { return x(d[4]); })
-          .y(function(d) { return y(d[8]); })
-      );
-  }
-
-  // Listen to the slider?
-  d3.select("#selectButton").on("change", function(d){
-    selectedGroup = this.value
-    updateChart(selectedGroup)
-  })
-
-});
+    // Initialize dots with group a
+    var dot = svg
+      .selectAll('circle')
+      .data(data)
+      .enter()
+      .append('circle')
+        .attr("cx", function(d) { return x(+d.Team) })
+        .attr("cy", function(d) { return y(+d.Assists) })
+        .attr("r", 7)
+        .style("fill", "#69b3a2")
 
 
-// Function to compute density
-function kernelDensityEstimator(kernel, X) {
-  return function(V) {
-    return X.map(function(x) {
-      return [x, d3.mean(V, function(v) { return kernel(x - v); })];
-    });
-  };
-}
-function kernelEpanechnikov(k) {
-  return function(v) {
-    return Math.abs(v /= k) <= 1 ? 0.75 * (1 - v * v) / k : 0;
-  };
-}
+    // A function that update the chart
+    function update(selectedGroup) {
+
+      // Create new data with the selection?
+      var dataFilter = data.map(function(d){return {team: d.Team, value:d[selectedGroup]} })
+
+      // Give these new data to update line
+      line
+          .datum(dataFilter)
+          .transition()
+          .duration(1000)
+          .attr("d", d3.line()
+            .x(function(d) { return x(+d.team) })
+            .y(function(d) { return y(+d.value) })
+          )
+      dot
+        .data(dataFilter)
+        .transition()
+        .duration(1000)
+          .attr("cx", function(d) { return x(+d.team) })
+          .attr("cy", function(d) { return y(+d.value) })
+    }
+
+    // When the button is changed, run the updateChart function
+    d3.select("#selectButton").on("change", function(d) {
+        // recover the option that has been chosen
+        var selectedOption = d3.select(this).property("value")
+        // run the updateChart function with this selected option
+        update(selectedOption)
+    })
+
+})

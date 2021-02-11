@@ -39,7 +39,7 @@ var makeVis = function(teamMap) {
         .domain([0, 9000]);
 
     // Create canvas
-    var canvas = d3.select("#vis-container")
+    var canvas = d3.select("#my_dataviz")
     .append("svg")
         .attr("width",  width  + margin.left + margin.right)
         .attr("height", height + margin.top  + margin.bottom)
@@ -109,7 +109,7 @@ var makeVis = function(teamMap) {
     // Get names of cereals, for dropdown
     var teams = Object.keys(teamMap).sort();
 
-    var dropdown = d3.select("#vis-container")
+    var dropdown = d3.select("#my_dataviz")
         .insert("select", "svg")
         .on("change", dropdownChange);
 
