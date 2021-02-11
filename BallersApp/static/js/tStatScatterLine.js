@@ -13,11 +13,17 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
-d3.json("/api/tStats2018").then(function(data) {
+ d3.json("/api/tStats2018").then(function(data) {
+// d3.json("../assets/Team_Stats_2018.csv").then(function(data) {
     console.log(data)
     // List of groups (here I have one group per column)
     var allGroup = ["Assists", "FieldGoals", "Points", "Rebounds"]
 
+    var myData = data.map(function(item, i) {
+      item.x = i + 1;
+      return item
+    })
+    console.log(myData)
     // add the options to the button
     d3.select("#selectButton")
       .selectAll('myOptions')
@@ -55,7 +61,7 @@ d3.json("/api/tStats2018").then(function(data) {
       .append("path")
         .datum(data)
         .attr("d", d3.line()
-          .x(function(d) { return x(+d.Team) })
+          .x(function(d,i) { return x(+d) })
           .y(function(d) { return y(+d.Points) })
         )
         .attr("stroke", "black")
@@ -68,7 +74,7 @@ d3.json("/api/tStats2018").then(function(data) {
       .data(data)
       .enter()
       .append('circle')
-        .attr("cx", function(d) { return x(+d.Team) })
+        .attr("cx", function(d,i) { return x(+d) })
         .attr("cy", function(d) { return y(+d.Points) })
         .attr("r", 7)
         .style("fill", "#69b3a2")
