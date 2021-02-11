@@ -165,3 +165,22 @@ cursor: pointer;
         padding:inherit;
     }
 }
+
+#goatbar2{
+  transform: rotate(90deg)  
+};
+
+.axis2 line{
+stroke: brown;
+    
+}
+.axis2 path{
+stroke: rgb(187, 216, 245);
+}
+
+.axis2 text{
+fill: rgb(243, 8, 8);
+transform: rotate(-90deg);
+position:absolute;
+
+}
