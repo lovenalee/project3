@@ -1,151 +1,31 @@
 Team,Year,WINorLOSS,TeamPoints,Assists,FieldGoals,TotalRebounds,TeamName,Season,Division,Franchise,Wins,Losses,WPct
-ATL,2014,W,2360,590,859,962,Atlanta Hawks,(2014-15),Southeast Division,Atlanta Hawks,60,22,73.20%
-ATL,2015,W,6185,1566,2301,2392,Atlanta Hawks,(2015-16),Southeast Division,Atlanta Hawks,48,34,58.50%
-ATL,2016,W,4763,1200,1795,1977,Atlanta Hawks,(2016-17),Southeast Division,Atlanta Hawks,43,39,52.40%
-ATL,2017,W,4024,947,1498,1670,Atlanta Hawks,(2017-18),Southeast Division,Atlanta Hawks,24,58,29.30%
 ATL,2018,W,1468,357,552,629,Atlanta Hawks,(2018-19),Southeast Division,Atlanta Hawks,29,53,35.40%
-BOS,2014,W,1186,300,464,500,Boston Celtics,(2014-15),Atlantic Division,Boston Celtics,40,42,48.80%
-BOS,2015,W,4886,1175,1846,2112,Boston Celtics,(2015-16),Atlantic Division,Boston Celtics,48,34,58.50%
-BOS,2016,W,5458,1273,2012,2276,Boston Celtics,(2016-17),Atlantic Division,Boston Celtics,53,29,64.60%
-BOS,2017,W,6868,1563,2471,2822,Boston Celtics,(2017-18),Atlantic Division,Boston Celtics,55,27,67.10%
 BOS,2018,W,2674,596,1005,1171,Boston Celtics,(2018-19),Atlantic Division,Boston Celtics,49,33,59.80%
-BRK,2014,W,1544,332,580,653,Brooklyn Nets,(2014-15),Atlantic Division,Brooklyn Nets,38,44,46.30%
-BRK,2015,W,3381,742,1312,1439,Brooklyn Nets,(2015-16),Atlantic Division,Brooklyn Nets,21,61,25.60%
-BRK,2016,W,2281,474,833,921,Brooklyn Nets,(2016-17),Atlantic Division,Brooklyn Nets,20,62,24.40%
-BRK,2017,W,2827,593,1002,1207,Brooklyn Nets,(2017-18),Atlantic Division,Brooklyn Nets,28,54,34.10%
 BRK,2018,W,1663,397,598,657,Brooklyn Nets,(2018-19),Atlantic Division,Brooklyn Nets,42,40,51.20%
-CHI,2014,W,2297,471,808,1011,Chicago Bulls,(2014-15),Central Division,Chicago Bulls,50,32,61.00%
-CHI,2015,W,4728,1039,1757,2236,Chicago Bulls,(2015-16),Central Division,Chicago Bulls,42,40,51.20%
-CHI,2016,W,4308,996,1629,1924,Chicago Bulls,(2016-17),Central Division,Chicago Bulls,41,41,50.00%
-CHI,2017,W,4190,962,1575,1803,Chicago Bulls,(2017-18),Central Division,Chicago Bulls,27,55,32.90%
 CHI,2018,W,1597,353,580,620,Chicago Bulls,(2018-19),Central Division,Chicago Bulls,22,60,26.80%
-CHO,2014,W,1059,229,404,462,Charlotte Hornets,(2014-15),Southeast Division,Charlotte Hornets,33,49,40.20%
-CHO,2015,W,4117,879,1521,1872,Charlotte Hornets,(2015-16),Southeast Division,Charlotte Hornets,48,34,58.50%
-CHO,2016,W,5427,1162,1963,2324,Charlotte Hornets,(2016-17),Southeast Division,Charlotte Hornets,36,46,43.90%
-CHO,2017,W,3353,710,1193,1391,Charlotte Hornets,(2017-18),Southeast Division,Charlotte Hornets,36,46,43.90%
 CHO,2018,W,2759,582,989,1087,Charlotte Hornets,(2018-19),Southeast Division,Charlotte Hornets,39,43,47.60%
-CLE,2014,W,1960,451,720,748,Cleveland Cavaliers,(2014-15),Central Division,Cleveland Cavaliers,53,29,64.60%
-CLE,2015,W,5971,1304,2189,2517,Cleveland Cavaliers,(2015-16),Central Division,Cleveland Cavaliers,57,25,69.50%
-CLE,2016,W,6875,1474,2501,2801,Cleveland Cavaliers,(2016-17),Central Division,Cleveland Cavaliers,51,31,62.20%
-CLE,2017,W,5803,1246,2113,2177,Cleveland Cavaliers,(2017-18),Central Division,Cleveland Cavaliers,50,32,61.00%
 CLE,2018,W,3075,649,1120,1138,Cleveland Cavaliers,(2018-19),Central Division,Cleveland Cavaliers,19,63,23.20%
-DAL,2014,W,2616,586,981,950,Dallas Mavericks,(2014-15),Southwest Division,Dallas Mavericks,50,32,61.00%
-DAL,2015,W,4931,1077,1841,2018,Dallas Mavericks,(2015-16),Southwest Division,Dallas Mavericks,42,40,51.20%
-DAL,2016,W,3412,725,1253,1415,Dallas Mavericks,(2016-17),Southwest Division,Dallas Mavericks,33,49,40.20%
-DAL,2017,W,3852,827,1424,1493,Dallas Mavericks,(2017-18),Southwest Division,Dallas Mavericks,24,58,29.30%
 DAL,2018,W,1232,269,447,478,Dallas Mavericks,(2018-19),Southwest Division,Dallas Mavericks,33,49,40.20%
-DEN,2014,W,1360,279,501,619,Denver Nuggets,(2014-15),Northwest Division,Denver Nuggets,30,52,36.60%
-DEN,2015,W,3187,744,1190,1317,Denver Nuggets,(2015-16),Northwest Division,Denver Nuggets,33,49,40.20%
-DEN,2016,W,3861,830,1409,1620,Denver Nuggets,(2016-17),Northwest Division,Denver Nuggets,40,42,48.80%
-DEN,2017,W,5265,1221,1960,2085,Denver Nuggets,(2017-18),Northwest Division,Denver Nuggets,46,36,56.10%
 DEN,2018,W,3144,758,1152,1186,Denver Nuggets,(2018-19),Pacific Division,Denver Nuggets,54,28,65.90%
-DET,2014,W,823,160,310,383,Detroit Pistons,(2014-15),Central Division,Detroit Pistons,32,50,39.00%
-DET,2015,W,4544,935,1685,2002,Detroit Pistons,(2015-16),Central Division,Detroit Pistons,44,38,53.70%
-DET,2016,W,4423,919,1675,1951,Detroit Pistons,(2016-17),Central Division,Detroit Pistons,37,45,45.10%
-DET,2017,W,4634,997,1784,1990,Detroit Pistons,(2017-18),Central Division,Detroit Pistons,39,43,47.60%
 DET,2018,W,2109,459,800,906,Detroit Pistons,(2018-19),Central Division,Detroit Pistons,41,41,50.00%
-GSW,2014,W,2758,682,1041,1146,Golden State Warriors,(2014-15),Pacific Division,Golden State Warriors,67,15,81.70%
-GSW,2015,W,8196,2073,3044,3284,Golden State Warriors,(2015-16),Pacific Division,Golden State Warriors,73,9,89.00%
-GSW,2016,W,8521,2214,3166,3312,Golden State Warriors,(2016-17),Pacific Division,Golden State Warriors,67,15,81.70%
-GSW,2017,W,7987,2103,2984,3012,Golden State Warriors,(2017-18),Pacific Division,Golden State Warriors,58,24,70.70%
 GSW,2018,W,3437,887,1291,1276,Golden State Warriors,(2018-19),Northwest Division,Golden State Warriors,57,25,69.50%
-HOU,2014,W,2285,448,791,1008,Houston Rockets,(2014-15),Southwest Division,Houston Rockets,56,26,68.30%
-HOU,2015,W,5452,1153,1901,2264,Houston Rockets,(2015-16),Southwest Division,Houston Rockets,41,41,50.00%
-HOU,2016,W,5886,1286,2102,2331,Houston Rockets,(2016-17),Southwest Division,Houston Rockets,55,27,67.10%
-HOU,2017,W,6611,1383,2292,2513,Houston Rockets,(2017-18),Southwest Division,Houston Rockets,65,17,79.30%
 HOU,2018,W,4377,837,1518,1722,Houston Rockets,(2018-19),Southwest Division,Houston Rockets,53,29,64.60%
-IND,2014,W,1199,255,457,552,Indiana Pacers,(2014-15),Central Division,Indiana Pacers,38,44,46.30%
-IND,2015,W,4566,984,1684,2018,Indiana Pacers,(2015-16),Central Division,Indiana Pacers,45,37,54.90%
-IND,2016,W,4569,965,1713,1962,Indiana Pacers,(2016-17),Central Division,Indiana Pacers,42,40,51.20%
-IND,2017,W,4995,1090,1882,1962,Indiana Pacers,(2017-18),Central Division,Indiana Pacers,48,34,58.50%
 IND,2018,W,3131,672,1214,1261,Indiana Pacers,(2018-19),Central Division,Indiana Pacers,48,34,58.50%
-LAC,2014,W,2405,564,871,927,Los Angeles Clippers,(2014-15),Pacific Division,Los Angeles Clippers,56,26,68.30%
-LAC,2015,W,5970,1382,2176,2447,Los Angeles Clippers,(2015-16),Pacific Division,Los Angeles Clippers,53,29,64.60%
-LAC,2016,W,5939,1271,2179,2375,Los Angeles Clippers,(2016-17),Pacific Division,Los Angeles Clippers,51,31,62.20%
-LAC,2017,W,5066,1053,1841,2048,Los Angeles Clippers,(2017-18),Pacific Division,Los Angeles Clippers,42,40,51.20%
 LAC,2018,W,3019,626,1111,1166,Los Angeles Clippers,(2018-19),Northwest Division,Los Angeles Clippers,48,34,58.50%
-LAL,2014,W,1090,253,414,453,Los Angeles Lakers,(2014-15),Pacific Division,Los Angeles Lakers,21,61,25.60%
-LAL,2015,W,1790,365,656,801,Los Angeles Lakers,(2015-16),Pacific Division,Los Angeles Lakers,17,65,20.70%
-LAL,2016,W,2497,486,924,1069,Los Angeles Lakers,(2016-17),Pacific Division,Los Angeles Lakers,26,56,31.70%
-LAL,2017,W,2850,608,1075,1185,Los Angeles Lakers,(2017-18),Pacific Division,Los Angeles Lakers,35,47,42.70%
 LAL,2018,W,2695,617,1016,1173,Los Angeles Lakers,(2018-19),Northwest Division,Los Angeles Lakers,37,45,45.10%
-MEM,2014,W,2393,539,906,977,Memphis Grizzlies,(2014-15),Southwest Division,Memphis Grizzlies,55,27,67.10%
-MEM,2015,W,5084,1109,1929,2211,Memphis Grizzlies,(2015-16),Southwest Division,Memphis Grizzlies,42,40,51.20%
-MEM,2016,W,4785,1000,1750,1983,Memphis Grizzlies,(2016-17),Southwest Division,Memphis Grizzlies,43,39,52.40%
-MEM,2017,W,3502,728,1243,1411,Memphis Grizzlies,(2017-18),Southwest Division,Memphis Grizzlies,22,60,26.80%
 MEM,2018,W,1104,240,401,432,Memphis Grizzlies,(2018-19),Southwest Division,Memphis Grizzlies,33,49,40.20%
-MIA,2014,W,1408,316,518,542,Miami Heat,(2014-15),Southeast Division,Miami Heat,37,45,45.10%
-MIA,2015,W,4152,871,1541,1793,Miami Heat,(2015-16),Southeast Division,Miami Heat,48,34,58.50%
-MIA,2016,W,4273,914,1663,1871,Miami Heat,(2016-17),Southeast Division,Miami Heat,41,41,50.00%
-MIA,2017,W,5403,1106,2007,2167,Miami Heat,(2017-18),Southeast Division,Miami Heat,44,38,53.70%
 MIA,2018,W,2692,616,1018,1147,Miami Heat,(2018-19),Southeast Division,Miami Heat,39,43,47.60%
-MIL,2014,W,1724,397,664,740,Milwaukee Bucks,(2014-15),Central Division,Milwaukee Bucks,41,41,50.00%
-MIL,2015,W,3732,936,1440,1559,Milwaukee Bucks,(2015-16),Central Division,Milwaukee Bucks,33,49,40.20%
-MIL,2016,W,3926,918,1481,1603,Milwaukee Bucks,(2016-17),Central Division,Milwaukee Bucks,42,40,51.20%
-MIL,2017,W,4826,1090,1800,1799,Milwaukee Bucks,(2017-18),Central Division,Milwaukee Bucks,44,38,53.70%
 MIL,2018,W,2790,639,1043,1068,Milwaukee Bucks,(2018-19),Central Division,Milwaukee Bucks,60,22,73.20%
-MIN,2014,W,520,125,195,216,Minnesota Timberwolves,(2014-15),Northwest Division,Minnesota Timberwolves,16,66,19.50%
-MIN,2015,W,2412,514,880,1027,Minnesota Timberwolves,(2015-16),Northwest Division,Minnesota Timberwolves,29,53,35.40%
-MIN,2016,W,3209,741,1170,1187,Minnesota Timberwolves,(2016-17),Northwest Division,Minnesota Timberwolves,31,51,37.80%
-MIN,2017,W,4803,1060,1794,1886,Minnesota Timberwolves,(2017-18),Northwest Division,Minnesota Timberwolves,47,35,57.30%
 MIN,2018,W,2760,585,1024,1069,Minnesota Timberwolves,(2018-19),Pacific Division,Minnesota Timberwolves,36,46,43.90%
-NOP,2014,W,1726,382,672,683,New Orleans Pelicans,(2014-15),Southwest Division,New Orleans Pelicans,45,37,54.90%
-NOP,2015,W,4128,937,1538,1719,New Orleans Pelicans,(2015-16),Southwest Division,New Orleans Pelicans,30,52,36.60%
-NOP,2016,W,3745,838,1394,1542,New Orleans Pelicans,(2016-17),Southwest Division,New Orleans Pelicans,34,48,41.50%
-NOP,2017,W,4315,970,1623,1742,New Orleans Pelicans,(2017-18),Southwest Division,New Orleans Pelicans,48,34,58.50%
 NOP,2018,W,3572,866,1382,1412,New Orleans Pelicans,(2018-19),Southwest Division,New Orleans Pelicans,33,49,40.20%
-NYK,2014,W,492,110,190,193,New York Knicks,(2014-15),Atlantic Division,New York Knicks,17,65,20.70%
-NYK,2015,W,2818,628,1037,1204,New York Knicks,(2015-16),Atlantic Division,New York Knicks,32,50,39.00%
-NYK,2016,W,3590,756,1369,1558,New York Knicks,(2016-17),Atlantic Division,New York Knicks,31,51,37.80%
-NYK,2017,W,3566,762,1345,1521,New York Knicks,(2017-18),Atlantic Division,New York Knicks,29,53,35.40%
 NYK,2018,W,1241,288,473,540,New York Knicks,(2018-19),Atlantic Division,New York Knicks,17,65,20.70%
-OKC,2014,W,1710,343,625,761,Oklahoma City Thunder,(2014-15),Northwest Division,Oklahoma City Thunder,45,37,54.90%
-OKC,2015,W,5852,1178,2211,2575,Oklahoma City Thunder,(2015-16),Northwest Division,Oklahoma City Thunder,55,27,67.10%
-OKC,2016,W,6009,1299,2251,2581,Oklahoma City Thunder,(2016-17),Northwest Division,Oklahoma City Thunder,47,35,57.30%
-OKC,2017,W,5026,1021,1864,2198,Oklahoma City Thunder,(2017-18),Northwest Division,Oklahoma City Thunder,48,34,58.50%
 OKC,2018,W,3275,649,1198,1301,Oklahoma City Thunder,(2018-19),Pacific Division,Oklahoma City Thunder,49,33,59.80%
-ORL,2014,W,1313,267,502,547,Orlando Magic,(2014-15),Southeast Division,Orlando Magic,25,57,30.50%
-ORL,2015,W,3213,691,1253,1393,Orlando Magic,(2015-16),Southeast Division,Orlando Magic,35,47,42.70%
-ORL,2016,W,3430,801,1313,1365,Orlando Magic,(2016-17),Southeast Division,Orlando Magic,29,53,35.40%
-ORL,2017,W,2914,632,1080,1179,Orlando Magic,(2017-18),Southeast Division,Orlando Magic,25,57,30.50%
 ORL,2018,W,1421,332,520,582,Orlando Magic,(2018-19),Southeast Division,Orlando Magic,42,40,51.20%
-PHI,2014,W,380,73,140,196,Philadelphia 76ers,(2014-15),Atlantic Division,Philadelphia 76ers,18,64,22.00%
-PHI,2015,W,1669,406,607,784,Philadelphia 76ers,(2015-16),Atlantic Division,Philadelphia 76ers,10,72,12.20%
-PHI,2016,W,1604,383,594,654,Philadelphia 76ers,(2016-17),Atlantic Division,Philadelphia 76ers,28,54,34.10%
-PHI,2017,W,4085,980,1477,1764,Philadelphia 76ers,(2017-18),Atlantic Division,Philadelphia 76ers,52,30,63.40%
 PHI,2018,W,3992,1030,1515,1708,Philadelphia 76ers,(2018-19),Atlantic Division,Philadelphia 76ers,51,31,62.20%
-PHO,2014,W,2001,396,746,795,Phoenix Suns,(2014-15),Pacific Division,Phoenix Suns,39,43,47.60%
-PHO,2015,W,3546,684,1353,1523,Phoenix Suns,(2015-16),Pacific Division,Phoenix Suns,23,59,28.00%
-PHO,2016,W,2319,452,838,1068,Phoenix Suns,(2016-17),Pacific Division,Phoenix Suns,24,58,29.30%
-PHO,2017,W,3121,611,1141,1327,Phoenix Suns,(2017-18),Pacific Division,Phoenix Suns,21,61,25.60%
 PHO,2018,W,759,171,279,318,Phoenix Suns,(2018-19),Northwest Division,Phoenix Suns,19,63,23.20%
-POR,2014,W,2763,613,1041,1251,Portland Trail Blazers,(2014-15),Northwest Division,Portland Trail Blazers,51,31,62.20%
-POR,2015,W,4137,867,1550,1862,Portland Trail Blazers,(2015-16),Northwest Division,Portland Trail Blazers,44,38,53.70%
-POR,2016,W,4942,1020,1816,1990,Portland Trail Blazers,(2016-17),Northwest Division,Portland Trail Blazers,41,41,50.00%
-POR,2017,W,4941,911,1810,2069,Portland Trail Blazers,(2017-18),Northwest Division,Portland Trail Blazers,49,33,59.80%
 POR,2018,W,3472,660,1287,1472,Portland Trail Blazers,(2018-19),Pacific Division,Portland Trail Blazers,53,29,64.60%
-SAC,2014,W,1411,250,493,592,Sacramento Kings,(2014-15),Pacific Division,Sacramento Kings,29,53,35.40%
-SAC,2015,W,3035,662,1109,1275,Sacramento Kings,(2015-16),Pacific Division,Sacramento Kings,33,49,40.20%
-SAC,2016,W,3876,852,1433,1556,Sacramento Kings,(2016-17),Pacific Division,Sacramento Kings,32,50,39.00%
-SAC,2017,W,3204,707,1207,1311,Sacramento Kings,(2017-18),Pacific Division,Sacramento Kings,27,55,32.90%
 SAC,2018,W,1544,342,618,663,Sacramento Kings,(2018-19),Northwest Division,Sacramento Kings,39,43,47.60%
-SAS,2014,W,2108,518,783,861,San Antonio Spurs,(2014-15),Southwest Division,San Antonio Spurs,55,27,67.10%
-SAS,2015,W,6638,1601,2559,2842,San Antonio Spurs,(2015-16),Southwest Division,San Antonio Spurs,67,15,81.70%
-SAS,2016,W,7100,1631,2688,2848,San Antonio Spurs,(2016-17),Southwest Division,San Antonio Spurs,61,21,74.40%
-SAS,2017,W,6365,1465,2397,2672,San Antonio Spurs,(2017-18),Southwest Division,San Antonio Spurs,47,35,57.30%
 SAS,2018,W,2353,508,886,1000,San Antonio Spurs,(2018-19),Southwest Division,San Antonio Spurs,48,34,58.50%
-TOR,2014,W,2632,517,944,998,Toronto Raptors,(2014-15),Atlantic Division,Toronto Raptors,49,33,59.80%
-TOR,2015,W,4654,928,1664,1988,Toronto Raptors,(2015-16),Atlantic Division,Toronto Raptors,56,26,68.30%
-TOR,2016,W,6295,1139,2267,2540,Toronto Raptors,(2016-17),Atlantic Division,Toronto Raptors,51,31,62.20%
-TOR,2017,W,5886,1134,2187,2373,Toronto Raptors,(2017-18),Atlantic Division,Toronto Raptors,59,23,72.00%
 TOR,2018,W,3955,911,1466,1631,Toronto Raptors,(2018-19),Atlantic Division,Toronto Raptors,58,24,70.70%
-UTA,2014,W,1108,230,401,500,Utah Jazz,(2014-15),Northwest Division,Utah Jazz,38,44,46.30%
-UTA,2015,W,4049,809,1488,1909,Utah Jazz,(2015-16),Northwest Division,Utah Jazz,40,42,48.80%
-UTA,2016,W,4803,939,1754,2079,Utah Jazz,(2016-17),Northwest Division,Utah Jazz,51,31,62.20%
-UTA,2017,W,4968,1052,1829,2050,Utah Jazz,(2017-18),Northwest Division,Utah Jazz,48,34,58.50%
 UTA,2018,W,3550,804,1314,1477,Utah Jazz,(2018-19),Pacific Division,Utah Jazz,50,32,61.00%
-WAS,2014,W,2273,583,897,959,Washington Wizards,(2014-15),Southeast Division,Washington Wizards,46,36,56.10%
-WAS,2015,W,3973,969,1528,1702,Washington Wizards,(2015-16),Southeast Division,Washington Wizards,41,41,50.00%
-WAS,2016,W,4708,1123,1807,1872,Washington Wizards,(2016-17),Southeast Division,Washington Wizards,49,33,59.80%
-WAS,2017,W,6070,1344,2294,2416,Washington Wizards,(2017-18),Southeast Division,Washington Wizards,43,39,52.40%
 WAS,2018,W,2516,662,954,960,Washington Wizards,(2018-19),Southeast Division,Washington Wizards,32,50,39.00%

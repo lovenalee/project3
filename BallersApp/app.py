@@ -89,6 +89,58 @@ def tStats2():
 
     return jsonify(result_list1)
 
+class tStats2018(db.Model):
+    __tablename__ = 'Team_Stats_2018'
+
+    Team = db.Column(db.String(64), primary_key=True)
+    Year = db.Column(db.String(4))
+    TeamPoints = db.Column(db.Float)
+    Assists = db.Column(db.Float)
+    FieldGoals = db.Column(db.Float)
+    TotalRebounds = db.Column(db.Float)
+    TeamName = db.Column(db.String(64))
+    Wins = db.Column(db.Float)
+    Losses = db.Column(db.Float)
+    WPct = db.Column(db.Float)
+    
+    def __repr__(self):
+        return '<tStats2018 %r>' % (self.name)
+
+@app.route("/api/tStats2018")
+def tStats_2018():
+    results6 = db.session.query(
+    tStats2018.Team, 
+    tStats2018.Year, 
+    tStats2018.TeamPoints, 
+    tStats2018.Assists, 
+    tStats2018.FieldGoals,
+    tStats2018.TotalRebounds,
+    tStats.TeamName, 
+    tStats.Wins, 
+    tStats.Losses, 
+    tStats.WPct).all()
+    
+    result_list6 = []
+    
+    for result6 in results6:
+        tStatsdata2018 = {
+            "TeamAbbr": result6[0],
+            "Seasons": result6[1],
+            "Points": result6[2],
+            "Assists": result6[3],
+            "FieldGoals": result6[4],
+            "TotalRebounds": result6[5],
+            "TeamName": result6[6],
+            "Wins": result6[7],
+            "Losses": result6[8],
+            "WinPct": result6[9]
+        }
+
+        result_list6.append(tStatsdata2018)
+
+    return jsonify(result_list6)
+
+
 class gStats(db.Model):
     __tablename__ = 'GOAT'
 
