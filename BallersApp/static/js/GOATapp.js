@@ -190,7 +190,7 @@ d3.json("/api/totals").then(function(ringsdata2) {
     .data(ringsdata2)
     .enter()
     .append("rect")
-    .attr("class", "bar")
+    .attr("class", "bar2")
     .attr("x", d => xBandScale2(d.Stats))
     .attr("y", d => yLinearScale2(d[result]))
     .attr("width", xBandScale2.bandwidth())

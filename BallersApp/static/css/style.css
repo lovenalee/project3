@@ -56,11 +56,20 @@ body{
   .bar {
     fill: rgb(248, 250, 252);
     fill-opacity: .9;
-    
-  }
+
+     }
+     .bar:hover {
+        fill: rgb(238, 255, 0);
+      }
+
+
+     .bar2 {
+        fill: rgba(0, 0, 0, 0.925);
+        fill-opacity: .7;
+     }
   
-  .bar:hover {
-    fill: rgb(238, 255, 0);
+  .bar2:hover {
+    fill: rgb(255, 0, 0);
   }
   
   label {
