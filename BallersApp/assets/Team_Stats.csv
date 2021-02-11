@@ -1,4 +1,4 @@
-TeamAbbr,Seasons,TeamPoints,Assists,FieldGoals,TeamName,Wins,Losses,WPct
+Team,Seasons,TeamPoints,Assists,FieldGoals,TeamName,Wins,Losses,WPct
 ATL,2018,1468,357,552,Atlanta Hawks,29,53,35.40%
 BOS,2018,2674,596,1005,Boston Celtics,49,33,59.80%
 BRK,2018,1663,397,598,Brooklyn Nets,42,40,51.20%

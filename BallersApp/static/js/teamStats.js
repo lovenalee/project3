@@ -1,7 +1,7 @@
 // set the dimensions and margins of the graph
-var margin = {top: 10, right: 30, bottom: 30, left: 60},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+var margin = {top: 80, right: 5, bottom: 30, left: 100},
+    width = 800 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 var svg = d3.select("#my_dataviz")
@@ -31,7 +31,7 @@ d3.json("/api/tStats").then(function(data) {
   svg.append("g")
     .call(d3.axisLeft(y));
 
-  // Color scale: give me a specie name, I return a color
+  // Color scale for selected seasons
   var color = d3.scaleOrdinal()
     .domain(["2014", "2015", "2016", "2017", "2018"])
     .range([ "red", "orange", "green", "blue", "yellow"])
@@ -40,14 +40,13 @@ d3.json("/api/tStats").then(function(data) {
   // Highlight the season that is hovered
   var highlight = function(d){
 
-    // selected_season = d.Seasons
-    selected_season = d3.map(data, function(d){return(d.Seasons)}).keys();
+    selected_season = d.Seasons
     console.log(selected_season)
     
     d3.selectAll(".dot")
       .transition()
       .duration(200)
-      .style("fill", "lightgrey")
+      .style("fill", "black")
       .attr("r", 3)
 
     d3.selectAll("." + selected_season)
@@ -62,7 +61,7 @@ d3.json("/api/tStats").then(function(data) {
     d3.selectAll(".dot")
       .transition()
       .duration(200)
-      .style("fill", "lightgrey")
+      .style("fill", "grey")
       .attr("r", 5 )
   }
 

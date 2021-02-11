@@ -1,7 +1,7 @@
 // set the dimensions and margins of the graph
-var margin = {top: 100, right: 200, bottom: 30, left: 100},
-    width = 800 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+var margin = {top: 20, right: 200, bottom: 30, left: 100},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 var svg = d3.select("#my_dataviz")
@@ -35,12 +35,19 @@ d3.json("/api/tStats2018").then(function(data) {
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x));
 
-    // Add Y axis
+    // Add Y1 axis
     var y = d3.scaleLinear()
-      .domain( [0,5000])
+      .domain( [0,4500])
       .range([ height, 0 ]);
     svg.append("g")
       .call(d3.axisLeft(y));
+
+    // Add Y2 axis
+    var y2 = d3.scaleLinear()
+      .domain( [0,1500])
+      .range([ height, 0 ]);
+    svg.append("g")
+      .call(d3.axisRight(y2));
 
     // Initialize line with group a
     var line = svg
@@ -49,7 +56,7 @@ d3.json("/api/tStats2018").then(function(data) {
         .datum(data)
         .attr("d", d3.line()
           .x(function(d) { return x(+d.Team) })
-          .y(function(d) { return y(+d.Assists) })
+          .y(function(d) { return y(+d.Points) })
         )
         .attr("stroke", "black")
         .style("stroke-width", 4)
@@ -62,7 +69,7 @@ d3.json("/api/tStats2018").then(function(data) {
       .enter()
       .append('circle')
         .attr("cx", function(d) { return x(+d.Team) })
-        .attr("cy", function(d) { return y(+d.Assists) })
+        .attr("cy", function(d) { return y(+d.Points) })
         .attr("r", 7)
         .style("fill", "#69b3a2")
 
