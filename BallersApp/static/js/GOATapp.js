@@ -6,9 +6,9 @@ var svgHeight = 700;
 // Define the chart's margins as an object
 var chartMargin = {
   top: 200,
-  right: 30,
+  right: 20,
   bottom: 100,
-  left: 60
+  left: 200
 };
 
 var selection = [];
@@ -111,7 +111,7 @@ var svgHeight2 = 900;
 // Define the chart's margins as an object
 var chartMargin2 = {
   top2: 200,
-  right2: 30,
+  right2: 100,
   bottom2: 100,
   left2: 200
 };
