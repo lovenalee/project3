@@ -1,17 +1,17 @@
-d3.json("/api/tStats").then(function(data) {
+d3.json("/api/tStats2018").then(function(data) {
     console.log(data);
-    console.log([data]);
+    // console.log([data]);
 
-      var allGroup = d3.map(data, function(d){return(d.Seasons)}).keys();
+    //   var allGroup = d3.map(data, function(d){return(d.Seasons)}).keys();
     
-      // // add the options to the button
-      d3.select("#selectButton")
-        .selectAll('myOptions')
-        .data(allGroup)
-        .enter()
-        .append('option')
-        .text(function (d) { return d; }) // text showed in the menu
-        .attr("value", function (d) { return d; }) // corresponding value returned by the button
+    //   // // add the options to the button
+    //   d3.select("#selectButton")
+    //     .selectAll('myOptions')
+    //     .data(allGroup)
+    //     .enter()
+    //     .append('option')
+    //     .text(function (d) { return d; }) // text showed in the menu
+    //     .attr("value", function (d) { return d; }) // corresponding value returned by the button
         
         // .select("#selectButton").on("change", function(d){
         //   selectedGroup = this.value;
@@ -28,8 +28,8 @@ d3.json("/api/tStats").then(function(data) {
       
 // function buildChart() {
   var body = d3.select('body')
-  var selectData = [ { "text" : "Wins" },
-                    { "text" : "Points" },
+  var selectData = [ { "text" : "Points" },
+                    { "text" : "Assists" },
                   ]
 
   // Select X-axis Variable
@@ -71,14 +71,14 @@ d3.json("/api/tStats").then(function(data) {
   var colorScale = d3.scale.category20()
   var xScale = d3.scale.linear()
     .domain([
-      d3.min([0,d3.min(data,function (d) { return d['Wins'] })]),
-      d3.max([0,d3.max(data,function (d) { return d['Wins'] })])
+      d3.min([0,d3.min(data,function (d) { return d['Points'] })]),
+      d3.max([0,d3.max(data,function (d) { return d['Points'] })])
       ])
     .range([0,w])
   var yScale = d3.scale.linear()
     .domain([
-      d3.min([0,d3.min(data,function (d) { return d['Wins'] })]),
-      d3.max([0,d3.max(data,function (d) { return d['Wins'] })])
+      d3.min([0,d3.min(data,function (d) { return d['Points'] })]),
+      d3.max([0,d3.max(data,function (d) { return d['Points'] })])
       ])
     .range([h,0])
   
@@ -108,8 +108,8 @@ d3.json("/api/tStats").then(function(data) {
       .data(data)
       .enter()
     .append('circle')
-      .attr('cx',function (d) { return xScale(d['Wins']) })
-      .attr('cy',function (d) { return yScale(d['Wins']) })
+      .attr('cx',function (d) { return xScale(d['Points']) })
+      .attr('cy',function (d) { return yScale(d['Points']) })
       .attr('r','10')
       .attr('stroke','black')
       .attr('stroke-width',1)
@@ -130,9 +130,9 @@ d3.json("/api/tStats").then(function(data) {
       })
     .append('title') // Tooltip
       .text(function (d) { return d.TeamName +
-                          '\nSeason: ' + formatNumber(d['Seasons']) +
-                          '\nWins: ' + formatNumber(d['Wins']) +
-                          '\nLosses: ' + formatNumber(d['Losses']) })
+                          '\nTeam: ' + formatNumber(d['Team']) +
+                          '\nPoints: ' + formatNumber(d['Points']) +
+                          '\nAssists: ' + formatNumber(d['Assists']) })
   // X-axis
   svg.append('g')
       .attr('class','axis')
@@ -145,7 +145,7 @@ d3.json("/api/tStats").then(function(data) {
       .attr('x',w)
       .attr('dy','.71em')
       .style('text-anchor','end')
-      .text('wins')
+      .text('Points')
   
   // Y-axis
   svg.append('g')
@@ -159,13 +159,13 @@ d3.json("/api/tStats").then(function(data) {
       .attr('y',5)
       .attr('dy','.71em')
       .style('text-anchor','end')
-      .text('Wins')
+      .text('Points')
 
   // Compute for the first group called 2014
-  var dataFilter = data
-    .filter(function(d){ return d.Seasons == "2014"})
-    .map(function(d){  return +d.Wins; }
-  )
+  // var dataFilter = data
+  //   .filter(function(d){ return d.Seasons == "2014"})
+  //   .map(function(d){  return +d.Wins; }
+  // )
 
   function yChange() {
     var value = this.value // get the new y value

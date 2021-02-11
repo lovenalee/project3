@@ -15,7 +15,6 @@ a.navbar-brand{
 select {
     margin-left: 700px;
     margin-top: 80px;
-    display: block; 
 }
 
 
@@ -38,7 +37,6 @@ body{
     background-color: rgb(187, 216, 245);
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     position: relative;
-    font: 10px;
 }
 
 .axis text {
@@ -50,7 +48,7 @@ body{
   .axis line {
     fill: none;
     stroke: #000;
-    shape-rendering: crispEdges;
+
   }
   
   .bar {

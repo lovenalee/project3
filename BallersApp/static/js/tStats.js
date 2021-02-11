@@ -15,7 +15,7 @@ var svg = d3.select("#my_dataviz")
 // get the data
 d3.json("/api/tStats").then(function(data) {
   console.log(data);
-  console.log([data]);
+  // console.log([data]);
 
   // List of groups (here I have one group per column)
   var allGroup = d3.map(data, function(d){return(d.Seasons)}).keys()
