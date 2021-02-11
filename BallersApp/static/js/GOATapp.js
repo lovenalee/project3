@@ -211,9 +211,23 @@ d3.json("/api/totals").then(function(ringsdata2) {
 
     chartGroup.append("text")
     .attr("y", 450)
+    .attr("x", 425)
+    .style("font-weight", "bold")
+    .text("Players");
+
+    chartGroup.append("text")
+    .attr("y", -100)
     .attr("x", 350)
     .style("font-weight", "bold")
-    .text("Greatest Players");
+    .text("Greatest Basketball Players");
+
+    chartGroup.append("text")
+    .attr("y", -50)
+    .attr("x", 375)
+    .style("font-weight", "bold")
+    .text("(Championship Wins)");
+
+
 
 }).catch(function(error) {
 console.log(error);
