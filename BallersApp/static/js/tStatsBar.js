@@ -1,20 +1,22 @@
 d3.json("/api/tStats2018").then(function(data) {
-    var allStats = ["Assists", "FieldGoals", "Points", "TotalRebounds"] 
-    var teamMap = {};
+    var allStats = ["Assists", "FieldGoals", "Points", "TotalRebounds"]; 
 
     console.log(data);
     console.log(allStats);
 
     data.forEach(function(d) {
+        var teamMap = {};
         var teams = d.TeamName;
         teamMap[teams] = [];
+        // console.log(teamMap)
 
         // { TeamNames: [ bar1Val, bar2Val, ... ] }
         allStats.forEach(function(field) {
             teamMap[teams].push( +d[field] );
+            // console.log(field)
         });
     });
-    makeVis(teamMap);
+    // makeVis(teamMap);
 });
 
 var makeVis = function(teamMap) {
@@ -22,15 +24,19 @@ var makeVis = function(teamMap) {
     var margin = { top: 30, right: 50, bottom: 30, left: 50 },
         width  = 550 - margin.left - margin.right,
         height = 250 - margin.top  - margin.bottom;
-
+    
     // Make x scale
     var xScale = d3.scale.ordinal()
         .domain(allStats)
         .rangeRoundBands([0, width], 0.1);
+    // var xScale = d3.scaleBand()
+    //     .rangeRound([0, width])
+    //     .padding(0.1);
 
     // Make y scale, the domain will be defined on bar update
     var yScale = d3.scale.linear()
-        .range([height, 0]);
+        .range([height, 0])
+        .domain([0, 9000]);
 
     // Create canvas
     var canvas = d3.select("#vis-container")
@@ -58,7 +64,7 @@ var makeVis = function(teamMap) {
     var yAxisHandleForUpdate = canvas.append("g")
         .attr("class", "y axis")
         .call(yAxis);
-
+    
     yAxisHandleForUpdate.append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 6)
@@ -95,7 +101,7 @@ var makeVis = function(teamMap) {
     // Handler for dropdown value change
     var dropdownChange = function() {
         var newTeams = d3.select(this).property('value'),
-            newData   = seasonMap[newTeams];
+            newData   = teamMap[newTeams];
 
         updateBars(newData);
     };
