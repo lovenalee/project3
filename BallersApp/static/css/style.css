@@ -107,7 +107,13 @@ p{
 
 .dropdown-menu {
     margin: 0;
+    background-color: rgb(250, 247, 252);
+    
 }
+
+.dropdown-item:hover {
+   background-color: rgb(89, 170, 240);
+  }
 
 
 .content {
