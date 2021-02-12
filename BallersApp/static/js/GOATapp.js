@@ -270,6 +270,21 @@ d3.json("/api/totals").then(function(ringsdata2) {
     .attr("x", 375)
     .style("font-weight", "bold")
     .text("(Championship Wins)");
+   
+
+   chartGroup2.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 650)
+    .attr("x", -550)
+    .style("font-weight", "bold")
+    .text("*Players in the 1970’s and earlier have no data collected for 'assist' in their career.");
+
+    chartGroup2.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 675)
+    .attr("x", -548)
+    .style("font-weight", "bold")
+    .text("This category was not yet created but proves to be valuable today.");
 
 
 
