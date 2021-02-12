@@ -189,7 +189,7 @@ d3.json("/api/totals").then(function(ringsdata2) {
     .attr('dx', '-50px');
   
    
-    chartGroup2.selectAll(".bar")
+  chartGroup2.selectAll(".bar")
     .data(ringsdata2)
     .enter()
     .append("rect")
@@ -201,14 +201,29 @@ d3.json("/api/totals").then(function(ringsdata2) {
     
     ;
     
-
-    chartGroup2.selectAll(".bar")
-    .data(ringsdata2)
-    .exit()
-    .remove()
-    
+ 
+  chartGroup2.selectAll(".bar")
+  .data(ringsdata2)
+  .enter()
+  .append("g")
   
-    
+  
+  
+  .append("text")
+    .text(function(d){return(d[result])})
+    .style("font-size", "11px")
+    .attr("alignment-baseline", "middle")
+    .attr("x", function(d){
+      return xBandScale2(d.Stats) + xBandScale2.bandwidth()/2;
+  })
+  .attr("y", function(d){
+      return yLinearScale2(d[result]) - 5;
+  })
+  
+  
+  
+  
+
 
 
 
