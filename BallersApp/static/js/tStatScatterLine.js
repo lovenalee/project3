@@ -19,11 +19,6 @@ var svg = d3.select("#my_dataviz")
     // List of groups (here I have one group per column)
     var allGroup = ["Assists", "FieldGoals", "Points", "Rebounds"]
 
-    var myData = data.map(function(item, i) {
-      item.x = i + 1;
-      return item
-    })
-    console.log(myData)
     // add the options to the button
     d3.select("#selectButton")
       .selectAll('myOptions')
@@ -61,7 +56,11 @@ var svg = d3.select("#my_dataviz")
       .append("path")
         .datum(data)
         .attr("d", d3.line()
-          .x(function(d,i) { return x(+d) })
+          .x(function(d) {
+            
+            //console.log(d);
+            
+            return x(+d.ID) })
           .y(function(d) { return y(+d.Points) })
         )
         .attr("stroke", "black")
@@ -74,7 +73,7 @@ var svg = d3.select("#my_dataviz")
       .data(data)
       .enter()
       .append('circle')
-        .attr("cx", function(d,i) { return x(+d) })
+        .attr("cx", function(d) { return x(+d.ID) })
         .attr("cy", function(d) { return y(+d.Points) })
         .attr("r", 7)
         .style("fill", "#69b3a2")
@@ -83,8 +82,10 @@ var svg = d3.select("#my_dataviz")
     // A function that update the chart
     function update(selectedGroup) {
 
+      console.log()
+
       // Create new data with the selection?
-      var dataFilter = data.map(function(d){return {team: d.Team, value:d[selectedGroup]} })
+      var dataFilter = data.map(function(d){return {ID: d.ID, value:d[selectedGroup]} })
 
       // Give these new data to update line
       line
@@ -92,14 +93,16 @@ var svg = d3.select("#my_dataviz")
           .transition()
           .duration(1000)
           .attr("d", d3.line()
-            .x(function(d) { return x(+d.team) })
+            .x(function(d) { 
+              
+              return x(+d.ID) })
             .y(function(d) { return y(+d.value) })
           )
       dot
         .data(dataFilter)
         .transition()
         .duration(1000)
-          .attr("cx", function(d) { return x(+d.team) })
+          .attr("cx", function(d) { return x(+d.ID) })
           .attr("cy", function(d) { return y(+d.value) })
     }
 

@@ -33,15 +33,27 @@ d3.json("/api/tStats").then(function(data) {
 
   // Color scale for selected seasons
   var color = d3.scaleOrdinal()
-    .domain(["2014", "2015", "2016", "2017", "2018"])
+    .domain(["one", "two", "three", "four", "five"])
     .range([ "red", "orange", "green", "blue", "yellow"])
 
 
   // Highlight the season that is hovered
   var highlight = function(d){
 
-    selected_season = d.Seasons
-    console.log(selected_season)
+    var selected_season = d.Seasons
+    var colour_group;
+
+    if (selected_season === 2014) {
+      colour_group = "one"
+    } else if (selected_season === 2015) {
+      colour_group = "two"
+    } else if (selected_season === 2016) {
+      colour_group = "three"
+    } else if (selected_season === 2017) {
+      colour_group = "four"
+    } else {
+      colour_group = "five"
+    }
     
     d3.selectAll(".dot")
       .transition()
@@ -49,10 +61,10 @@ d3.json("/api/tStats").then(function(data) {
       .style("fill", "black")
       .attr("r", 3)
 
-    d3.selectAll("." + selected_season)
+    d3.selectAll("." + colour_group)
       .transition()
       .duration(200)
-      .style("fill", color(selected_season))
+      .style("fill", color(colour_group))
       .attr("r", 7)
   }
 
@@ -71,11 +83,45 @@ d3.json("/api/tStats").then(function(data) {
     .data(data)
     .enter()
     .append("circle")
-      .attr("class", function (d) { return "dot " + d.Seasons } )
+      .attr("class", function (d) {
+
+        var colour_group;
+        
+        if (d.Seasons === 2014) {
+          colour_group = "one"
+        } else if (d.Seasons === 2015) {
+          colour_group = "two"
+        } else if (d.Seasons === 2016) {
+          colour_group = "three"
+        } else if (d.Seasons === 2017) {
+          colour_group = "four"
+        } else {
+          colour_group = "five"
+        }        
+        
+        
+        
+        return "dot " + colour_group } )
       .attr("cx", function (d) { return x(d.Wins); } )
       .attr("cy", function (d) { return y(d.Points); } )
       .attr("r", 5)
-      .style("fill", function (d) { return color(d.Seasons) } )
+      .style("fill", function (d) { 
+        
+        var colour_group;
+        
+        if (d.Seasons === 2014) {
+          colour_group = "one"
+        } else if (d.Seasons === 2015) {
+          colour_group = "two"
+        } else if (d.Seasons === 2016) {
+          colour_group = "three"
+        } else if (d.Seasons === 2017) {
+          colour_group = "four"
+        } else {
+          colour_group = "five"
+        }
+        
+        return color(colour_group) } )
     .on("mouseover", highlight)
     .on("mouseleave", doNotHighlight )
 

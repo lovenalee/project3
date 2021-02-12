@@ -95,8 +95,9 @@ def tStats2():
 
 class tStats2018(db.Model):
     __tablename__ = 'Team_Stats_2018'
-
-    Team = db.Column(db.String(64), primary_key=True)
+    
+    ID = db.Column(db.Float, primary_key=True)
+    Team = db.Column(db.String(64))
     Year = db.Column(db.String(4))
     TeamPoints = db.Column(db.Float)
     Assists = db.Column(db.Float)
@@ -113,6 +114,7 @@ class tStats2018(db.Model):
 @app.route("/api/tStats2018")
 def tStats_2018():
     results6 = db.session.query(
+    tStats2018.ID,
     tStats2018.Team,
     tStats2018.TeamPoints, 
     tStats2018.Assists, 
@@ -123,14 +125,17 @@ def tStats_2018():
     
     for result6 in results6:
         tStatsdata2018 = {
-            "Team": result6[0],
-            "Points": result6[1],
-            "Assists": result6[2],
-            "FieldGoals": result6[3],
-            "Rebounds": result6[4]
+            "ID": result6[0],
+            "Team": result6[1],
+            "Points": result6[2],
+            "Assists": result6[3],
+            "FieldGoals": result6[4],
+            "Rebounds": result6[5]
         }
 
         result_list6.append(tStatsdata2018)
+    
+    print(result_list6)
 
     return jsonify(result_list6)
 
