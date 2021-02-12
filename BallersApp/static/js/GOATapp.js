@@ -33,6 +33,36 @@ var svg = d3.select("#goatbar1")
   .attr("height", svgHeight)
   .attr("width", svgWidth);
 
+  // Define SVG area dimensions
+var svgWidth2 = 900;
+var svgHeight2 = 900;
+
+// Define the chart's margins as an object
+var chartMargin2 = {
+  top2: 200,
+  right2: 100,
+  bottom2: 100,
+  left2: 200
+};
+
+var selection = [];
+
+// Define dimensions of the chart area
+var chartWidth2 = svgWidth2 - chartMargin2.left2 - chartMargin2.right2;
+var chartHeight2 = svgHeight2 - chartMargin2.top2 - chartMargin2.bottom2;
+
+// Select body, append SVG area to it, and set the dimensions
+
+var svg2 = d3.select("#goatbar2")
+  .append("svg")
+  .attr("height", svgHeight2)
+  .attr("width", svgWidth2)
+  .attr("transform", (d,i) => `translate(${(i*30)+30},30) rotate(${d})`);
+
+
+var chartGroup2 = svg2.append("g")
+  .attr("transform", `translate(${chartMargin2.left2}, ${chartMargin2.top2})`);
+
 
 var chartGroup = svg.append("g")
   .attr("transform", `translate(${chartMargin.left}, ${chartMargin.top})`);
@@ -81,6 +111,7 @@ d3.json("/api/rings").then(function(ringsdata) {
     .call(bottomAxis);
 
   
+    
     chartGroup.selectAll(".bar")
     .data(ringsdata)
     .enter()
@@ -90,6 +121,9 @@ d3.json("/api/rings").then(function(ringsdata) {
     .attr("y", d => yLinearScale(d.Titles))
     .attr("width", xBandScale.bandwidth())
     .attr("height", d => chartHeight - yLinearScale(d.Titles))
+    .on("click", function(d){
+      
+    })
     .on("click", function(d){
 
      
@@ -104,37 +138,6 @@ d3.json("/api/rings").then(function(ringsdata) {
       console.log(selection)
 
       
-// Define SVG area dimensions
-var svgWidth2 = 900;
-var svgHeight2 = 900;
-
-// Define the chart's margins as an object
-var chartMargin2 = {
-  top2: 200,
-  right2: 100,
-  bottom2: 100,
-  left2: 200
-};
-
-var selection = [];
-
-// Define dimensions of the chart area
-var chartWidth2 = svgWidth2 - chartMargin2.left2 - chartMargin2.right2;
-var chartHeight2 = svgHeight2 - chartMargin2.top2 - chartMargin2.bottom2;
-
-// Select body, append SVG area to it, and set the dimensions
-
-var svg2 = d3.select("#goatbar2")
-  .append("svg")
-  .attr("height", svgHeight2)
-  .attr("width", svgWidth2)
-  .attr("transform", (d,i) => `translate(${(i*30)+30},30) rotate(${d})`);
-
-
-
-var chartGroup2 = svg2.append("g")
-  .attr("transform", `translate(${chartMargin2.left2}, ${chartMargin2.top2})`);
-
 
 
 
@@ -149,9 +152,7 @@ d3.json("/api/totals").then(function(ringsdata2) {
   });
 
 
-  svg2.selectAll(".bar")
-  .data(ringsdata2).exit()
-.remove();
+ 
 
    // Configure a band scale for the horizontal axis with a padding of 0.1 (10%)
    var xBandScale2 = d3.scaleBand()
@@ -173,8 +174,10 @@ d3.json("/api/totals").then(function(ringsdata2) {
 
   // Append two SVG group elements to the chartGroup area,
   // and create the bottom and left axes inside of them
-  chartGroup2.append("g")
+  //chartGroup2.append("g")
     //.call(leftAxis2);
+
+  chartGroup2.selectAll("*").remove()
 
   chartGroup2.append("g")
     .attr("transform", `translate(0, ${chartHeight2})`)
@@ -185,8 +188,8 @@ d3.json("/api/totals").then(function(ringsdata2) {
     .attr('dy', '-6px')
     .attr('dx', '-50px');
   
+   
     chartGroup2.selectAll(".bar")
-    
     .data(ringsdata2)
     .enter()
     .append("rect")
@@ -196,12 +199,32 @@ d3.json("/api/totals").then(function(ringsdata2) {
     .attr("width", xBandScale2.bandwidth())
     .attr("height", d => chartHeight2 - yLinearScale2(d[result]))
     
+    ;
+    
+
+    chartGroup2.selectAll(".bar")
+    .data(ringsdata2)
+    .exit()
+    .remove()
+    
+  
     
 
 
-}).catch(function(error) {
+
+})
+
+
+
+
+.catch(function(error) {
   console.log(error)
-});
+
+
+})
+
+
+;
 
 
       
@@ -238,6 +261,15 @@ d3.json("/api/totals").then(function(ringsdata2) {
 }).catch(function(error) {
 console.log(error);
 
-}).catch(function(error) {
+
+
+})
+
+
+
+.catch(function(error) {
   console.log(error)
 });
+
+
+
