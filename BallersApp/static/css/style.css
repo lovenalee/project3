@@ -24,6 +24,15 @@ h3{
     padding: 20px;
     font-weight: bold;
 }
+
+h2{
+    color: rgb(0, 0, 0);
+    font-family: 'Times New Roman', Times, serif;
+    padding: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
 .container{
     background: rgb(248, 247, 247, 0.3); 
 }
@@ -117,7 +126,7 @@ p{
 
 
 .content {
-    padding-top: 50px;
+    padding-top: 100px;
     padding-bottom: 80px;
     overflow: hidden;
 }
@@ -221,6 +230,3 @@ position:absolute;
     transition: 0.3s;
 }
 
-.card:hover {
-      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    }
