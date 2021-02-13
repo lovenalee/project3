@@ -1,7 +1,7 @@
 // set the dimensions and margins of the graph
-var margin = {top: 0, right: 200, bottom: 100, left: 300},
+var margin = {top: 0, right: 200, bottom: 100, left: 200},
     width = 1000 - margin.left - margin.right,
-    height = 600 - margin.top - margin.bottom;
+    height = 500 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 var svg = d3.select("#my_dataviz")
@@ -52,7 +52,7 @@ d3.json("api/ws").then(function(wsdata) {
     // Add X axis label:
     svg.append("text")
       .attr("text-anchor", "end")
-      .attr("x", width/2 + margin.left - 250)
+      .attr("x", width/2 + margin.left - 150)
       .attr("y", height + margin.top +50)
       .text("Year");
 
@@ -60,7 +60,7 @@ d3.json("api/ws").then(function(wsdata) {
     svg.append("text")
       .attr("text-anchor", "end")
       .attr("transform", "rotate(-90)")
-      .attr("y", -margin.left + 250)
+      .attr("y", -margin.left + 150)
       .attr("x", -margin.top - height/2 + 90)
       .text("Average Win Share")
 
