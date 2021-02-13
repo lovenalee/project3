@@ -180,6 +180,8 @@ d3.json("/api/totals").then(function(ringsdata2) {
   chartGroup2.selectAll("*").remove()
 
   chartGroup2.append("g")
+  .transition()
+  .duration(1000)
     .attr("transform", `translate(0, ${chartHeight2})`)
     .call(bottomAxis2)
     .style("font-weight", "bold")
@@ -192,13 +194,16 @@ d3.json("/api/totals").then(function(ringsdata2) {
   chartGroup2.selectAll(".bar")
     .data(ringsdata2)
     .enter()
-    .append("rect")
-    .attr("class", "bar2")
-    .attr("x", d => xBandScale2(d.Stats))
-    .attr("y", d => yLinearScale2(d[result]))
-    .attr("width", xBandScale2.bandwidth())
-    .attr("height", d => chartHeight2 - yLinearScale2(d[result]))
     
+    .append("rect")
+    .transition()
+    .duration(1000)
+      .attr("class", "bar2")
+      .attr("x", d => xBandScale2(d.Stats))
+      .attr("y", d => yLinearScale2(d[result]))
+      .attr("width", xBandScale2.bandwidth())
+      .attr("height", d => chartHeight2 - yLinearScale2(d[result]))
+      
     ;
     
  
@@ -210,15 +215,17 @@ d3.json("/api/totals").then(function(ringsdata2) {
   
   
   .append("text")
+  .transition()
+  .duration(2000)
     .text(function(d){return(d[result])})
     .style("font-size", "20px")
     .style("font-weight", "bold")
     .attr("alignment-baseline", "middle")
     .attr("x", function(d){
-      return xBandScale2(d.Stats) + xBandScale2.bandwidth()/2;
+      return xBandScale2(d.Stats) + xBandScale2.bandwidth()/2 - 20;
   })
   .attr("y", function(d){
-      return yLinearScale2(d[result]) - 5;
+      return yLinearScale2(d[result]) - 10;
   })
   
   
