@@ -13,8 +13,8 @@ a.navbar-brand{
 }
 
 select {
-    margin-left: 700px;
-    margin-top: 80px;
+    margin-left: 600px;
+    /* margin-top: 100px; */
 }
 
 
@@ -53,14 +53,14 @@ body{
     stroke: black;
   }
   
-  .axis path,
+.axis path,
   .axis line {
     fill: none;
     stroke: #000;
 
   }
   
-  .bar {
+.bar {
     fill: rgb(248, 250, 252);
     fill-opacity: .9;
 
@@ -75,11 +75,11 @@ body{
         fill-opacity: .7;
      }
   
-  .bar2:hover {
+.bar2:hover {
     fill: rgb(255, 0, 0);
   }
   
-  label {
+label {
     position: absolute;
     top: 10px;
     right: 10px;
