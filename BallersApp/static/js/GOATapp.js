@@ -211,7 +211,8 @@ d3.json("/api/totals").then(function(ringsdata2) {
   
   .append("text")
     .text(function(d){return(d[result])})
-    .style("font-size", "11px")
+    .style("font-size", "20px")
+    .style("font-weight", "bold")
     .attr("alignment-baseline", "middle")
     .attr("x", function(d){
       return xBandScale2(d.Stats) + xBandScale2.bandwidth()/2;
@@ -277,7 +278,7 @@ d3.json("/api/totals").then(function(ringsdata2) {
     .attr("y", 650)
     .attr("x", -550)
     .style("font-weight", "bold")
-    .text("*Players in the 1970’s and earlier have no data collected for 'assist' in their career.");
+    .text("*Players in the 1970’s and earlier have no data collected for 'steals' in their career.");
 
     chartGroup2.append("text")
     .attr("transform", "rotate(-90)")
