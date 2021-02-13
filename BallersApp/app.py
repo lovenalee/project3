@@ -245,6 +245,7 @@ class rStats(db.Model):
 
     Player = db.Column(db.String(64), primary_key=True)
     Championships = db.Column(db.Float)
+    Year = db.Column(db.String(10))
   
    
     def __repr__(self):
@@ -253,14 +254,16 @@ class rStats(db.Model):
 @app.route("/api/rings")
 def rings():
     results4 = db.session.query(rStats.Player, 
-    rStats.Championships).all()
+    rStats.Championships, 
+    rStats.Year).all()
 
     result_list4 = []
     
     for result4 in results4:
         ringdata = {
             "Player": result4[0],
-            "Titles": result4[1]
+            "Titles": result4[1],
+            "Year": result4[2]
         }
 
         result_list4.append(ringdata)
