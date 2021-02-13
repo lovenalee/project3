@@ -61,12 +61,12 @@ body{
   }
   
 .bar {
-    fill: rgb(248, 250, 252);
-    fill-opacity: .9;
+    fill-opacity: .5;
 
      }
      .bar:hover {
-        fill: rgb(238, 255, 0);
+        
+        fill-opacity: 1;
       }
 
 

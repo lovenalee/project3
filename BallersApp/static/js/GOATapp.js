@@ -121,7 +121,8 @@ d3.json("/api/rings").then(function(ringsdata) {
     .attr("y", d => yLinearScale(d.Titles))
     .attr("width", xBandScale.bandwidth())
     .attr("height", d => chartHeight - yLinearScale(d.Titles))
-    .on("click", function(d){
+    .attr("fill", d => d.Year)
+    .on("mouseover", function(d){
       
     })
     .on("click", function(d){
@@ -150,7 +151,6 @@ d3.json("/api/totals").then(function(ringsdata2) {
   ringsdata2.forEach(function(d) {
     d[result] =+ d[result];
   });
-
 
  
 
@@ -203,6 +203,7 @@ d3.json("/api/totals").then(function(ringsdata2) {
       .attr("y", d => yLinearScale2(d[result]))
       .attr("width", xBandScale2.bandwidth())
       .attr("height", d => chartHeight2 - yLinearScale2(d[result]))
+  
       
     ;
     
@@ -211,8 +212,6 @@ d3.json("/api/totals").then(function(ringsdata2) {
   .data(ringsdata2)
   .enter()
   .append("g")
-  
-  
   
   .append("text")
   .transition()
@@ -227,17 +226,10 @@ d3.json("/api/totals").then(function(ringsdata2) {
   .attr("y", function(d){
       return yLinearScale2(d[result]) - 10;
   })
-  
-  
-  
-  
-
 
 
 
 })
-
-
 
 
 .catch(function(error) {
