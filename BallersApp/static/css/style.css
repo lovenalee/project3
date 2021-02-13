@@ -199,7 +199,7 @@ position:absolute;
 }
 
 .bg::after{
-
+    pointer-events: none;
     content: "";
     background-image: url('https://images.pexels.com/photos/2277978/pexels-photo-2277978.jpeg?cs=srgb&dl=pexels-king-siberia-2277978.jpg&fm=jpg');
     background-size: cover;
