@@ -1,3 +1,4 @@
+
 #shot-chart-container {
   /* transform: rotate(90deg); */
   position: -webkit-sticky; /* Safari */
@@ -13,6 +14,7 @@
 #canvas-container {
   height: 67vh;
   margin-bottom: 20%
+  
 }
 
 #canvas {
@@ -21,10 +23,13 @@
 
 .canvas-row {
   margin-top: 3rem;
+  
 }
 
-.offset-by-one {
-  background-color: grey;
+body{
+  background-color: rgb(202, 220, 238);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: relative;
 }
 
 .trigger {
@@ -35,31 +40,10 @@
   fill: white;
 }
 
-.xAxis path {
-  stroke: white;
-}
-
-.xAxis line {
-  stroke: white;
-}
-.xAxis {
-  stroke: white;
-}
-
-.yAxis path {
-  stroke: white;
-}
-
-.yAxis line {
-  stroke: white;
-
-}
-.yAxis {
-  stroke: white;
-}
 
 
 p {
+ 
 }
 
 h4 {

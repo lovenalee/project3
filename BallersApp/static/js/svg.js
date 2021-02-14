@@ -18,7 +18,7 @@ var outcomeLookup = d3.map();
 
 // creating lookup index shotoutcome -> color
 var outcomeIndex = [{ shot: "SCORED", color: "green", opacity:.8 },
-                    { shot: "MISSED", color: "red",  opacity:.5 },
+                    { shot: "MISSED", color: "red",  opacity:.4 },
                     { shot: "BLOCKED", color: "blue" }];
 
 // setting up radius
