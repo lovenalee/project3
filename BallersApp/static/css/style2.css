@@ -1,3 +1,19 @@
+.navbar{
+  position: fixed;
+  width:100%;
+  z-index: 10000;
+}
+
+.col-md-12{
+
+  position: fixed;
+}
+
+.sg{
+
+  margin-left: 200px;
+  margin-right: 200px;
+}
 
 #shot-chart-container {
   /* transform: rotate(90deg); */
@@ -42,18 +58,8 @@ body{
 
 
 
-p {
- 
-}
-
-h4 {
-}
-
 .title {
   height: 25vh;
-}
-
-h2 {
 }
 
 #toptitle{
@@ -68,4 +74,8 @@ h2 {
 
 #scatterLine {
   float: left;
+}
+
+h4 {
+  color: white;
 }
