@@ -176,6 +176,15 @@ fill: #e75480;
 cursor: pointer;
 }
 
+/* #my_dataviz1 {
+    float: right;
+}
+
+#my_dataviz2 {
+    float: left;
+} */
+
+
 
 /* small screen adjustments*/
 @media(max-width:800px){
