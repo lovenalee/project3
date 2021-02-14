@@ -6,6 +6,26 @@
   float: left;
 }
 
+.navbar{
+  padding-top:0px;
+  padding-bottom: 0px;
+  padding-right:40px;
+}
+
+.navbar-toggler{
+  border: rgb(141, 7, 7)
+}
+
+.dropdown-menu {
+  margin: 0;
+  background-color: rgb(250, 247, 252);
+  
+}
+
+.dropdown-item:hover {
+ background-color: rgb(89, 170, 240);
+}
+
 .bg::after{
   pointer-events: none;
   content: "";
@@ -19,6 +39,12 @@
   opacity: 0.1;
 
 } 
+
+.content {
+  padding-top: 100px;
+  padding-bottom: 80px;
+  overflow: hidden;
+}
 
 .page-footer{
   background-color: rgb(92, 90, 90);
