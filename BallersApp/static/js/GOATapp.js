@@ -14,6 +14,17 @@ var chartMargin = {
 var selection = [];
 var nestedData = [];
 
+var toolTip = d3.selectAll("#goatbar1")
+.append("div")
+.classed("tooltip", true)
+.style("left", 1000 + "px")
+  .style("top", 280 + "px");
+
+
+  
+
+
+
 // Define dimensions of the chart area
 var chartWidth = svgWidth - chartMargin.left - chartMargin.right;
 var chartHeight = svgHeight - chartMargin.top - chartMargin.bottom;
@@ -122,9 +133,7 @@ d3.json("/api/rings").then(function(ringsdata) {
     .attr("width", xBandScale.bandwidth())
     .attr("height", d => chartHeight - yLinearScale(d.Titles))
     .attr("fill", d => d.Year)
-    .on("mouseover", function(d){
-      
-    })
+
     .on("click", function(d){
 
      
@@ -140,7 +149,16 @@ d3.json("/api/rings").then(function(ringsdata) {
 
       
 
+      toolTip.transition()
+      .duration(200)
+      .style("opacity", 1)
 
+    
+    
+      toolTip.html("<strong>" + d.Player + "</strong>"+ "</span>" + "<br/>"+"<br/>"  + "titles:  " + "<strong>" + d.Titles+"</strong>")
+      
+    
+    
 
 
 d3.json("/api/totals").then(function(ringsdata2) {
@@ -191,7 +209,7 @@ d3.json("/api/totals").then(function(ringsdata2) {
     .attr('dx', '-50px');
   
    
-  chartGroup2.selectAll(".bar")
+   chartGroup2.selectAll(".bar")
     .data(ringsdata2)
     .enter()
     
@@ -227,7 +245,7 @@ d3.json("/api/totals").then(function(ringsdata2) {
       return yLinearScale2(d[result]) - 10;
   })
 
-
+ 
 
 })
 
@@ -237,6 +255,7 @@ d3.json("/api/totals").then(function(ringsdata2) {
 
 
 })
+
 
 
 ;
