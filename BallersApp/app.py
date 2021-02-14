@@ -41,6 +41,10 @@ def WS():
 def teams():
     return render_template("Teams.html")
 
+@app.route("/shotchart")
+def shotcart():
+    return render_template("shot.html")
+
 @app.route("/introduction")
 def introduction():
     return render_template("introduction.html")
@@ -113,7 +117,7 @@ class tStats2018(db.Model):
 
 @app.route("/api/tStats2018")
 def tStats_2018():
-    results6 = db.session.query(
+    result6 = db.session.query(
     tStats2018.ID,
     tStats2018.Team,
     tStats2018.TeamPoints, 
@@ -339,6 +343,48 @@ def totals():
     return jsonify(result_list5)
 
 
+class shotStats(db.Model):
+    __tablename__ = 'shot'
+
+    shotoutcome = db.Column(db.String(64))
+    locx = db.Column(db.Float)
+    locy = db.Column(db.Float)
+    quarter = db.Column(db.Float)
+    Player = db.Column(db.String(64), primary_key=True)
+    time = db.Column(db.String(10))
+    Team = db.Column(db.String(10))
+  
+   
+    def __repr__(self):
+        return '<shotStats %r>' % (self.name)
+
+@app.route("/api/shots")
+def shot():
+    result7 = db.session.query(shotStats.shotoutcome, 
+    shotStats.locx, 
+    shotStats.locy, 
+    shotStats.quarter,
+    shotStats.Player,
+    shotStats.time,
+    shotStats.Team).all()
+    
+
+    result_list7 = []
+    
+    for result7 in result7:
+        shotdata = {
+            "shotoutcome": result7[0],
+            "locx": result7[1],
+            "locy": result7[2],
+            "quarter": result7[3],
+            "Player": result7[4],
+            "time": result7[5],
+            "Team": result7[6],
+        }
+
+        result_list7.append(shotdata)
+
+    return jsonify(result_list7)
 
 
 
