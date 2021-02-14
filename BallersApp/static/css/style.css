@@ -43,7 +43,7 @@ h2{
 }
 
 body{
-    background-color: rgb(187, 216, 245);
+    background-color: rgb(202, 220, 238);
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     position: relative;
 }
@@ -213,6 +213,8 @@ stroke: rgb(187, 216, 245);
 fill: rgb(243, 8, 8);
 transform: rotate(-90deg);
 position:absolute;
+font-size:small;
+
 
 }
 
