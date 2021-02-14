@@ -221,20 +221,16 @@ var svg2 = d3.select("#scatterLine")
     // svg.append("g")
     svg2.append("g")
       .call(d3.axisRight(y2));
-
-    // Initialize line with group a
+    
+    // Initialize line with group
     // var line = svg
     var line = svg2
       .append('g')
       .append("path")
         .datum(data)
         .attr("d", d3.line()
-          .x(function(d) {
-            
-            //console.log(d);
-            
-            return x(+d.ID) })
-          .y(function(d) { return y(+d.Points) })
+          .x(function(d) {return x(+d.ID) })
+          .y(function(d) {return y(+d.Points) })
         )
         .attr("stroke", "black")
         .style("stroke-width", 4)
@@ -251,12 +247,12 @@ var svg2 = d3.select("#scatterLine")
         .attr("cy", function(d) { return y(+d.Points) })
         .attr("r", 7)
         .style("fill", "#69b3a2")
-      .append('title') // Tooltip
-        .text(function (d) { return d.Team +
-                  '\nPoints: ' + (d['Points']) +
-                  '\nAssits: ' + (d['Assists']) +
-                  '\nField Goals: ' + (d['FieldGoals']) +
-                  '\nRebounds: ' + (d['Rebounds'])})
+      // .append('title') // Tooltip
+      //   .text(function (d) { return d.Team +
+      //             '\nPoints: ' + (d['Points']) +
+      //             '\nAssits: ' + (d['Assists']) +
+      //             '\nField Goals: ' + (d['FieldGoals']) +
+      //             '\nRebounds: ' + (d['Rebounds'])})
 
     // A function that update the chart
     function update(selectedGroup) {

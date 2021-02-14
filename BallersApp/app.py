@@ -21,14 +21,6 @@ def home():
 def tStats():
     return render_template("tStats.html")
 
-@app.route("/teamStats")
-def teamStats():
-    return render_template("teamStats.html")
-
-@app.route("/teamStats2")
-def teamStats2():
-    return render_template("tStatScatterLine.html")
-
 @app.route("/goat")
 def GOAT():
     return render_template("GOAT.html")
