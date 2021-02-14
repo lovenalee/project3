@@ -1,14 +1,14 @@
 
 // Define SVG area dimensions
-var svgWidth = 1000;
-var svgHeight = 700;
+var svgWidth = 500;
+var svgHeight = 500;
 
 // Define the chart's margins as an object
 var chartMargin = {
-  top: 200,
-  right: 20,
-  bottom: 100,
-  left: 200
+  top: 50,
+  right:10,
+  bottom: 200,
+  left: 50
 };
 
 var selection = [];
@@ -17,7 +17,7 @@ var nestedData = [];
 var toolTip = d3.selectAll("#goatbar1")
 .append("div")
 .classed("tooltip", true)
-.style("left", 1000 + "px")
+.style("left", 800 + "px")
   .style("top", 280 + "px");
 
 
@@ -41,19 +41,20 @@ function extractValue(arr, prop) {
 // Select body, append SVG area to it, and set the dimensions
 var svg = d3.select("#goatbar1")
   .append("svg")
-  .attr("height", svgHeight)
-  .attr("width", svgWidth);
+  .attr("PreserveAspectRatio", "xMinYMin meet")
+  .attr("viewBox", "0 0 600 400")
+  .classed("svg-content-responive", true);
 
   // Define SVG area dimensions
-var svgWidth2 = 900;
-var svgHeight2 = 900;
+var svgWidth2 = 500;
+var svgHeight2 = 400;
 
 // Define the chart's margins as an object
 var chartMargin2 = {
-  top2: 200,
-  right2: 100,
-  bottom2: 100,
-  left2: 200
+  top2: 50,
+  right2: 50,
+  bottom2: 75,
+  left2: 150
 };
 
 var selection = [];
@@ -66,9 +67,10 @@ var chartHeight2 = svgHeight2 - chartMargin2.top2 - chartMargin2.bottom2;
 
 var svg2 = d3.select("#goatbar2")
   .append("svg")
-  .attr("height", svgHeight2)
-  .attr("width", svgWidth2)
-  .attr("transform", (d,i) => `translate(${(i*30)+30},30) rotate(${d})`);
+  .attr("PreserveAspectRatio", "xMinYMin meet")
+  .attr("viewBox", "0 0 600 400")
+  .attr("transform", (d,i) => `translate(${(i*30)+30},30) rotate(${d})`)
+  .classed("svg-content-responive2", true)
 
 
 var chartGroup2 = svg2.append("g")
@@ -120,7 +122,8 @@ d3.json("/api/rings").then(function(ringsdata) {
   chartGroup.append("g")
     .attr("transform", `translate(0, ${chartHeight})`)
     .call(bottomAxis);
-
+    
+  
   
     
     chartGroup.selectAll(".bar")
@@ -279,14 +282,14 @@ d3.json("/api/totals").then(function(ringsdata2) {
     .text("Players");
 
     chartGroup.append("text")
-    .attr("y", -100)
-    .attr("x", 350)
+    .attr("y", 50)
+    .attr("x", 320)
     .style("font-weight", "bold")
     .text("Greatest Basketball Players");
 
     chartGroup.append("text")
-    .attr("y", -50)
-    .attr("x", 375)
+    .attr("y", 70)
+    .attr("x", 320)
     .style("font-weight", "bold")
     .text("(Championship Wins)");
    
