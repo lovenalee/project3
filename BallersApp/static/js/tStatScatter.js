@@ -76,7 +76,7 @@ d3.json("/api/tStats").then(function(data) {
     d3.selectAll(".dot")
       .transition()
       .duration(200)
-      .style("fill", "black")
+      .style("fill", "grey")
       .attr("r", 3)
 
     d3.selectAll("." + colour_group)
@@ -93,6 +93,7 @@ d3.json("/api/tStats").then(function(data) {
       .duration(200)
       .style("fill", "grey")
       .attr("r", 5 )
+        
   }
 
   // Add dots
@@ -100,6 +101,7 @@ d3.json("/api/tStats").then(function(data) {
     .selectAll("dot")
     .data(data)
     .enter()
+
     .append("circle")
       .attr("class", function (d) {
 
@@ -116,14 +118,14 @@ d3.json("/api/tStats").then(function(data) {
         } else {
           colour_group = "five"
         }        
-        
-        
+
         return "dot " + colour_group } )
+
       .attr("cx", function (d) { return x(d.Wins); } )
       .attr("cy", function (d) { return y(d.Points); } )
       .attr("r", 5)
       .style("fill", function (d) { 
-        
+  
         var colour_group;
         
         if (d.Seasons === 2014) {
@@ -139,7 +141,16 @@ d3.json("/api/tStats").then(function(data) {
         }
         
         return color(colour_group) } )
+        
     .on("mouseover", highlight)
+
+    .append('title') // Tooltip
+      .text(function (d) { return d.TeamName +
+                      '\nSeason: ' + (d['Seasons']) +
+                      '\nTeam: ' + (d['Team']) +
+                      '\nPoints: ' + (d['Points']) +
+                      '\nWins: ' + (d['Wins']) })
+
     .on("mouseleave", doNotHighlight )
 
 })
