@@ -1,16 +1,12 @@
 // SCATTER ============================================================================
 
-// set the dimensions and margins of the graph
-// var margin = {top: 40, right: 200, bottom: 100, left: 200},
-//     width = 1100 - margin.left - margin.right,
-//     height = 600 - margin.top - margin.bottom;
+// set the dimensions and margins for this graph
 
-var margin = {top: 50, right: 30, bottom: 30, left: 40},
-    width = 600 - margin.left - margin.right,
+var margin = {top: 50, right: 90, bottom: 30, left: 50},
+    width = 850 - margin.left - margin.right,
     height = 450 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-// var svg = d3.select("#my_dataviz1")
 var svg1 = d3.select("#scatter")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -27,35 +23,39 @@ d3.json("/api/tStats").then(function(data) {
   var x = d3.scaleLinear()
     .domain([0, 90]) //wins
     .range([ 0, width ]);
-  // svg.append("g")
   svg1.append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x));
 
   // Add X axis label:
-  // svg.append("text")
   svg1.append("text")
     .attr("text-anchor", "end")
-    .attr("x", width/2 + margin.bottom + 10)
-    .attr("y", height + margin.top + 5)
-    .text("Team Wins/Season");
+    .attr("x", width/2 + margin.bottom - 5)
+    .attr("y", height + margin.top - 10)
+    .text("Team Wins by Seasons");
 
   // Y axis label:
-  // svg.append("text")
   svg1.append("text")
   .attr("text-anchor", "end")
   .attr("transform", "rotate(-90)")
   .attr("y", -margin.left + 75)
   .attr("x", -margin.top - height/2 + 90)
-  .text("Team Point Values")
+  .text("Teams Points Values")
 
   // Add Y axis
   var y = d3.scaleLinear()
-    .domain([0, 9000]) //Points
+    .domain([0, 9000])
     .range([ height, 0]);
-  // svg.append("g")
   svg1.append("g")
     .call(d3.axisLeft(y));
+
+  svg1.append("text")
+    .attr("x", (width / 2))             
+    .attr("y", 0 - (margin.top / 2))
+    .attr("text-anchor", "middle")  
+    .style("font-size", "16px") 
+    .style("text-decoration", "underline")  
+    .text("Team Points to Wins");
 
 
   // Color scale for selected seasons
@@ -105,7 +105,6 @@ d3.json("/api/tStats").then(function(data) {
   }
 
   // Add dots
-  // svg.append("g")
   svg1.append("g")
     .selectAll("dot")
     .data(data)
@@ -157,22 +156,18 @@ d3.json("/api/tStats").then(function(data) {
                         '\nSeason: ' + (d['Seasons']) +
                         '\nPoints: ' + (d['Points']) +
                         '\nWins: ' + (d['Wins']) })
-
+}).catch(function(error) {
+  console.log(error);
 });
 
 // SCATTERLINE ========================================================================
 
-// set the dimensions and margins of the graph
-// var margin = {top: 20, right: 10, bottom: 30, left: 10},
-//     width = 650 - margin.left - margin.right,
-//     height = 500 - margin.top - margin.bottom;
-
-var margin2 = {top: 50, right: 20, bottom: 30, left: 50},
-    width = 550 - margin2.left - margin2.right,
+// set the dimensions and margins of this graph
+var margin2 = {top: 50, right: 10, bottom: 30, left: 100},
+    width = 700 - margin2.left - margin2.right,
     height = 400 - margin2.top - margin2.bottom;
 
 // append the svg object to the body of the page
-// var svg = d3.select("#my_dataviz2")
 var svg2 = d3.select("#scatterLine")
   .append("svg")
     .attr("width", width + margin2.left + margin2.right)
@@ -183,7 +178,6 @@ var svg2 = d3.select("#scatterLine")
 
 //Read the data
  d3.json("/api/tStats2018").then(function(data) {
-// d3.json("../assets/Team_Stats_2018.csv").then(function(data) {
     console.log(data)
     // List of groups (here I have one group per column)
     var allGroup = ["Assists", "FieldGoals", "Points", "Rebounds"]
@@ -201,29 +195,42 @@ var svg2 = d3.select("#scatterLine")
     var x = d3.scaleLinear()
       .domain([0,30])
       .range([ 0, width ]);
-    // svg.append("g")
     svg2.append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x));
-
-    // Add Y1 axis
+    
+      // Add Y1 axis
     var y = d3.scaleLinear()
       .domain( [0,4500])
       .range([ height, 0 ]);
-    // svg.append("g")
     svg2.append("g")
       .call(d3.axisLeft(y));
+  
+    // Add X axis label:
+    svg2.append("text")
+      .attr("text-anchor", "end")
+      .attr("x", width/2 + margin.bottom - 5)
+      .attr("y", height + margin.top - 20)
+      .text("Teams");
 
-    // Add Y2 axis
-    var y2 = d3.scaleLinear()
-      .domain( [0,1500])
-      .range([ height, 0 ]);
-    // svg.append("g")
-    svg2.append("g")
-      .call(d3.axisRight(y2));
-    
+  // Y axis label:
+    svg2.append("text")
+      .attr("text-anchor", "end")
+      .attr("transform", "rotate(-90)")
+      .attr("y", -margin.left - 20)
+      .attr("x", -margin.top - height + 250)
+      .text("Teams Points Values")
+
+    svg2.append("text")
+      .attr("x", (width / 2))             
+      .attr("y", 0 - (margin.top / 2))
+      .attr("text-anchor", "middle")  
+      .style("font-size", "16px") 
+      .style("text-decoration", "underline")  
+      .text("Team Stats");
+
+
     // Initialize line with group
-    // var line = svg
     var line = svg2
       .append('g')
       .append("path")
@@ -237,14 +244,13 @@ var svg2 = d3.select("#scatterLine")
         .style("fill", "none")
 
     // Initialize dots with group a
-    // var dot = svg
     var dot = svg2
       .selectAll('circle')
       .data(data)
       .enter()
       .append('circle')
-        .attr("cx", function(d) { return x(+d.ID) })
-        .attr("cy", function(d) { return y(+d.Points) })
+        .attr("cx", function(d) {return x(+d.ID)})
+        .attr("cy", function(d) {return y(+d.Points)})
         .attr("r", 7)
         .style("fill", "#69b3a2")
       // .append('title') // Tooltip
@@ -266,10 +272,8 @@ var svg2 = d3.select("#scatterLine")
           .transition()
           .duration(1000)
           .attr("d", d3.line()
-            .x(function(d) { 
-              
-              return x(+d.ID) })
-            .y(function(d) { return y(+d.value) })
+            .x(function(d) {return x(+d.ID) })
+            .y(function(d) { return y(+d.value)})
           )
       dot
         .data(dataFilter)
@@ -288,4 +292,6 @@ var svg2 = d3.select("#scatterLine")
 
     })
 
-})
+}).catch(function(error) {
+  console.log(error);
+});
