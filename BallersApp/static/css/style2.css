@@ -56,8 +56,6 @@ body{
   fill: white;
 }
 
-
-
 .title {
   height: 25vh;
 }
@@ -66,14 +64,6 @@ body{
 
   height: 100px;
 
-}
-
-#scatter {
-  float: right;
-}
-
-#scatterLine {
-  float: left;
 }
 
 h4 {
