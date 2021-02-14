@@ -155,7 +155,7 @@ d3.json("/api/rings").then(function(ringsdata) {
 
     
     
-      toolTip.html("<strong>" + d.Player + "</strong>"+ "</span>" + "<br/>"+"<br/>"  + "titles:  " + "<strong>" + d.Titles+"</strong>")
+      toolTip.html("<span>" + "<strong>" + d.Player + "</strong>"+ "</span>" + "<br/>"+"<br/>"  + "titles:  " + "<strong>" + d.Titles+"</strong>" + "<br/>"+"<br/>"  + "dominant decade:  " + "<strong>" + d.Decade+"</strong>")
       
     
     

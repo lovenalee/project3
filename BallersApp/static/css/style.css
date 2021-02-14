@@ -66,7 +66,7 @@ body{
      }
      .bar:hover {
         
-        fill-opacity: 1;
+        fill-opacity: 100%;
       }
 
 
