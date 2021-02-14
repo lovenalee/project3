@@ -176,15 +176,13 @@ fill: #e75480;
 cursor: pointer;
 }
 
-/* #my_dataviz1 {
-    float: right;
+#scatter {
+    float: left;
 }
 
-#my_dataviz2 {
-    float: left;
-} */
-
-
+#scatterLine {
+    float: right;
+}
 
 /* small screen adjustments*/
 @media(max-width:800px){

@@ -77,3 +77,11 @@ h2 {
   height: 100px;
 
 }
+
+#scatter {
+  float: right;
+}
+
+#scatterLine {
+  float: left;
+}

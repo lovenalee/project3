@@ -114,7 +114,7 @@ class tStats2018(db.Model):
 
 @app.route("/api/tStats2018")
 def tStats_2018():
-    result6 = db.session.query(
+    results6 = db.session.query(
     tStats2018.ID,
     tStats2018.Team,
     tStats2018.TeamPoints, 
