@@ -1,6 +1,6 @@
 // SCATTER ============================================================================
 
-// set the dimensions and margins for this graph
+// set the dimensions and margins for scatter graph
 
 var margin = {top: 50, right: 90, bottom: 30, left: 50},
     width = 850 - margin.left - margin.right,
@@ -12,8 +12,7 @@ var svg1 = d3.select("#scatter")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
+    .attr("transform","translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
 d3.json("/api/tStats").then(function(data) {
@@ -63,7 +62,7 @@ d3.json("/api/tStats").then(function(data) {
     .domain(["one", "two", "three", "four", "five"])
     .range([ "red", "orange", "green", "blue", "yellow"])
 
-
+  
   // Highlight the season that is hovered
   var highlight = function(d){
 
@@ -127,7 +126,7 @@ d3.json("/api/tStats").then(function(data) {
         }        
 
         return "dot " + colour_group } )
-
+      
       .attr("cx", function (d) { return x(d.Wins); } )
       .attr("cy", function (d) { return y(d.Points); } )
       .attr("r", 5)
@@ -162,7 +161,7 @@ d3.json("/api/tStats").then(function(data) {
 
 // SCATTERLINE ========================================================================
 
-// set the dimensions and margins of this graph
+// set the dimensions and margins for scatter line graph
 var margin2 = {top: 50, right: 10, bottom: 30, left: 100},
     width = 700 - margin2.left - margin2.right,
     height = 400 - margin2.top - margin2.bottom;
