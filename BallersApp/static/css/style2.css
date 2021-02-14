@@ -4,6 +4,14 @@
   z-index: 10000;
 }
 
+a.navbar-brand{
+  margin-left: 10px;
+  padding: 10px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 25px;
+  font-weight: bold;
+}
+
 .col-md-12{
 
   position: fixed;

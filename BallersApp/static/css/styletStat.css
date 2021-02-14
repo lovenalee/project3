@@ -7,19 +7,17 @@
 }
 
 .navbar{
-  padding-top:0px;
-  padding-bottom: 0px;
-  padding-right:40px;
+  position: fixed;
+  width:100%;
+  z-index: 10000;
 }
 
-.navbar-toggler{
-  border: rgb(141, 7, 7)
-}
-
-.dropdown-menu {
-  margin: 0;
-  background-color: rgb(250, 247, 252);
-  
+a.navbar-brand{
+  margin-left: 10px;
+  padding: 10px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .dropdown-item:hover {
