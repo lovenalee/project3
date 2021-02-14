@@ -176,14 +176,6 @@ fill: #e75480;
 cursor: pointer;
 }
 
-#scatter {
-    float: left;
-}
-
-#scatterLine {
-    float: right;
-}
-
 /* small screen adjustments*/
 @media(max-width:800px){
     .navbar.bg-light{
