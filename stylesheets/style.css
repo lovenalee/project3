@@ -1,0 +1,73 @@
+#shot-chart-container {
+  /* transform: rotate(90deg); */
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 1%;
+  height: 67vh;
+}
+
+#shot-chart {
+  /* border: 1pt solid black; */
+}
+
+#canvas-container {
+  height: 67vh;
+  margin-bottom: 20%
+}
+
+#canvas {
+  border: 1pt solid black;
+}
+
+.canvas-row {
+  margin-top: 3rem;
+}
+
+.offset-by-one {
+  background-color: grey;
+}
+
+.trigger {
+  border: 1pt solid black;
+}
+
+.label {
+  fill: white;
+}
+
+.xAxis path {
+  stroke: white;
+}
+
+.xAxis line {
+  stroke: white;
+}
+.xAxis {
+  stroke: white;
+}
+
+.yAxis path {
+  stroke: white;
+}
+
+.yAxis line {
+  stroke: white;
+
+}
+.yAxis {
+  stroke: white;
+}
+
+
+p {
+}
+
+h4 {
+}
+
+.title {
+  height: 25vh;
+}
+
+h2 {
+}

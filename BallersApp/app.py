@@ -41,13 +41,10 @@ def WS():
 def teams():
     return render_template("Teams.html")
 
-@app.route("/shotchart")
-def shotcart():
-    return render_template("shot.html")
 
-@app.route("/introduction")
+@app.route("/shot")
 def introduction():
-    return render_template("introduction.html")
+    return render_template("shot.html")
 
 class tStats(db.Model):
     __tablename__ = 'Team_Stats'
