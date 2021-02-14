@@ -5,8 +5,8 @@
 //     width = 1100 - margin.left - margin.right,
 //     height = 600 - margin.top - margin.bottom;
 
-var margin = {top: 10, right: 30, bottom: 30, left: 40},
-    width = 700 - margin.left - margin.right,
+var margin = {top: 50, right: 30, bottom: 30, left: 40},
+    width = 600 - margin.left - margin.right,
     height = 450 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
@@ -36,9 +36,9 @@ d3.json("/api/tStats").then(function(data) {
   // svg.append("text")
   svg1.append("text")
     .attr("text-anchor", "end")
-    .attr("x", width/2 + margin.bottom + 25)
-    .attr("y", height + margin.top + 20)
-    .text("Team Wins per Season");
+    .attr("x", width/2 + margin.bottom + 10)
+    .attr("y", height + margin.top + 5)
+    .text("Team Wins/Season");
 
   // Y axis label:
   // svg.append("text")
@@ -110,7 +110,6 @@ d3.json("/api/tStats").then(function(data) {
     .selectAll("dot")
     .data(data)
     .enter()
-
     .append("circle")
       .attr("class", function (d) {
 
@@ -150,17 +149,14 @@ d3.json("/api/tStats").then(function(data) {
         }
         
         return color(colour_group) } )
-        
+
     .on("mouseover", highlight)
-
-    .append('title') // Tooltip
-      .text(function (d) { return d.TeamName +
-                      '\nSeason: ' + (d['Seasons']) +
-                      '\nTeam: ' + (d['Team']) +
-                      '\nPoints: ' + (d['Points']) +
-                      '\nWins: ' + (d['Wins']) })
-
     .on("mouseleave", doNotHighlight )
+      .append('title') // Tooltip
+        .text(function (d) { return d.TeamName +
+                        '\nSeason: ' + (d['Seasons']) +
+                        '\nPoints: ' + (d['Points']) +
+                        '\nWins: ' + (d['Wins']) })
 
 });
 
@@ -171,7 +167,7 @@ d3.json("/api/tStats").then(function(data) {
 //     width = 650 - margin.left - margin.right,
 //     height = 500 - margin.top - margin.bottom;
 
-var margin2 = {top: 10, right: 20, bottom: 30, left: 50},
+var margin2 = {top: 50, right: 20, bottom: 30, left: 50},
     width = 550 - margin2.left - margin2.right,
     height = 400 - margin2.top - margin2.bottom;
 
@@ -255,7 +251,12 @@ var svg2 = d3.select("#scatterLine")
         .attr("cy", function(d) { return y(+d.Points) })
         .attr("r", 7)
         .style("fill", "#69b3a2")
-
+      .append('title') // Tooltip
+        .text(function (d) { return d.Team +
+                  '\nPoints: ' + (d['Points']) +
+                  '\nAssits: ' + (d['Assists']) +
+                  '\nField Goals: ' + (d['FieldGoals']) +
+                  '\nRebounds: ' + (d['Rebounds'])})
 
     // A function that update the chart
     function update(selectedGroup) {
@@ -288,6 +289,7 @@ var svg2 = d3.select("#scatterLine")
         var selectedOption = d3.select(this).property("value")
         // run the updateChart function with this selected option
         update(selectedOption)
+
     })
 
 })
