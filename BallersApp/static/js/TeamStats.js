@@ -4,7 +4,7 @@
 
 var margin = {top: 100, right: 90, bottom: 30, left: 50},
     width = 850 - margin.left - margin.right,
-    height = 900 - margin.top - margin.bottom;
+    height = 980 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 var svg1 = d3.select("#scatter")
@@ -24,14 +24,16 @@ d3.json("/api/tStats").then(function(data) {
     .range([ 0, width ]);
   svg1.append("g")
     .attr("transform", "translate(0," + height + ")")
+    .style("font-size", "14px")
     .call(d3.axisBottom(x));
 
   // Add X axis label:
   svg1.append("text")
     .attr("text-anchor", "end")
     .attr("x", width/2 + margin.bottom + 10)
-    .attr("y", height + margin.top - 50)
-    .text("Team Wins by Seasons");
+    .attr("y", height + margin.top - 120)
+    .text("Team Wins by Seasons")
+    .style("font-size", "16px");
 
   // Y axis label:
   svg1.append("text")
@@ -46,6 +48,7 @@ d3.json("/api/tStats").then(function(data) {
     .domain([0, 9000])
     .range([ height, 0]);
   svg1.append("g")
+    .style("font-size", "16px")
     .call(d3.axisLeft(y));
 
   svg1.append("text")
@@ -53,8 +56,9 @@ d3.json("/api/tStats").then(function(data) {
     .attr("y", 0 - (margin.top / 2))
     .attr("text-anchor", "middle")  
     .style("font-size", "16px") 
-    .style("text-decoration", "underline")  
-    .text("Team Points to Wins");
+    .style("text-decoration", "underline")
+    .style("font-size", "18px")  
+    .text("2014 to 2018 Team Points and Wins");
 
 
   // Color scale for selected seasons
@@ -164,7 +168,7 @@ d3.json("/api/tStats").then(function(data) {
 // set the dimensions and margins for scatter line graph
 var margin2 = {top: 100, right: 10, bottom: 30, left: 100},
     width = 800 - margin2.left - margin2.right,
-    height = 750 - margin2.top - margin2.bottom;
+    height = 820 - margin2.top - margin2.bottom;
 
 // append the svg object to the body of the page
 var svg2 = d3.select("#scatterLine")
@@ -196,6 +200,7 @@ var svg2 = d3.select("#scatterLine")
       .range([ 0, width ]);
     svg2.append("g")
       .attr("transform", "translate(0," + height + ")")
+      .style("font-size", "16px")
       .call(d3.axisBottom(x));
     
       // Add Y1 axis
@@ -203,28 +208,30 @@ var svg2 = d3.select("#scatterLine")
       .domain( [0,4500])
       .range([ height, 0 ]);
     svg2.append("g")
-      .call(d3.axisLeft(y));
+      .call(d3.axisLeft(y))
+      .style("font-size", "16px");
   
     // Add X axis label:
     svg2.append("text")
       .attr("text-anchor", "end")
-      .attr("x", width/2 + margin.bottom  + 15)
-      .attr("y", height + margin.top - 70)
-      .text("Teams");
+      .attr("x", width/2 + margin.bottom  + 20)
+      .attr("y", height + margin.top - 115)
+      .text("Teams")
+      .style("font-size", "20px");
 
   // Y axis label:
     svg2.append("text")
       .attr("text-anchor", "end")
       .attr("transform", "rotate(-90)")
-      .attr("y", -margin.left - 20)
-      .attr("x", -margin.top - height + 250)
+      .attr("y", -margin.left - 10)
+      .attr("x", -margin.top - height + 300)
       .text("Teams Points Values")
 
     svg2.append("text")
       .attr("x", (width / 2))             
       .attr("y", 0 - (margin.top / 2))
       .attr("text-anchor", "middle")  
-      .style("font-size", "16px") 
+      .style("font-size", "20px") 
       .style("text-decoration", "underline")  
       .text("Team Stats");
 
@@ -239,7 +246,7 @@ var svg2 = d3.select("#scatterLine")
           .y(function(d) {return y(+d.Points) })
         )
         .attr("stroke", "black")
-        .style("stroke-width", 4)
+        .style("stroke-width", 3)
         .style("fill", "none")
 
     // Initialize dots with group a

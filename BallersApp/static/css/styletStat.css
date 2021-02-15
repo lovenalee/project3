@@ -46,7 +46,7 @@ body {
   overflow: hidden;
 } */
 
-.page-footer{
+/* .page-footer{
   background-color: rgb(92, 90, 90);
   margin-top: 10px;
   padding-bottom: 10px;
@@ -57,11 +57,11 @@ body {
 .footer-copyright{
   color:white;
   border-top: 5px solid rgb(9, 47, 218)
-}
+} */
 
 /* small screen adjustments*/
 @media(max-width:800px){
-  .navbar.bg-light{
+  body{
       background-color: rgb(224, 6, 6);    
   }
 
