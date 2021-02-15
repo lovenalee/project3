@@ -109,7 +109,7 @@ d3.json("api/ws").then(function(wsdata) {
 
 // append the svg object to the body of the page
 var svg2 = d3.select("#WS_dataviz")
-  .append("svg2")
+  .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
@@ -130,7 +130,7 @@ d3.json("api/ws").then(function(wsdata) {
   var x = d3.scaleLinear()
     .domain(d3.extent(wsdata, function(d) { return d.Year; }))
     .range([ 0, width ]);
-  svg.append("g")
+  svg2.append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x).ticks(5));
 
@@ -138,7 +138,7 @@ d3.json("api/ws").then(function(wsdata) {
   var y = d3.scaleLinear()
     .domain([0, d3.max(wsdata, function(d) { return +d.WSmean; })])
     .range([ height, 0 ]);
-  svg.append("g")
+  svg2.append("g")
     .call(d3.axisLeft(y));
 
   // color palette
@@ -148,7 +148,7 @@ d3.json("api/ws").then(function(wsdata) {
     .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00'])
 
   // Draw the line
-  svg.selectAll(".line")
+  svg2.selectAll(".line")
       .data(sumstat)
       .enter()
       .append("path")
