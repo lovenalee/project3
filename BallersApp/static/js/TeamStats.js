@@ -2,9 +2,9 @@
 
 // set the dimensions and margins for scatter graph
 
-var margin = {top: 50, right: 90, bottom: 30, left: 50},
+var margin = {top: 100, right: 90, bottom: 30, left: 50},
     width = 850 - margin.left - margin.right,
-    height = 450 - margin.top - margin.bottom;
+    height = 900 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 var svg1 = d3.select("#scatter")
@@ -29,8 +29,8 @@ d3.json("/api/tStats").then(function(data) {
   // Add X axis label:
   svg1.append("text")
     .attr("text-anchor", "end")
-    .attr("x", width/2 + margin.bottom - 5)
-    .attr("y", height + margin.top - 10)
+    .attr("x", width/2 + margin.bottom + 10)
+    .attr("y", height + margin.top - 50)
     .text("Team Wins by Seasons");
 
   // Y axis label:
@@ -162,9 +162,9 @@ d3.json("/api/tStats").then(function(data) {
 // SCATTERLINE ========================================================================
 
 // set the dimensions and margins for scatter line graph
-var margin2 = {top: 50, right: 10, bottom: 30, left: 100},
-    width = 700 - margin2.left - margin2.right,
-    height = 400 - margin2.top - margin2.bottom;
+var margin2 = {top: 100, right: 10, bottom: 30, left: 100},
+    width = 800 - margin2.left - margin2.right,
+    height = 750 - margin2.top - margin2.bottom;
 
 // append the svg object to the body of the page
 var svg2 = d3.select("#scatterLine")
@@ -208,8 +208,8 @@ var svg2 = d3.select("#scatterLine")
     // Add X axis label:
     svg2.append("text")
       .attr("text-anchor", "end")
-      .attr("x", width/2 + margin.bottom - 5)
-      .attr("y", height + margin.top - 20)
+      .attr("x", width/2 + margin.bottom  + 15)
+      .attr("y", height + margin.top - 70)
       .text("Teams");
 
   // Y axis label:

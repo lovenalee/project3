@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styletStat.css') }}">
 </head>
 
-
 <body class='bg'>     
 
     <nav class="navbar navbar-dark bg-dark">
@@ -37,21 +36,27 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="goat">Top Playoffs Performers</a>
                 <a class="dropdown-item" href="WS">Historical Win Share for Each Position</a>
-                <a class="dropdown-item" href="tStats">Team Status</a>
+                <a class="dropdown-item" href="tStats">Team Stats</a>
                 </div>
             </li>
             </ul>
         </div>
     </nav>
 
-    <div class="container content">   
-
+    <!-- <div class="container content">    -->
+        <br>
+        <br>
         <select id="selectButton" ></select>
         <div id="scatterLine"></div>
         
         <div id="scatter"></div>
 
-    </div>
+    <!-- </div> -->
+
+    <!-- <footer class="page-footer font-small footer-dark"> 
+        <div class="footer-copyright text-center py-3">Presentated by George, Sharifah, Jim, Vena</div>  
+    </footer> -->
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
@@ -60,12 +65,8 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="{{ url_for('static', filename='js/TeamStats.js') }}"></script>
-    
-    <footer class="page-footer font-small footer-dark">
-        <div class="footer-copyright text-center py-3">Presentated by George, Sharifah, Jim, Vena</div>      
-    </footer>
-        
-</body>    
+
+</body> 
 
 </html>
 
