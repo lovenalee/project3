@@ -226,6 +226,7 @@ var svg2 = d3.select("#scatterLine")
       .attr("y", -margin.left - 10)
       .attr("x", -margin.top - height + 300)
       .text("Teams Points Values")
+      .style("font-size", "18px") 
 
     svg2.append("text")
       .attr("x", (width / 2))             
@@ -235,8 +236,7 @@ var svg2 = d3.select("#scatterLine")
       .style("text-decoration", "underline")  
       .text("Team Stats");
 
-
-    // Initialize line with group
+    // Initialize line with a stat
     var line = svg2
       .append('g')
       .append("path")
@@ -249,7 +249,7 @@ var svg2 = d3.select("#scatterLine")
         .style("stroke-width", 3)
         .style("fill", "none")
 
-    // Initialize dots with group a
+    // Initialize dots with a stat
     var dot = svg2
       .selectAll('circle')
       .data(data)
@@ -258,7 +258,22 @@ var svg2 = d3.select("#scatterLine")
         .attr("cx", function(d) {return x(+d.ID)})
         .attr("cy", function(d) {return y(+d.Points)})
         .attr("r", 7)
-        .style("fill", "#69b3a2")
+        .style("fill", "royalblue")
+
+      // .on('mouseover', function () {
+      //   d3.select(this)
+      //     .transition()
+      //     .duration(500)
+      //     .attr('r',20)
+      //     .attr('stroke-width',3)
+      // })
+      // .on('mouseout', function () {
+      //   d3.select(this)
+      //     .transition()
+      //     .duration(500)
+      //     .attr('r',10)
+      //     .attr('stroke-width',1)
+      // })
       // .append('title') // Tooltip
       //   .text(function (d) { return d.Team +
       //             '\nPoints: ' + (d['Points']) +
@@ -269,8 +284,10 @@ var svg2 = d3.select("#scatterLine")
     // A function that update the chart
     function update(selectedGroup) {
 
-      // Create new data with the selection?
-      var dataFilter = data.map(function(d){return {ID: d.ID, value:d[selectedGroup]} })
+      // Create new data with the selection
+      var dataFilter = data.map(function(d){
+
+        return {ID: d.ID, value:d[selectedGroup]}})
 
       // Give these new data to update line
       line
@@ -280,14 +297,35 @@ var svg2 = d3.select("#scatterLine")
           .attr("d", d3.line()
             .x(function(d) {return x(+d.ID) })
             .y(function(d) { return y(+d.value)})
+
           )
       dot
         .data(dataFilter)
         .transition()
         .duration(1000)
           .attr("cx", function(d) { return x(+d.ID) })
-          .attr("cy", function(d) { return y(+d.value) })
-    }
+          .attr("cy", function(d) { return y(+d.value)})
+      }
+
+      
+      // var toolTip = d3.tip()
+      // // .attr("class", "tooltip")
+      //   .offset([80, -60])
+      //   .html(function(d) {
+      //     return (`${d.Team}<br>${d[selectedGroup]}`);
+      //   });
+
+      //   selectedGroup.call(toolTip);
+
+      //   selectedGroup.on("mouseover", function(data) {
+      //   toolTip.show(data);
+      //   })
+      //   // onmouseout event
+      //   .on("mouseout", function(data) {
+      //     toolTip.hide(data);
+      //   });
+
+      //   return selectedGroup;
 
     // When the button is changed, run the updateChart function
     d3.select("#selectButton").on("change", function(d) {
@@ -295,7 +333,6 @@ var svg2 = d3.select("#scatterLine")
         var selectedOption = d3.select(this).property("value")
         // run the updateChart function with this selected option
         update(selectedOption)
-
     })
 
 }).catch(function(error) {
