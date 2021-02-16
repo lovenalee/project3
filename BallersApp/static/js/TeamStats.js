@@ -194,7 +194,7 @@ var svg2 = d3.select("#scatterLine")
  d3.json("/api/tStats2018").then(function(data) {
     console.log(data)
     // List of groups (here I have one group per column)
-    var allGroup = ["Points", "Assists", "Field Goals", "Rebounds"]
+    var allGroup = ["Points", "Assists", "FieldGoals", "Rebounds"]
 
     // add the options to the button
     d3.select("#selectButton")
