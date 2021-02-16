@@ -250,26 +250,18 @@ var svg2 = d3.select("#scatterLine")
     // Define the div for the tooltip
     var tooltip = d3.select("#scatterLine")
       .append("div")
-      .data(dataFilter)	
       .style("opacity", 0)     
       .attr("class", "tooltip")
-      .html(function(dataFilter) {
-        return ('${d.Team}')
-      })	
       .style("padding", "5px")
 
     // Three function that change the tooltip when user hover / move / leave a cell
     var mouseover = function(d) {
       tooltip
-
-        // .html('\nTeam: ' + (d.Team) +
-        //               '\nPoints: ' + (d.Points) +
-        //               '\nAssists: ' + (d.Assists) +
-        //               '\nField Goals: ' + (d.FieldGoals) +
-        //               '\nRebounds: ' + (d.Rebounds))
-
-
-              
+        .html('\nTeam: ' + (d.Team) +
+                      '\nPoints: ' + (d.Points) +
+                      '\nAssists: ' + (d.Assists) +
+                      '\nField Goals: ' + (d.FieldGoals) +
+                      '\nRebounds: ' + (d.Rebounds))            
         .style("opacity", 1)
     }
 
