@@ -17,13 +17,13 @@ var shotChart = d3.select('#shot-chart')
 var outcomeLookup = d3.map();
 
 // creating lookup index shotoutcome -> color
-var outcomeIndex = [{ shot: "SCORED", color: "green", opacity:.8 },
-                    { shot: "MISSED", color: "red",  opacity:.4 },
+var outcomeIndex = [{ shot: "SCORED", color: "green", opacity:1 },
+                    { shot: "MISSED", color: "red",  opacity:.3 },
                     { shot: "BLOCKED", color: "blue" }];
 
 // setting up radius
 var radius = 2.5;
-var opacity = .5;
+var opacity = .4;
 
 // starting queue to load data
 queue()
@@ -89,7 +89,7 @@ function drawPoints(data) {
            .duration(1500)
            .attr("r", radius)
            .attr("opacity", opacity)
-           .attr("fill-opacity", 1)
+           .attr("fill-opacity", outcomeIndex)
            .attr("cx", function(d) { return d.locx; })
            .attr("cy", function(d) { return d.locy; })
            .attr("fill", function(d) { return outcomeLookup.get(d.shot); })
