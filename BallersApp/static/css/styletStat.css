@@ -46,22 +46,11 @@ body {
 }
 
 .tooltip {
-  /* position: absolute;
-  width: 200px;
-  height: 50px;
-  padding: 2px;
-  padding-top: 8px;
-  font: 12px sans-serif;
-  color: blue;
-  text-align: center;
-  background: white;
-  border: 0;
-  border-radius: 10px; */
-  padding: 6px;
+  padding: 1px;
   font-size: 12px;
   font-weight: bold;
   line-height: 1;
-  line-height: 1.5em;
+  /* line-height: 1.5em; */
   color: #fff;
   text-align: center;
   text-transform: capitalize;
