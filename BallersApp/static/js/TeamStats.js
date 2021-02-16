@@ -159,9 +159,7 @@ d3.json("/api/tStats").then(function(data) {
                         '\nSeason: ' + (d['Seasons']) +
                         '\nPoints: ' + (d['Points']) +
                         '\nWins: ' + (d['Wins']) })
-}).catch(function(error) {
-  console.log(error);
-});
+})
 
 // SCATTERLINE ========================================================================
 
@@ -203,7 +201,7 @@ var svg2 = d3.select("#scatterLine")
       .style("font-size", "16px")
       .call(d3.axisBottom(x));
     
-      // Add Y1 axis
+      // Add Y axis
     var y = d3.scaleLinear()
       .domain( [0,4500])
       .range([ height, 0 ]);
@@ -224,9 +222,9 @@ var svg2 = d3.select("#scatterLine")
       .attr("text-anchor", "end")
       .attr("transform", "rotate(-90)")
       .attr("y", -margin.left - 10)
-      .attr("x", -margin.top - height + 300)
-      .text("Teams Points Values")
-      .style("font-size", "18px") 
+      .attr("x", -margin.top - height + 500)
+      .text("Teams Points")
+      .style("font-size", "20px") 
 
     svg2.append("text")
       .attr("x", (width / 2))             
@@ -236,69 +234,86 @@ var svg2 = d3.select("#scatterLine")
       .style("text-decoration", "underline")  
       .text("Team Stats");
 
-    // Initialize line with a stat
+    // Define the div for the tooltip
+    var Tooltip = d3.select("#scatterLine")
+      .append("div")				
+      .style("opacity", 0)     
+      .attr("class", "tooltip")
+      .style("background-color", "white")
+      .style("border", "solid")
+      .style("border-width", "2px")
+      .style("border-radius", "5px")
+      .style("padding", "5px")
+
+    // Three function that change the tooltip when user hover / move / leave a cell
+    var mouseover = function(d) {
+      Tooltip
+        .html("Team: " + (d.Team) +
+                      '\nPoints: ' + (d.Points) +
+                      '\nAssits: ' + (d.Assists) +
+                      '\nField Goals: ' + (d.FieldGoals) +
+                      '\nRebounds: ' + (d.Rebounds))
+        .style("opacity", 1)
+    }
+
+    var mousemove = function(d) {
+      Tooltip
+        .style("left", (d3.mouse(this)[0]+10) + "px")
+        .style("top", (d3.mouse(this)[1]) + "px")
+    }
+
+    var mouseleave = function(d) {
+      Tooltip
+        .style("opacity", 0)
+    }
+
+    // Initialize line with first stat
     var line = svg2
       .append('g')
       .append("path")
         .datum(data)
         .attr("d", d3.line()
           .x(function(d) {return x(+d.ID) })
-          .y(function(d) {return y(+d.Points) })
+          .y(function(d) {return y(+d.Assists) })
         )
         .attr("stroke", "black")
         .style("stroke-width", 3)
         .style("fill", "none")
 
-    // Initialize dots with a stat
+    // Initialize dots with first stat
     var dot = svg2
       .selectAll('circle')
       .data(data)
       .enter()
       .append('circle')
         .attr("cx", function(d) {return x(+d.ID)})
-        .attr("cy", function(d) {return y(+d.Points)})
+        .attr("cy", function(d) {return y(+d.Assists)})
         .attr("r", 7)
-        .style("fill", "royalblue")
-
-      // .on('mouseover', function () {
-      //   d3.select(this)
-      //     .transition()
-      //     .duration(500)
-      //     .attr('r',20)
-      //     .attr('stroke-width',3)
-      // })
-      // .on('mouseout', function () {
-      //   d3.select(this)
-      //     .transition()
-      //     .duration(500)
-      //     .attr('r',10)
-      //     .attr('stroke-width',1)
-      // })
-      // .append('title') // Tooltip
-      //   .text(function (d) { return d.Team +
-      //             '\nPoints: ' + (d['Points']) +
-      //             '\nAssits: ' + (d['Assists']) +
-      //             '\nField Goals: ' + (d['FieldGoals']) +
-      //             '\nRebounds: ' + (d['Rebounds'])})
+        .style("fill", "royalblue")        
+        .attr("stroke", "#69b3a2")
+        .attr("stroke-width", 3)
+        .attr("fill", "white")
+        .on("mouseover", mouseover)
+        .on("mousemove", mousemove)
+        .on("mouseleave", mouseleave)
 
     // A function that update the chart
     function update(selectedGroup) {
-
+      // d3.selectAll("svg > *").remove();
       // Create new data with the selection
-      var dataFilter = data.map(function(d){
-
-        return {ID: d.ID, value:d[selectedGroup]}})
-
+      var dataFilter = data.map(function(d){return {ID: d.ID, value:d[selectedGroup]}})
+      
       // Give these new data to update line
       line
-          .datum(dataFilter)
-          .transition()
-          .duration(1000)
-          .attr("d", d3.line()
-            .x(function(d) {return x(+d.ID) })
-            .y(function(d) { return y(+d.value)})
-
+        .datum(dataFilter)
+        .transition()
+        .duration(1000)
+        .attr("d", d3.line()
+          .x(function(d) {return x(+d.ID) })
+          .y(function(d) { return y(+d.value)})
           )
+
+      // Give these new data to update dots
       dot
         .data(dataFilter)
         .transition()
@@ -307,31 +322,12 @@ var svg2 = d3.select("#scatterLine")
           .attr("cy", function(d) { return y(+d.value)})
       }
 
-      
-      // var toolTip = d3.tip()
-      // // .attr("class", "tooltip")
-      //   .offset([80, -60])
-      //   .html(function(d) {
-      //     return (`${d.Team}<br>${d[selectedGroup]}`);
-      //   });
-
-      //   selectedGroup.call(toolTip);
-
-      //   selectedGroup.on("mouseover", function(data) {
-      //   toolTip.show(data);
-      //   })
-      //   // onmouseout event
-      //   .on("mouseout", function(data) {
-      //     toolTip.hide(data);
-      //   });
-
-      //   return selectedGroup;
-
     // When the button is changed, run the updateChart function
     d3.select("#selectButton").on("change", function(d) {
         // recover the option that has been chosen
         var selectedOption = d3.select(this).property("value")
         // run the updateChart function with this selected option
+
         update(selectedOption)
     })
 
