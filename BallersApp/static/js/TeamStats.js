@@ -2,7 +2,7 @@
 
 // set the dimensions and margins for scatter graph
 
-var margin = {top: 200, right: 90, bottom: 100, left: 50},
+var margin = {top: 200, right: 90, bottom: 100, left: 85},
     width = 850 - margin.left - margin.right,
     height = 980 - margin.top - margin.bottom;
 
@@ -39,8 +39,8 @@ d3.json("/api/tStats").then(function(data) {
   svg1.append("text")
   .attr("text-anchor", "end")
   .attr("transform", "rotate(-90)")
-  .attr("y", -margin.left + 75)
-  .attr("x", -margin.top - height/2 + 90)
+  .attr("y", -70)
+  .attr("x", -150)
   .text("Teams Points Values")
 
   // Add Y axis
@@ -177,7 +177,7 @@ d3.json("/api/tStats").then(function(data) {
 // SCATTERLINE ========================================================================
 
 // set the dimensions and margins for scatter line graph
-var margin2 = {top: 200, right: 10, bottom: 100, left: 100},
+var margin2 = {top: 200, right: 10, bottom: 100, left: 150},
     width = 800 - margin2.left - margin2.right,
     height = 820 - margin2.top - margin2.bottom;
 
@@ -228,16 +228,16 @@ var svg2 = d3.select("#scatterLine")
       .attr("x", 350)
       .attr("y", 600)
       .text("Teams")
-      .style("font-size", "20px");
+      //.style("font-size", "20px");
 
   // Y axis label:
     svg2.append("text")
       .attr("text-anchor", "end")
       .attr("transform", "rotate(-90)")
-      .attr("y", 10)
-      .attr("x", 400)
+      .attr("y", -80)
+      .attr("x", -200 )
       .text("Teams Points")
-      .style("font-size", "20px") 
+      //.style("font-size", "20px") 
 
     svg2.append("text")
       .attr("x", (width / 2))             
@@ -257,6 +257,7 @@ var svg2 = d3.select("#scatterLine")
     // Three function that change the tooltip when user hover / move / leave a cell
     var mouseover = function(d) {
       tooltip
+      .data(allGroup)
         .html('\nTeam: ' + (d.Team) +
                       '\nPoints: ' + (d.Points) +
                       '\nAssists: ' + (d.Assists) +
@@ -267,6 +268,7 @@ var svg2 = d3.select("#scatterLine")
 
     var mousemove = function(d) {
       tooltip
+      
         .style("left", (d3.mouse(this)[0]+10) + "px")
         .style("top", (d3.mouse(this)[1]) + "px")
     }
