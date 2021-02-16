@@ -194,7 +194,7 @@ var svg2 = d3.select("#scatterLine")
  d3.json("/api/tStats2018").then(function(data) {
     console.log(data)
     // List of groups (here I have one group per column)
-    var allGroup = ["Assists", "FieldGoals", "Points", "Rebounds"]
+    var allGroup = ["Points", "Assists", "Field Goals", "Rebounds"]
 
     // add the options to the button
     d3.select("#selectButton")
@@ -249,19 +249,27 @@ var svg2 = d3.select("#scatterLine")
     
     // Define the div for the tooltip
     var tooltip = d3.select("#scatterLine")
-      .append("div")				
+      .append("div")
+      .data(dataFilter)	
       .style("opacity", 0)     
       .attr("class", "tooltip")
+      .html(function(dataFilter) {
+        return ('${d.Team}')
+      })	
       .style("padding", "5px")
 
     // Three function that change the tooltip when user hover / move / leave a cell
     var mouseover = function(d) {
       tooltip
-        .html('\nTeam: ' + (d.Team) +
-                      '\nPoints: ' + (d.Points) +
-                      '\nAssists: ' + (d.Assists) +
-                      '\nField Goals: ' + (d.FieldGoals) +
-                      '\nRebounds: ' + (d.Rebounds))
+
+        // .html('\nTeam: ' + (d.Team) +
+        //               '\nPoints: ' + (d.Points) +
+        //               '\nAssists: ' + (d.Assists) +
+        //               '\nField Goals: ' + (d.FieldGoals) +
+        //               '\nRebounds: ' + (d.Rebounds))
+
+
+              
         .style("opacity", 1)
     }
 
@@ -283,7 +291,7 @@ var svg2 = d3.select("#scatterLine")
         .datum(data)
         .attr("d", d3.line()
           .x(function(d) {return x(+d.ID) })
-          .y(function(d) {return y(+d.Assists) })
+          .y(function(d) {return y(+d.Points) })
         )
         .attr("stroke", "black")
         .style("stroke-width", 3)
@@ -296,7 +304,7 @@ var svg2 = d3.select("#scatterLine")
       .enter()
       .append('circle')
         .attr("cx", function(d) {return x(+d.ID)})
-        .attr("cy", function(d) {return y(+d.Assists)})
+        .attr("cy", function(d) {return y(+d.Points)})
         .attr("r", 7)
         .style("fill", "royalblue")        
         .attr("stroke", "#69b3a2")
