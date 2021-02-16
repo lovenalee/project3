@@ -2,7 +2,7 @@
 
 // set the dimensions and margins for scatter graph
 
-var margin = {top: 100, right: 90, bottom: 30, left: 50},
+var margin = {top: 200, right: 90, bottom: 100, left: 50},
     width = 850 - margin.left - margin.right,
     height = 980 - margin.top - margin.bottom;
 
@@ -177,7 +177,7 @@ d3.json("/api/tStats").then(function(data) {
 // SCATTERLINE ========================================================================
 
 // set the dimensions and margins for scatter line graph
-var margin2 = {top: 100, right: 10, bottom: 30, left: 100},
+var margin2 = {top: 200, right: 10, bottom: 100, left: 100},
     width = 800 - margin2.left - margin2.right,
     height = 820 - margin2.top - margin2.bottom;
 
@@ -225,8 +225,8 @@ var svg2 = d3.select("#scatterLine")
     // Add X axis label:
     svg2.append("text")
       .attr("text-anchor", "end")
-      .attr("x", width/2 + margin.bottom  + 20)
-      .attr("y", height + margin.top - 115)
+      .attr("x", 350)
+      .attr("y", 600)
       .text("Teams")
       .style("font-size", "20px");
 
@@ -234,8 +234,8 @@ var svg2 = d3.select("#scatterLine")
     svg2.append("text")
       .attr("text-anchor", "end")
       .attr("transform", "rotate(-90)")
-      .attr("y", -margin.left - 10)
-      .attr("x", -margin.top - height + 500)
+      .attr("y", 10)
+      .attr("x", 400)
       .text("Teams Points")
       .style("font-size", "20px") 
 
