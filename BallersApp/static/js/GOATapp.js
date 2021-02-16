@@ -272,29 +272,29 @@ d3.json("/api/totals").then(function(ringsdata2) {
     .attr("y", -50)
     .attr("x", -250)
     .attr("dy", "1em")
-    .style("font-size", "15")
+    .style("font-size", "12")
     //.style("font-weight", "bold")
     .text("# of Championships ");
 
     chartGroup.append("text")
-    .attr("y", 450)
-    .attr("x", 425)
-    .style("font-size", "15")
-    .style("font-weight", "bold")
+    .attr("y", 345)
+    .attr("x", 245)
+    .style("font-size", "12")
+    //.style("font-weight", "bold")
     .text("Players");
 
     chartGroup.append("text")
     .attr("y", -30)
-    .attr("x", 200)
-    .style("font-size", "15")
+    .attr("x", 180)
+    .style("font-size", "12")
     .style("font-weight", "bold")
     .text("Greatest Basketball Players");
 
     chartGroup.append("text")
     .attr("y", 0)
     .attr("x", 200)
-    .style("font-size", "15")
-    .style("font-weight", "bold")
+    .style("font-size", "12")
+    //.style("font-weight", "bold")
     .text("(Championship Wins)");
    
 
