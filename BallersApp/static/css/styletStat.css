@@ -6,25 +6,25 @@
   float: left;
 }
 
-/* .navbar{
+ .navbar{
   position: fixed;
   width:100%;
   z-index: 10000;
-} */
-/* 
+} 
+
 a.navbar-brand{
   margin-left: 10px;
   padding: 10px;
   font-family: 'Times New Roman', Times, serif;
   font-size: 25px;
   font-weight: bold;
-} */
+} 
 
-/* .dropdown-item:hover {
+ .dropdown-item:hover {
  background-color: rgb(89, 170, 240);
-} */
+} 
 
-.bg::after{
+.bgg::after{
   pointer-events: none;
   content: "";
   background-image: url('https://images.pexels.com/photos/2277978/pexels-photo-2277978.jpeg?cs=srgb&dl=pexels-king-siberia-2277978.jpg&fm=jpg');
@@ -51,7 +51,7 @@ body {
   overflow: hidden;
 } */
 
-/* .page-footer{
+ .page-footer{
   background-color: rgb(92, 90, 90);
   margin-top: 10px;
   padding-bottom: 10px;
@@ -62,7 +62,7 @@ body {
 .footer-copyright{
   color:white;
   border-top: 5px solid rgb(9, 47, 218)
-} */
+}
 
 /* small screen adjustments*/
 @media(max-width:800px){
@@ -73,4 +73,12 @@ body {
   .navbar{
       padding:inherit;
   }
+}
+
+
+#selectButton{
+
+  margin-left: 100px;
+  margin-top: 200px; 
+
 }
