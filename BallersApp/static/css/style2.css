@@ -24,11 +24,12 @@ a.navbar-brand{
 }
 
 #shot-chart-container {
-  /* transform: rotate(90deg); */
+  /*transform: rotate(90deg); */
   position: -webkit-sticky; /* Safari */
   position: sticky;
-  top: 1%;
-  height: 67vh;
+  top: 0%;
+  bottom: 10%;
+  height: 100vh;
 }
 
 #shot-chart {

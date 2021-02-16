@@ -1,14 +1,14 @@
 
 // Define SVG area dimensions
-var svgWidth = 550;
+var svgWidth = 600;
 var svgHeight = 500;
 
 // Define the chart's margins as an object
 var chartMargin = {
   top: 50,
-  right:10,
+  right:0,
   bottom: 150,
-  left: 50
+  left: 100
 };
 
 var selection = [];
@@ -17,9 +17,8 @@ var nestedData = [];
 var toolTip = d3.selectAll("#goatbar1")
 .append("div")
 .classed("tooltip", true)
-.style("left", 800 + "px")
-  .style("top", 280 + "px");
 
+ 
 
   
 
@@ -46,14 +45,14 @@ var svg = d3.select("#goatbar1")
   .classed("svg-content-responive", true);
 
   // Define SVG area dimensions
-var svgWidth2 = 500;
+var svgWidth2 = 600;
 var svgHeight2 = 400;
 
 // Define the chart's margins as an object
 var chartMargin2 = {
   top2: 50,
   right2: 50,
-  bottom2: 75,
+  bottom2: 90,
   left2: 150
 };
 
@@ -155,6 +154,7 @@ d3.json("/api/rings").then(function(ringsdata) {
       toolTip.transition()
       .duration(200)
       .style("opacity", 1)
+  
 
     
     
@@ -270,26 +270,30 @@ d3.json("/api/totals").then(function(ringsdata2) {
     chartGroup.append("text")
     .attr("transform", "rotate(-90)")
     .attr("y", -50)
-    .attr("x", -300)
+    .attr("x", -250)
     .attr("dy", "1em")
-    .style("font-weight", "bold")
+    .style("font-size", "15")
+    //.style("font-weight", "bold")
     .text("# of Championships ");
 
     chartGroup.append("text")
     .attr("y", 450)
     .attr("x", 425)
+    .style("font-size", "15")
     .style("font-weight", "bold")
     .text("Players");
 
     chartGroup.append("text")
-    .attr("y", 50)
-    .attr("x", 320)
+    .attr("y", -30)
+    .attr("x", 200)
+    .style("font-size", "15")
     .style("font-weight", "bold")
     .text("Greatest Basketball Players");
 
     chartGroup.append("text")
-    .attr("y", 70)
-    .attr("x", 320)
+    .attr("y", 0)
+    .attr("x", 200)
+    .style("font-size", "15")
     .style("font-weight", "bold")
     .text("(Championship Wins)");
    
@@ -298,6 +302,7 @@ d3.json("/api/totals").then(function(ringsdata2) {
     .attr("transform", "rotate(-90)")
     .attr("y", 650)
     .attr("x", -550)
+    .style("font-size", "15")
     .style("font-weight", "bold")
     .text("*Players in the 1970’s and earlier have no data collected for 'steals' in their career.");
 
@@ -305,6 +310,7 @@ d3.json("/api/totals").then(function(ringsdata2) {
     .attr("transform", "rotate(-90)")
     .attr("y", 675)
     .attr("x", -548)
+    .style("font-size", "15")
     .style("font-weight", "bold")
     .text("This category was not yet created but proves to be valuable today.");
 

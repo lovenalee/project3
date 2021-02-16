@@ -231,7 +231,7 @@ stroke: rgb(187, 216, 245);
 
 .axis2 text{
 fill: rgb(243, 8, 8);
-transform: rotate(-135deg);
+transform: rotate(-90deg);
 position:absolute;
 font-size: 10px;
 
@@ -259,4 +259,12 @@ font-size: 10px;
 .card{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
+}
+
+.tooltip {
+    margin-left: 80%;
+    margin-top: 20%;
+   font-size: 2vh;
+   
+
 }
