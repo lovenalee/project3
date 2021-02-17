@@ -198,7 +198,7 @@ var svg2 = d3.select("#scatterLine")
  d3.json("/api/tStats2018").then(function(data) {
     console.log(data)
     // List of groups (here I have one group per column)
-    var allGroup = ["Points", "Assists", "FieldGoals", "Rebounds", "team"]
+    var allGroup = ["Points", "Assists", "FieldGoals", "Rebounds", "Team"]
 
     // add the options to the button
     d3.select("#selectButton")
@@ -262,7 +262,7 @@ var svg2 = d3.select("#scatterLine")
     var mouseover = function(d) {
       tooltip
       
-        .html('\nTeam: ' + (d.team) +
+        .html('\nTeam: ' + (d.Team) +
                       '\nPoints: ' + (d.Points) +
                       '\nAssists: ' + (d.Assists) +
                       '\nField Goals: ' + (d.FieldGoals) +
@@ -317,7 +317,7 @@ var svg2 = d3.select("#scatterLine")
     function update(selectedGroup) {
       // d3.selectAll("svg > *").remove();
       // Create new data with the selection
-      var dataFilter = data.map(function(d){return {ID: d.ID, value:d[selectedGroup], team: d.Team, Assists: d.Assists, Points: d.Points, FieldGoals: d.FieldGoals, Rebounds: d.Rebounds}})
+      var dataFilter = data.map(function(d){return {ID: d.ID, value:d[selectedGroup], Team: d.Team, Assists: d.Assists, Points: d.Points, FieldGoals: d.FieldGoals, Rebounds: d.Rebounds}})
       // Give these new data to update line
       line
         .datum(dataFilter)
