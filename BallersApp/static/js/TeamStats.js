@@ -2,16 +2,18 @@
 
 // set the dimensions and margins for scatter graph
 
-var margin = {top: 200, right: 90, bottom: 100, left: 85},
-    width = 850 - margin.left - margin.right,
-    height = 980 - margin.top - margin.bottom;
+var margin = {top: 100, right: 10, bottom: 120, left: 55},
+    width = 600 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 var svg1 = d3.select("#scatter")
   .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+  .attr("PreserveAspectRatio", "xMinYMin meet")
+  .attr("viewBox", "0 0 600 400")
+  .classed("svg-content-responive", true)
   .append("g")
+
     .attr("transform","translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
@@ -60,7 +62,6 @@ d3.json("/api/tStats").then(function(data) {
     .style("font-size", "18px")  
     .text("2014 to 2018 Team Points and Wins");
 
-
   // Color scale for selected seasons
   var NumYears = ["one", "two", "three", "four", "five"]
 
@@ -69,16 +70,16 @@ d3.json("/api/tStats").then(function(data) {
     .range([ "red", "orange", "green", "blue", "yellow"])
 
   // // Handmade legend
-  svg1.append("circle").attr("cx",70).attr("cy",5).attr("r", 6).style("fill", "orange")
-  svg1.append("circle").attr("cx",70).attr("cy",24).attr("r", 6).style("fill", "green")
-  svg1.append("circle").attr("cx",70).attr("cy",47).attr("r", 6).style("fill", "blue")
-  svg1.append("circle").attr("cx",70).attr("cy",66).attr("r", 6).style("fill", "yellow")
-  svg1.append("circle").attr("cx",70).attr("cy",86).attr("r", 6).style("fill", "red")
-  svg1.append("text").attr("x", 80).attr("y", 10).text("2014").style("font-size", "15px")
-  svg1.append("text").attr("x", 81).attr("y", 30).text("2015").style("font-size", "15px")
-  svg1.append("text").attr("x", 82).attr("y", 49).text("2016").style("font-size", "15px")
-  svg1.append("text").attr("x", 83).attr("y", 70).text("2017").style("font-size", "15px")
-  svg1.append("text").attr("x", 84).attr("y", 90).text("2018").style("font-size", "15px")
+  svg1.append("circle").attr("cx",200).attr("cy",130).attr("r", 6).style("fill", "orange")
+  svg1.append("circle").attr("cx",200).attr("cy",160).attr("r", 6).style("fill", "green")
+  svg1.append("circle").attr("cx",200).attr("cy",190).attr("r", 6).style("fill", "blue")
+  svg1.append("circle").attr("cx",200).attr("cy",220).attr("r", 6).style("fill", "yellow")
+  svg1.append("circle").attr("cx",200).attr("cy",250).attr("r", 6).style("fill", "red")
+  svg1.append("text").attr("x", 220).attr("y", 130).text("2014").style("font-size", "15px").attr("alignment-baseline","middle")
+  svg1.append("text").attr("x", 220).attr("y", 160).text("2015").style("font-size", "15px").attr("alignment-baseline","middle")
+  svg1.append("text").attr("x", 220).attr("y", 190).text("2016").style("font-size", "15px").attr("alignment-baseline","middle")
+  svg1.append("text").attr("x", 220).attr("y", 220).text("2017").style("font-size", "15px").attr("alignment-baseline","middle")
+  svg1.append("text").attr("x", 220).attr("y", 250).text("2018").style("font-size", "15px").attr("alignment-baseline","middle")
 
   // Highlight the season that is hovered
   var highlight = function(d){
@@ -177,15 +178,16 @@ d3.json("/api/tStats").then(function(data) {
 // SCATTERLINE ========================================================================
 
 // set the dimensions and margins for scatter line graph
-var margin2 = {top: 200, right: 10, bottom: 100, left: 150},
-    width = 800 - margin2.left - margin2.right,
-    height = 820 - margin2.top - margin2.bottom;
+var margin2 = {top: 100, right: 10, bottom: 120, left: 55},
+    width = 600 - margin2.left - margin2.right,
+    height = 500 - margin2.top - margin2.bottom;
 
 // append the svg object to the body of the page
 var svg2 = d3.select("#scatterLine")
   .append("svg")
-    .attr("width", width + margin2.left + margin2.right)
-    .attr("height", height + margin2.top + margin2.bottom)
+     .attr("PreserveAspectRatio", "xMinYMin meet")
+  .attr("viewBox", "0 0 600 400")
+  .classed("svg-content-responive2", true)
   .append("g")
     .attr("transform",
           "translate(" + margin2.left + "," + margin2.top + ")");
@@ -199,9 +201,9 @@ var svg2 = d3.select("#scatterLine")
     // add the options to the button
     d3.select("#selectButton")
       .selectAll('myOptions')
-     	.data(allGroup)
+      .data(allGroup)
       .enter()
-    	.append('option')
+      .append('option')
       .text(function (d) { return d; }) // text showed in the menu
       .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
@@ -313,7 +315,6 @@ var svg2 = d3.select("#scatterLine")
       // d3.selectAll("svg > *").remove();
       // Create new data with the selection
       var dataFilter = data.map(function(d){return {ID: d.ID, value:d[selectedGroup]}})
-      
       // Give these new data to update line
       line
         .datum(dataFilter)
@@ -350,4 +351,5 @@ var svg2 = d3.select("#scatterLine")
 
  
 });
+
 

@@ -1,9 +1,36 @@
 #scatter {
-  float: right;
+  display: inline-block;
+  position: relative;
+  width: 40%;
+  margin-top: 5%;
+  padding-bottom: 0%; /* aspect ratio */
+  vertical-align: bottom;
+  overflow: hidden;
 }
 
 #scatterLine {
-  float: left;
+  display: inline-block;
+  position: relative;
+  width: 40%;
+  margin-top: 5%;
+
+  padding-bottom: 0%; /* aspect ratio */
+  vertical-align: bottom;
+  overflow: hidden;
+}
+
+.svg-content-responsive {
+  display: inline-block;
+  position: absolute;
+  top: 100px;
+  left: 0;
+}
+
+.svg-content-responsive2 {
+  display: inline-block;
+  position: absolute;
+  top: 100px;
+  left: 0;
 }
 
  .navbar{
@@ -45,19 +72,6 @@ body {
   stroke: black;
 }
 
-.tooltip {
-  padding: 1px;
-  font-size: 12px;
-  font-weight: bold;
-  line-height: 1;
-  /* line-height: 1.5em; */
-  color: #fff;
-  text-align: center;
-  text-transform: capitalize;
-  background: rgb(62.9%,28.2%,24.9%);
-  border-radius: 4px;
-}
-
 /* .content {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -88,10 +102,28 @@ body {
   }
 }
 
+@media(max-width:300px){
+
+  body{
+      background-color: rgb(42, 224, 6);    
+  }
+  
+  #scatterLine {
+    margin-top: 10%;
+  }
+  .navbar{
+      padding:inherit;
+      height : 1%;
+
+      
+  }
+}
+
+
 
 #selectButton{
 
-  margin-left: 100px;
-  margin-top: 200px; 
+  margin-left: 0px;
+  margin-top: 0px; 
 
 }
