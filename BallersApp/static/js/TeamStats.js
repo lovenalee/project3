@@ -2,7 +2,7 @@
 
 // set the dimensions and margins for scatter graph
 
-var margin = {top: 100, right: 10, bottom: 120, left: 55},
+var margin = {top: 100, right: 0, bottom: 120, left: 120},
     width = 600 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -178,7 +178,7 @@ d3.json("/api/tStats").then(function(data) {
 // SCATTERLINE ========================================================================
 
 // set the dimensions and margins for scatter line graph
-var margin2 = {top: 100, right: 10, bottom: 120, left: 55},
+var margin2 = {top: 100, right: 10, bottom: 120, left: 100},
     width = 600 - margin2.left - margin2.right,
     height = 500 - margin2.top - margin2.bottom;
 
