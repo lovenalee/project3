@@ -13,7 +13,6 @@
   position: relative;
   width: 40%;
   margin-top: 5%;
-
   padding-bottom: 0%; /* aspect ratio */
   vertical-align: bottom;
   overflow: hidden;
@@ -68,9 +67,9 @@ body {
   background: rgb(202, 220, 238);
 }
 
-.myCircle:hover {
+/* .myCircle:hover {
   stroke: black;
-}
+} */
 
 /* .content {
   padding-top: 5px;
@@ -107,23 +106,40 @@ body {
   body{
       background-color: rgb(42, 224, 6);    
   }
-  
-  #scatterLine {
-    margin-top: 10%;
-  }
+
   .navbar{
       padding:inherit;
       height : 1%;
-
-      
   }
 }
 
-
-
 #selectButton{
+  position: relative;
+  background-color: rgb(62.9%,28.2%,24.9%) !important;
+  /* margin-left: 0px;
+  margin-top: 100px;  */
+}
 
-  margin-left: 0px;
-  margin-top: -1000px; 
+#reset-btn {
+  font-size: 16px;
+  font-weight: 10px;
+  background-color: rgb(62.9%,28.2%,24.9%) !important;
+}
 
+#reset-btn:hover {
+  background-color: rgb(0, 0, 90, 0.8) !important;
+}
+
+.tooltip {
+  position: absolute;
+  width: 135px;
+  height: 60px;
+  padding: 2px;
+  padding-top: 8px;
+  font: 12px sans-serif;
+  color: white;
+  text-align: center;
+  background: rgb(62.9%,28.2%,24.9%);
+  border: 0;
+  border-radius: 10px;
 }

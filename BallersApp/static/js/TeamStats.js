@@ -3,6 +3,7 @@
 var margin = {top: 100, right: 10, bottom: 120, left: 100},
     width = 600 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
+
 // append the svg object to the body of the page
 var svg1 = d3.select("#scatter")
   .append("svg")
@@ -20,21 +21,24 @@ d3.json("/api/tStats").then(function(data) {
     .range([ 0, width ]);
   svg1.append("g")
     .attr("transform", "translate(0," + height + ")")
+    .attr('stroke','rgb(9, 47, 218)') 
     .style("font-size", "14px")
     .call(d3.axisBottom(x));
   // Add X axis label:
   svg1.append("text")
     .attr("text-anchor", "end")
     .attr("x", width/2 + margin.bottom + 10)
-    .attr("y", height + margin.top - 120)
-    .text("Team Wins by Seasons")
-    .style("font-size", "16px");
+    .attr("y", height + margin.top - 105)
+    .style("font-size", "16px")
+    .attr('stroke','rgb(9, 47, 218)') 
+    .text("Team Wins by Seasons") 
   // Y axis label:
   svg1.append("text")
   .attr("text-anchor", "end")
   .attr("transform", "rotate(-90)")
-  .attr("y", -70)
-  .attr("x", -150)
+  .attr("y", -80)
+  .attr("x", 1)
+  .attr('stroke','rgb(9, 47, 218)')  
   .text("Teams Points Values")
   // Add Y axis
   var y = d3.scaleLinear()
@@ -42,14 +46,16 @@ d3.json("/api/tStats").then(function(data) {
     .range([ height, 0]);
   svg1.append("g")
     .style("font-size", "16px")
+    .attr('stroke','rgb(9, 47, 218)') 
     .call(d3.axisLeft(y));
   svg1.append("text")
     .attr("x", (width / 2))             
     .attr("y", 0 - (margin.top / 2))
     .attr("text-anchor", "middle")  
     .style("font-size", "16px") 
-    .style("text-decoration", "underline")
-    .style("font-size", "18px")  
+    // .style("text-decoration", "underline")
+    .style("font-size", "18px")
+    .attr('stroke','rgb(9, 47, 218)')  
     .text("2014 to 2018 Team Points and Wins");
   // Color scale for selected seasons
   var NumYears = ["one", "two", "three", "four", "five"]
@@ -62,11 +68,11 @@ d3.json("/api/tStats").then(function(data) {
   svg1.append("circle").attr("cx",430).attr("cy",190).attr("r", 6).style("fill", "blue")
   svg1.append("circle").attr("cx",430).attr("cy",220).attr("r", 6).style("fill", "yellow")
   svg1.append("circle").attr("cx",430).attr("cy",250).attr("r", 6).style("fill", "red")
-  svg1.append("text").attr("x", 450).attr("y", 130).text("2014").style("font-size", "15px").attr("alignment-baseline","middle")
-  svg1.append("text").attr("x", 450).attr("y", 160).text("2015").style("font-size", "15px").attr("alignment-baseline","middle")
-  svg1.append("text").attr("x", 450).attr("y", 190).text("2016").style("font-size", "15px").attr("alignment-baseline","middle")
-  svg1.append("text").attr("x", 450).attr("y", 220).text("2017").style("font-size", "15px").attr("alignment-baseline","middle")
-  svg1.append("text").attr("x", 450).attr("y", 250).text("2018").style("font-size", "15px").attr("alignment-baseline","middle")
+  svg1.append("text").attr("x", 450).attr("y", 130).text("2014").style("font-size", "15px").attr("alignment-baseline","middle").attr('stroke','black') 
+  svg1.append("text").attr("x", 450).attr("y", 160).text("2015").style("font-size", "15px").attr("alignment-baseline","middle").attr('stroke','black') 
+  svg1.append("text").attr("x", 450).attr("y", 190).text("2016").style("font-size", "15px").attr("alignment-baseline","middle").attr('stroke','black') 
+  svg1.append("text").attr("x", 450).attr("y", 220).text("2017").style("font-size", "15px").attr("alignment-baseline","middle").attr('stroke','black') 
+  svg1.append("text").attr("x", 450).attr("y", 250).text("2018").style("font-size", "15px").attr("alignment-baseline","middle").attr('stroke','black') 
   // Highlight the season that is hovered
   var highlight = function(d){
     var selected_season = d.Seasons
@@ -179,6 +185,7 @@ var svg2 = d3.select("#scatterLine")
       .range([ 0, width ]);
     svg2.append("g")
       .attr("transform", "translate(0," + height + ")")
+      .attr('stroke','rgb(62.9%,28.2%,24.9%)') 
       .style("font-size", "16px")
       .call(d3.axisBottom(x));
       // Add Y axis
@@ -187,20 +194,23 @@ var svg2 = d3.select("#scatterLine")
       .range([ height, 0 ]);
     svg2.append("g")
       .call(d3.axisLeft(y))
+      .attr('stroke','rgb(62.9%,28.2%,24.9%)') 
       .style("font-size", "16px");
     // Add X axis label:
     svg2.append("text")
       .attr("text-anchor", "end")
-      .attr("x", 350)
-      .attr("y", 600)
+      .attr("x", width/2 + margin.bottom + 15)
+      .attr("y", height + margin.top - 105)
+      .attr('stroke','rgb(62.9%,28.2%,24.9%)') 
       .text("Teams")
       //.style("font-size", "20px");
   // Y axis label:
     svg2.append("text")
       .attr("text-anchor", "end")
       .attr("transform", "rotate(-90)")
-      .attr("y", -80)
-      .attr("x", -200 )
+      .attr("y", -70)
+      .attr("x", -150)
+      .attr('stroke','rgb(62.9%,28.2%,24.9%)') 
       .text("Teams Points")
       //.style("font-size", "20px") 
     svg2.append("text")
@@ -208,8 +218,9 @@ var svg2 = d3.select("#scatterLine")
       .attr("y", 0 - (margin.top / 2))
       .attr("text-anchor", "middle")  
       .style("font-size", "20px") 
-      .style("text-decoration", "underline")  
-      .text("Team Stats");
+      // .style("text-decoration", "underline")  
+      .text("2018 Team Stats")
+      .attr('stroke','rgb(62.9%,28.2%,24.9%)') 
     // Define the div for the tooltip
     var tooltip = d3.select("#scatterLine")
       .append("div")
@@ -219,11 +230,11 @@ var svg2 = d3.select("#scatterLine")
     // Three function that change the tooltip when user hover / move / leave a cell
     var mouseover = function(d) {
       tooltip
-        .html('\nTeam: ' + (d.Team) +
+        .html((d.Team) + ':' +
                       '\nPoints: ' + (d.Points) +
                       '\nAssists: ' + (d.Assists) +
                       '\nField Goals: ' + (d.FieldGoals) +
-                      '\nRebounds: ' + (d.Rebounds))            
+                      '\nRebounds: ' + (d.Rebounds))    
         .style("opacity", 1)
     }
     var mousemove = function(d) {
@@ -245,7 +256,7 @@ var svg2 = d3.select("#scatterLine")
           .x(function(d) {return x(+d.ID) })
           .y(function(d) {return y(+d.Points) })
         )
-        .attr("stroke", "black")
+        .attr("stroke", "rgb(62.9%,28.2%,24.9%)")
         .style("stroke-width", 3)
         .style("fill", "none")
     // Initialize dots with first stat
@@ -294,7 +305,44 @@ var svg2 = d3.select("#scatterLine")
         console.log(selectedOption)
         // run the updateChart function with this selected option
         update(selectedOption)
+        
     })
+
+    // // function used for updating circles group with new tooltip
+    // function updateToolTip(selectedOption, dataFilter) {
+
+    //   var label;
+
+    //   if (selectedOption === "Points") {
+    //     label = "Points:";
+    //   }
+    //   else if (selectedOption === "Assists" ) {
+    //     label = "Assist:";
+    //   }
+
+    //   var tooltip = d3.tip()
+    //     .attr("class", "tooltip")
+    //     .offset([80, -60])
+    //     .html(function(d) {
+    //       return (`${d.Team}<br>${label} ${d[selectedOption]}`);
+    //     });
+
+    //     dataFilter.call(toolTip);
+
+    //     dataFilter.on("mouseover", function(data) {
+    //     tooltip.show(data);
+    //   })
+    //     // onmouseout event
+    //     .on("mouseout", function(data) {
+    //       tooltip.hide(data);
+    //     });
+
+    //   return dataFilter;
+      
+    // }
+
+
 }).catch(function(error) {
   console.log(error);
+
 });
