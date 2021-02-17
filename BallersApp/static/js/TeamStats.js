@@ -1,6 +1,6 @@
 // SCATTER ============================================================================
 // set the dimensions and margins for scatter graph
-var margin = {top: 100, right: 10, bottom: 120, left: 55},
+var margin = {top: 100, right: 10, bottom: 120, left: 100},
     width = 600 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 // append the svg object to the body of the page
@@ -57,16 +57,16 @@ d3.json("/api/tStats").then(function(data) {
     .domain([NumYears])
     .range([ "red", "orange", "green", "blue", "yellow"])
   // // Handmade legend
-  svg1.append("circle").attr("cx",200).attr("cy",130).attr("r", 6).style("fill", "orange")
-  svg1.append("circle").attr("cx",200).attr("cy",160).attr("r", 6).style("fill", "green")
-  svg1.append("circle").attr("cx",200).attr("cy",190).attr("r", 6).style("fill", "blue")
-  svg1.append("circle").attr("cx",200).attr("cy",220).attr("r", 6).style("fill", "yellow")
-  svg1.append("circle").attr("cx",200).attr("cy",250).attr("r", 6).style("fill", "red")
-  svg1.append("text").attr("x", 220).attr("y", 130).text("2014").style("font-size", "15px").attr("alignment-baseline","middle")
-  svg1.append("text").attr("x", 220).attr("y", 160).text("2015").style("font-size", "15px").attr("alignment-baseline","middle")
-  svg1.append("text").attr("x", 220).attr("y", 190).text("2016").style("font-size", "15px").attr("alignment-baseline","middle")
-  svg1.append("text").attr("x", 220).attr("y", 220).text("2017").style("font-size", "15px").attr("alignment-baseline","middle")
-  svg1.append("text").attr("x", 220).attr("y", 250).text("2018").style("font-size", "15px").attr("alignment-baseline","middle")
+  svg1.append("circle").attr("cx",430).attr("cy",130).attr("r", 6).style("fill", "orange")
+  svg1.append("circle").attr("cx",430).attr("cy",160).attr("r", 6).style("fill", "green")
+  svg1.append("circle").attr("cx",430).attr("cy",190).attr("r", 6).style("fill", "blue")
+  svg1.append("circle").attr("cx",430).attr("cy",220).attr("r", 6).style("fill", "yellow")
+  svg1.append("circle").attr("cx",430).attr("cy",250).attr("r", 6).style("fill", "red")
+  svg1.append("text").attr("x", 450).attr("y", 130).text("2014").style("font-size", "15px").attr("alignment-baseline","middle")
+  svg1.append("text").attr("x", 450).attr("y", 160).text("2015").style("font-size", "15px").attr("alignment-baseline","middle")
+  svg1.append("text").attr("x", 450).attr("y", 190).text("2016").style("font-size", "15px").attr("alignment-baseline","middle")
+  svg1.append("text").attr("x", 450).attr("y", 220).text("2017").style("font-size", "15px").attr("alignment-baseline","middle")
+  svg1.append("text").attr("x", 450).attr("y", 250).text("2018").style("font-size", "15px").attr("alignment-baseline","middle")
   // Highlight the season that is hovered
   var highlight = function(d){
     var selected_season = d.Seasons
