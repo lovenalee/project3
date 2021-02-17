@@ -209,11 +209,12 @@ class g2Stats(db.Model):
     michael = db.Column(db.Float)
     scottie = db.Column(db.Float)
     shaquille = db.Column(db.Float)
+    duncan = db.Column(db.Float)
     kobe = db.Column(db.Float)
     lebron = db.Column(db.Float)
     stephen = db.Column(db.Float)
     kevin = db.Column(db.Float)
-    kawhi = db.Column(db.Float)
+    
 
 
   
@@ -232,11 +233,12 @@ def totals():
     g2Stats.michael,
     g2Stats.scottie,
     g2Stats.shaquille,
+    g2Stats.duncan,
     g2Stats.kobe,
     g2Stats.lebron,
     g2Stats.stephen,
-    g2Stats.kevin,
-    g2Stats.kawhi).all()
+    g2Stats.kevin
+    ).all()
 
     result_list5 = []
     
@@ -251,11 +253,12 @@ def totals():
             "michael": result5[6],
             "scottie": result5[7],
             "shaquille": result5[8],
-            "kobe": result5[9],
-            "lebron": result5[10],
-            "stephen": result5[11],
-            "kevin": result5[12],
-            "kawhi": result5[13]
+            "duncan": result5[9],
+            "kobe": result5[10],
+            "lebron": result5[11],
+            "stephen": result5[12],
+            "kevin": result5[13]
+            
         }
 
         result_list5.append(totaldata)
