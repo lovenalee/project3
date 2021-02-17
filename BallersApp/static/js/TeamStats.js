@@ -2,6 +2,8 @@
 
 // set the dimensions and margins for scatter graph
 
+
+
 var margin = {top: 100, right: 10, bottom: 120, left: 55},
     width = 600 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
@@ -196,7 +198,7 @@ var svg2 = d3.select("#scatterLine")
  d3.json("/api/tStats2018").then(function(data) {
     console.log(data)
     // List of groups (here I have one group per column)
-    var allGroup = ["Points", "Assists", "FieldGoals", "Rebounds"]
+    var allGroup = ["Points", "Assists", "FieldGoals", "Rebounds", "team"]
 
     // add the options to the button
     d3.select("#selectButton")
@@ -259,8 +261,8 @@ var svg2 = d3.select("#scatterLine")
     // Three function that change the tooltip when user hover / move / leave a cell
     var mouseover = function(d) {
       tooltip
-      .data(allGroup)
-        .html('\nTeam: ' + (d.Team) +
+      
+        .html('\nTeam: ' + (d.team) +
                       '\nPoints: ' + (d.Points) +
                       '\nAssists: ' + (d.Assists) +
                       '\nField Goals: ' + (d.FieldGoals) +
@@ -280,6 +282,7 @@ var svg2 = d3.select("#scatterLine")
         .style("opacity", 0)
     }
 
+    console.log(data)
     // Initialize line with first stat
     var line = svg2
       .append('g')
@@ -314,7 +317,7 @@ var svg2 = d3.select("#scatterLine")
     function update(selectedGroup) {
       // d3.selectAll("svg > *").remove();
       // Create new data with the selection
-      var dataFilter = data.map(function(d){return {ID: d.ID, value:d[selectedGroup]}})
+      var dataFilter = data.map(function(d){return {ID: d.ID, value:d[selectedGroup], team: d.Team, Assists: d.Assists, Points: d.Points, FieldGoals: d.FieldGoals, Rebounds: d.Rebounds}})
       // Give these new data to update line
       line
         .datum(dataFilter)
@@ -336,16 +339,18 @@ var svg2 = d3.select("#scatterLine")
       console.log(dataFilter)
       }
 
+      
+
     // When the button is changed, run the updateChart function
     d3.select("#selectButton").on("change", function(d) {
         // recover the option that has been chosen
         
         var selectedOption = d3.select(this).property("value")
+        console.log(selectedOption)
         // run the updateChart function with this selected option
     
         update(selectedOption)
     })
-
 }).catch(function(error) {
   console.log(error);
 
