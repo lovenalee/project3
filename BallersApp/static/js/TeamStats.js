@@ -69,16 +69,16 @@ d3.json("/api/tStats").then(function(data) {
     .range([ "red", "orange", "green", "blue", "yellow"])
 
   // // Handmade legend
-  svg1.append("circle").attr("cx",200).attr("cy",130).attr("r", 6).style("fill", "orange")
-  svg1.append("circle").attr("cx",200).attr("cy",160).attr("r", 6).style("fill", "green")
-  svg1.append("circle").attr("cx",200).attr("cy",190).attr("r", 6).style("fill", "blue")
-  svg1.append("circle").attr("cx",200).attr("cy",220).attr("r", 6).style("fill", "yellow")
-  svg1.append("circle").attr("cx",200).attr("cy",250).attr("r", 6).style("fill", "red")
-  svg1.append("text").attr("x", 220).attr("y", 130).text("2014").style("font-size", "15px").attr("alignment-baseline","middle")
-  svg1.append("text").attr("x", 220).attr("y", 160).text("2015").style("font-size", "15px").attr("alignment-baseline","middle")
-  svg1.append("text").attr("x", 220).attr("y", 190).text("2016").style("font-size", "15px").attr("alignment-baseline","middle")
-  svg1.append("text").attr("x", 220).attr("y", 220).text("2017").style("font-size", "15px").attr("alignment-baseline","middle")
-  svg1.append("text").attr("x", 220).attr("y", 250).text("2018").style("font-size", "15px").attr("alignment-baseline","middle")
+  svg1.append("circle").attr("cx",70).attr("cy",5).attr("r", 6).style("fill", "orange")
+  svg1.append("circle").attr("cx",70).attr("cy",24).attr("r", 6).style("fill", "green")
+  svg1.append("circle").attr("cx",70).attr("cy",47).attr("r", 6).style("fill", "blue")
+  svg1.append("circle").attr("cx",70).attr("cy",66).attr("r", 6).style("fill", "yellow")
+  svg1.append("circle").attr("cx",70).attr("cy",86).attr("r", 6).style("fill", "red")
+  svg1.append("text").attr("x", 80).attr("y", 10).text("2014").style("font-size", "15px")
+  svg1.append("text").attr("x", 81).attr("y", 30).text("2015").style("font-size", "15px")
+  svg1.append("text").attr("x", 82).attr("y", 49).text("2016").style("font-size", "15px")
+  svg1.append("text").attr("x", 83).attr("y", 70).text("2017").style("font-size", "15px")
+  svg1.append("text").attr("x", 84).attr("y", 90).text("2018").style("font-size", "15px")
 
   // Highlight the season that is hovered
   var highlight = function(d){
