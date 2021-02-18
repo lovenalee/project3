@@ -1,4 +1,4 @@
-![Ballers](/assets/images/bg.jpg)
+![Ballers](assets/images/bg.jpg)
 
 <h3>Introduction</h3>
 
