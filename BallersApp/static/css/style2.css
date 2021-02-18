@@ -4,6 +4,13 @@
   z-index: 10000;
 }
 
+#Titletext{
+  position: fixed;
+  width:100%;
+ margin-left: 1%;
+}
+
+
 a.navbar-brand{
   margin-left: 10px;
   padding: 10px;
@@ -76,5 +83,24 @@ body{
 }
 
 h4 {
+  color: rgba(22, 2, 2, 0.61);
+  margin-left: 1%;
+}
+
+h3 {
+  font-family:'Helvetica';
+}
+
+p {
+
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+h5 {
   color: white;
+  font-family:'Helvetica';
+
+
 }

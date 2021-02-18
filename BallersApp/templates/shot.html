@@ -6,9 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ballers</title>
+    <title>Ballers </title>
     <link rel="stylesheet" type="text/css" href="../static/css/style2.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
   
@@ -26,6 +25,7 @@
             <img src="https://turbologo.com/articles/wp-content/uploads/2019/10/NBA-logo-illustration-958x575.jpg" width="40" height="40" class="d-inline-block align-top" alt="">
             Ballers
         </a>
+    <h5>2016-2017 NBA Regular Season</h5>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -67,8 +67,8 @@
       
         
         <div class="row">                  
-            <div class="col-md-1 offset-by-one"> </div>
-
+            <div class="col-md-1 offset-by-one" id = "Titletext">   </div>
+           
             <div class="col-md-5" id="shot-chart-container" >
                 <svg width="100%" height="100%" id="shot-chart">
                     <!-- <path d="M 165 470 q 250 -220 0 -440" stroke="red" stroke-width="1" fill="none" />
@@ -92,50 +92,97 @@
                 <!-- <div class="col-md-1 offset-by-one"> -->
     
 
-            <div class="col-md-6 text">
-                    
-                <div class="trigger" id="Kevin Durant" value="Player">KD</div>
+            <div class="col-md-6 text"> 
+                <div class="trigger" id="Kevin Durant" value="Player"><h3>Kevin Durant</h3></div>        
+                <br>
+                <h4>Points per game: <strong></strong> </h4>
+                 <h4>Asists per game: <strong></strong> </h4>
+                 <h4>Rebounds per game: <strong></strong></h4>
+                 <h4>FG%: <strong></strong></h4>
+                 <h4>3pt FG%": <strong></strong></h4>
+                 <br>
                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Diam quis enim lobortis scelerisque. Duis tristique sollicitudin nibh sit amet. Viverra accumsan in nisl nisi. Ultrices neque ornare aenean euismod. Augue interdum velit euismod in. Ut consequat semper viverra nam libero. Arcu ac tortor dignissim convallis aenean.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Potenti nullam ac tortor vitae purus faucibus ornare suspendisse. Pellentesque massa placerat duis ultricies lacus sed turpis tincidunt. Mattis molestie a iaculis at erat pellentesque adipiscing commodo. Tincidunt tortor aliquam nulla facilisi cras fermentum odio eu feugiat. Morbi leo urna molestie at elementum eu facilisis. Sed euismod nisi porta lorem mollis aliquam ut porttitor leo. Est ullamcorper eget nulla facilisi etiam dignissim diam quis. Tincidunt id aliquet risus feugiat in ante metus dictum at. Urna cursus eget nunc scelerisque. Turpis egestas pretium aenean pharetra magna. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue eget.
-
-                    Sed vulputate mi sit amet. Mattis ullamcorper velit sed ullamcorper morbi. Viverra nam libero justo laoreet. Iaculis nunc sed augue lacus viverra vitae. Elementum nisi quis eleifend quam adipiscing vitae proin sagittis. Sit amet consectetur adipiscing elit ut aliquam purus sit. Ut tristique et egestas quis. Massa eget egestas purus viverra. Elementum facilisis leo vel fringilla est ullamcorper eget. Tellus rutrum tellus pellentesque eu tincidunt tortor aliquam. Vel pretium lectus quam id leo in. Turpis egestas integer eget aliquet. At consectetur lorem donec massa. Egestas erat imperdiet sed euismod. Diam in arcu cursus euismod quis viverra nibh cras. Egestas quis ipsum suspendisse ultrices gravida. At consectetur lorem donec massa sapien faucibus et. Faucibus ornare suspendisse sed nisi lacus sed viverra.</p>
-                <div class="trigger" id="Seth Curry" value="Player">Seth</div>
+                <br>
+                <div class="trigger" id="Seth Curry" value="Player"><h3>Seth<h3></div>
+                <br>
+                <h4>Points per game: <strong></strong> </h4>
+                 <h4>Asists per game: <strong></strong> </h4>
+                 <h4>Rebounds per game: <strong></strong></h4>
+                 <h4>FG%: <strong></strong></h4>
+                 <h4>3pt FG%": <strong></strong></h4>
+                 <br>
+                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Diam quis enim lobortis scelerisque. Duis tristique sollicitudin nibh sit amet. Viverra accumsan in nisl nisi. Ultrices neque ornare aenean euismod. Augue interdum velit euismod in. Ut consequat semper viverra nam libero. Arcu ac tortor dignissim convallis aenean.</p>
+                <br>
+                <div class="trigger" id="Stephen Curry" value="Player"><h3>Steph</h3></div>
+               <br>
+                <h4>Points per game: <strong></strong> </h4>
+                <h4>Asists per game: <strong></strong> </h4>
+                 <h4>Rebounds per game: <strong></strong></h4>
+                 <h4>FG%: <strong></strong></h4>
+                 <h4>3pt FG%": <strong></strong></h4>
+                 <br>
+                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Diam quis enim lobortis scelerisque. Duis tristique sollicitudin nibh sit amet. Viverra accumsan in nisl nisi. Ultrices neque ornare aenean euismod. Augue interdum velit euismod in. Ut consequat semper viverra nam libero. Arcu ac tortor dignissim convallis aenean.</p>
+                <br>
+                <div class="trigger" id="LeBron James" value="Player"><h3>LBJ</h3></div>
+                <br>
+                <h4>Points per game: <strong></strong> </h4>
+                 <h4>Asists per game: <strong></strong> </h4>
+                 <h4>Rebounds per game: <strong></strong></h4>
+                 <h4>FG%: <strong></strong></h4>
+                 <h4>3pt FG%": <strong></strong></h4>
+                 <br>
+                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Diam quis enim lobortis scelerisque. Duis tristique sollicitudin nibh sit amet. Viverra accumsan in nisl nisi. Ultrices neque ornare aenean euismod. Augue interdum velit euismod in. Ut consequat semper viverra nam libero. Arcu ac tortor dignissim convallis aenean.</p>
+                <br>
+                <div class="trigger" id="James Harden" value="Player"><h3>The Beard</h3></div>
+                <br>
+                <h4>Points per game: <strong></strong> </h4>
+                 <h4>Asists per game: <strong></strong> </h4>
+                 <h4>Rebounds per game: <strong></strong></h4>
+                 <h4>FG%: <strong></strong></h4>
+                 <h4>3pt FG%": <strong></strong></h4>
+                 <br>
+                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Diam quis enim lobortis scelerisque. Duis tristique sollicitudin nibh sit amet. Viverra accumsan in nisl nisi. Ultrices neque ornare aenean euismod. Augue interdum velit euismod in. Ut consequat semper viverra nam libero. Arcu ac tortor dignissim convallis aenean.</p>
+                <br>
+                <div class="trigger" id="Kyrie Irving" value="Player"><h3>Kyrie</h3></div>
+                <br>
+                <h4>Points per game: <strong></strong> </h4>
+                 <h4>Asists per game: <strong></strong> </h4>
+                 <h4>Rebounds per game: <strong></strong></h4>
+                 <h4>FG%: <strong></strong></h4>
+                 <h4>3pt FG%": <strong></strong></h4>
+                 <br>
+                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Diam quis enim lobortis scelerisque. Duis tristique sollicitudin nibh sit amet. Viverra accumsan in nisl nisi. Ultrices neque ornare aenean euismod. Augue interdum velit euismod in. Ut consequat semper viverra nam libero. Arcu ac tortor dignissim convallis aenean.</p>
+                <br>
+                <div class="trigger" id="Kevin Love" value="Player"><h3>KLove</h3></div>
+                <br>
+                <h4>Points per game: <strong></strong> </h4>
+                 <h4>Asists per game: <strong></strong> </h4>
+                 <h4>Rebounds per game: <strong></strong></h4>
+                 <h4>FG%: <strong></strong></h4>
+                 <h4>3pt FG%": <strong></strong></h4>
+                 <br>
+                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Diam quis enim lobortis scelerisque. Duis tristique sollicitudin nibh sit amet. Viverra accumsan in nisl nisi. Ultrices neque ornare aenean euismod. Augue interdum velit euismod in. Ut consequat semper viverra nam libero. Arcu ac tortor dignissim convallis aenean.</p>
+                <br>
+                <div class="trigger" id="Damian Lillard" value="Player"><h3>Dame Dolla'</h3></div>
+                <br>
+                <h4>Points per game: <strong></strong> </h4>
+                 <h4>Asists per game: <strong></strong> </h4>
+                 <h4>Rebounds per game: <strong></strong></h4>
+                 <h4>FG%: <strong></strong></h4>
+                 <h4>3pt FG%": <strong></strong></h4>
+                 <br>
+                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Diam quis enim lobortis scelerisque. Duis tristique sollicitudin nibh sit amet. Viverra accumsan in nisl nisi. Ultrices neque ornare aenean euismod. Augue interdum velit euismod in. Ut consequat semper viverra nam libero. Arcu ac tortor dignissim convallis aenean.</p>
+                <br>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Diam quis enim lobortis scelerisque. Duis tristique sollicitudin nibh sit amet. Viverra accumsan in nisl nisi. Ultrices neque ornare aenean euismod. Augue interdum velit euismod in. Ut consequat semper viverra nam libero. Arcu ac tortor dignissim convallis aenean.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Potenti nullam ac tortor vitae purus faucibus ornare suspendisse. Pellentesque massa placerat duis ultricies lacus sed turpis tincidunt. Mattis molestie a iaculis at erat pellentesque adipiscing commodo. Tincidunt tortor aliquam nulla facilisi cras fermentum odio eu feugiat. Morbi leo urna molestie at elementum eu facilisis. Sed euismod nisi porta lorem mollis aliquam ut porttitor leo. Est ullamcorper eget nulla facilisi etiam dignissim diam quis. Tincidunt id aliquet risus feugiat in ante metus dictum at. Urna cursus eget nunc scelerisque. Turpis egestas pretium aenean pharetra magna. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue eget.
-
-                    Sed vulputate mi sit amet. Mattis ullamcorper velit sed ullamcorper morbi. Viverra nam libero justo laoreet. Iaculis nunc sed augue lacus viverra vitae. Elementum nisi quis eleifend quam adipiscing vitae proin sagittis. Sit amet consectetur adipiscing elit ut aliquam purus sit. Ut tristique et egestas quis. Massa eget egestas purus viverra. Elementum facilisis leo vel fringilla est ullamcorper eget. Tellus rutrum tellus pellentesque eu tincidunt tortor aliquam. Vel pretium lectus quam id leo in. Turpis egestas integer eget aliquet. At consectetur lorem donec massa. Egestas erat imperdiet sed euismod. Diam in arcu cursus euismod quis viverra nibh cras. Egestas quis ipsum suspendisse ultrices gravida. At consectetur lorem donec massa sapien faucibus et. Faucibus ornare suspendisse sed nisi lacus sed viverra.</p>
-                <div class="trigger" id="Stephen Curry" value="Player">Steph</div>
+                <br>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Diam quis enim lobortis scelerisque. Duis tristique sollicitudin nibh sit amet. Viverra accumsan in nisl nisi. Ultrices neque ornare aenean euismod. Augue interdum velit euismod in. Ut consequat semper viverra nam libero. Arcu ac tortor dignissim convallis aenean.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Potenti nullam ac tortor vitae purus faucibus ornare suspendisse. Pellentesque massa placerat duis ultricies lacus sed turpis tincidunt. Mattis molestie a iaculis at erat pellentesque adipiscing commodo. Tincidunt tortor aliquam nulla facilisi cras fermentum odio eu feugiat. Morbi leo urna molestie at elementum eu facilisis. Sed euismod nisi porta lorem mollis aliquam ut porttitor leo. Est ullamcorper eget nulla facilisi etiam dignissim diam quis. Tincidunt id aliquet risus feugiat in ante metus dictum at. Urna cursus eget nunc scelerisque. Turpis egestas pretium aenean pharetra magna. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue eget.
-
-                    Sed vulputate mi sit amet. Mattis ullamcorper velit sed ullamcorper morbi. Viverra nam libero justo laoreet. Iaculis nunc sed augue lacus viverra vitae. Elementum nisi quis eleifend quam adipiscing vitae proin sagittis. Sit amet consectetur adipiscing elit ut aliquam purus sit. Ut tristique et egestas quis. Massa eget egestas purus viverra. Elementum facilisis leo vel fringilla est ullamcorper eget. Tellus rutrum tellus pellentesque eu tincidunt tortor aliquam. Vel pretium lectus quam id leo in. Turpis egestas integer eget aliquet. At consectetur lorem donec massa. Egestas erat imperdiet sed euismod. Diam in arcu cursus euismod quis viverra nibh cras. Egestas quis ipsum suspendisse ultrices gravida. At consectetur lorem donec massa sapien faucibus et. Faucibus ornare suspendisse sed nisi lacus sed viverra.</p>
-                <div class="trigger" id="LeBron James" value="Player">LBJ</div>
+                <br>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Diam quis enim lobortis scelerisque. Duis tristique sollicitudin nibh sit amet. Viverra accumsan in nisl nisi. Ultrices neque ornare aenean euismod. Augue interdum velit euismod in. Ut consequat semper viverra nam libero. Arcu ac tortor dignissim convallis aenean.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Potenti nullam ac tortor vitae purus faucibus ornare suspendisse. Pellentesque massa placerat duis ultricies lacus sed turpis tincidunt. Mattis molestie a iaculis at erat pellentesque adipiscing commodo. Tincidunt tortor aliquam nulla facilisi cras fermentum odio eu feugiat. Morbi leo urna molestie at elementum eu facilisis. Sed euismod nisi porta lorem mollis aliquam ut porttitor leo. Est ullamcorper eget nulla facilisi etiam dignissim diam quis. Tincidunt id aliquet risus feugiat in ante metus dictum at. Urna cursus eget nunc scelerisque. Turpis egestas pretium aenean pharetra magna. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue eget.
-
-                    Sed vulputate mi sit amet. Mattis ullamcorper velit sed ullamcorper morbi. Viverra nam libero justo laoreet. Iaculis nunc sed augue lacus viverra vitae. Elementum nisi quis eleifend quam adipiscing vitae proin sagittis. Sit amet consectetur adipiscing elit ut aliquam purus sit. Ut tristique et egestas quis. Massa eget egestas purus viverra. Elementum facilisis leo vel fringilla est ullamcorper eget. Tellus rutrum tellus pellentesque eu tincidunt tortor aliquam. Vel pretium lectus quam id leo in. Turpis egestas integer eget aliquet. At consectetur lorem donec massa. Egestas erat imperdiet sed euismod. Diam in arcu cursus euismod quis viverra nibh cras. Egestas quis ipsum suspendisse ultrices gravida. At consectetur lorem donec massa sapien faucibus et. Faucibus ornare suspendisse sed nisi lacus sed viverra.</p>
-                <div class="trigger" id="James Harden" value="Player">The Beard</div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Diam quis enim lobortis scelerisque. Duis tristique sollicitudin nibh sit amet. Viverra accumsan in nisl nisi. Ultrices neque ornare aenean euismod. Augue interdum velit euismod in. Ut consequat semper viverra nam libero. Arcu ac tortor dignissim convallis aenean.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Potenti nullam ac tortor vitae purus faucibus ornare suspendisse. Pellentesque massa placerat duis ultricies lacus sed turpis tincidunt. Mattis molestie a iaculis at erat pellentesque adipiscing commodo. Tincidunt tortor aliquam nulla facilisi cras fermentum odio eu feugiat. Morbi leo urna molestie at elementum eu facilisis. Sed euismod nisi porta lorem mollis aliquam ut porttitor leo. Est ullamcorper eget nulla facilisi etiam dignissim diam quis. Tincidunt id aliquet risus feugiat in ante metus dictum at. Urna cursus eget nunc scelerisque. Turpis egestas pretium aenean pharetra magna. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue eget.
-
-                    Sed vulputate mi sit amet. Mattis ullamcorper velit sed ullamcorper morbi. Viverra nam libero justo laoreet. Iaculis nunc sed augue lacus viverra vitae. Elementum nisi quis eleifend quam adipiscing vitae proin sagittis. Sit amet consectetur adipiscing elit ut aliquam purus sit. Ut tristique et egestas quis. Massa eget egestas purus viverra. Elementum facilisis leo vel fringilla est ullamcorper eget. Tellus rutrum tellus pellentesque eu tincidunt tortor aliquam. Vel pretium lectus quam id leo in. Turpis egestas integer eget aliquet. At consectetur lorem donec massa. Egestas erat imperdiet sed euismod. Diam in arcu cursus euismod quis viverra nibh cras. Egestas quis ipsum suspendisse ultrices gravida. At consectetur lorem donec massa sapien faucibus et. Faucibus ornare suspendisse sed nisi lacus sed viverra.</p>
-                <div class="trigger" id="Kyrie Irving" value="Player">Kyrie</div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Diam quis enim lobortis scelerisque. Duis tristique sollicitudin nibh sit amet. Viverra accumsan in nisl nisi. Ultrices neque ornare aenean euismod. Augue interdum velit euismod in. Ut consequat semper viverra nam libero. Arcu ac tortor dignissim convallis aenean.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Potenti nullam ac tortor vitae purus faucibus ornare suspendisse. Pellentesque massa placerat duis ultricies lacus sed turpis tincidunt. Mattis molestie a iaculis at erat pellentesque adipiscing commodo. Tincidunt tortor aliquam nulla facilisi cras fermentum odio eu feugiat. Morbi leo urna molestie at elementum eu facilisis. Sed euismod nisi porta lorem mollis aliquam ut porttitor leo. Est ullamcorper eget nulla facilisi etiam dignissim diam quis. Tincidunt id aliquet risus feugiat in ante metus dictum at. Urna cursus eget nunc scelerisque. Turpis egestas pretium aenean pharetra magna. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue eget.
-
-                    Sed vulputate mi sit amet. Mattis ullamcorper velit sed ullamcorper morbi. Viverra nam libero justo laoreet. Iaculis nunc sed augue lacus viverra vitae. Elementum nisi quis eleifend quam adipiscing vitae proin sagittis. Sit amet consectetur adipiscing elit ut aliquam purus sit. Ut tristique et egestas quis. Massa eget egestas purus viverra. Elementum facilisis leo vel fringilla est ullamcorper eget. Tellus rutrum tellus pellentesque eu tincidunt tortor aliquam. Vel pretium lectus quam id leo in. Turpis egestas integer eget aliquet. At consectetur lorem donec massa. Egestas erat imperdiet sed euismod. Diam in arcu cursus euismod quis viverra nibh cras. Egestas quis ipsum suspendisse ultrices gravida. At consectetur lorem donec massa sapien faucibus et. Faucibus ornare suspendisse sed nisi lacus sed viverra.</p>
-                <div class="trigger" id="Kevin Love" value="Player">KLove</div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Diam quis enim lobortis scelerisque. Duis tristique sollicitudin nibh sit amet. Viverra accumsan in nisl nisi. Ultrices neque ornare aenean euismod. Augue interdum velit euismod in. Ut consequat semper viverra nam libero. Arcu ac tortor dignissim convallis aenean.</p>
-                <div class="trigger" id="Damian Lillard" value="Player">Dame Dolla'</div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Potenti nullam ac tortor vitae purus faucibus ornare suspendisse. Pellentesque massa placerat duis ultricies lacus sed turpis tincidunt. Mattis molestie a iaculis at erat pellentesque adipiscing commodo. Tincidunt tortor aliquam nulla facilisi cras fermentum odio eu feugiat. Morbi leo urna molestie at elementum eu facilisis. Sed euismod nisi porta lorem mollis aliquam ut porttitor leo. Est ullamcorper eget nulla facilisi etiam dignissim diam quis. Tincidunt id aliquet risus feugiat in ante metus dictum at. Urna cursus eget nunc scelerisque. Turpis egestas pretium aenean pharetra magna. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue eget.
-
-                    Sed vulputate mi sit amet. Mattis ullamcorper velit sed ullamcorper morbi. Viverra nam libero justo laoreet. Iaculis nunc sed augue lacus viverra vitae. Elementum nisi quis eleifend quam adipiscing vitae proin sagittis. Sit amet consectetur adipiscing elit ut aliquam purus sit. Ut tristique et egestas quis. Massa eget egestas purus viverra. Elementum facilisis leo vel fringilla est ullamcorper eget. Tellus rutrum tellus pellentesque eu tincidunt tortor aliquam. Vel pretium lectus quam id leo in. Turpis egestas integer eget aliquet. At consectetur lorem donec massa. Egestas erat imperdiet sed euismod. Diam in arcu cursus euismod quis viverra nibh cras. Egestas quis ipsum suspendisse ultrices gravida. At consectetur lorem donec massa sapien faucibus et. Faucibus ornare suspendisse sed nisi lacus sed viverra.</p>
-               
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Diam quis enim lobortis scelerisque. Duis tristique sollicitudin nibh sit amet. Viverra accumsan in nisl nisi. Ultrices neque ornare aenean euismod. Augue interdum velit euismod in. Ut consequat semper viverra nam libero. Arcu ac tortor dignissim convallis aenean.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Potenti nullam ac tortor vitae purus faucibus ornare suspendisse. Pellentesque massa placerat duis ultricies lacus sed turpis tincidunt. Mattis molestie a iaculis at erat pellentesque adipiscing commodo. Tincidunt tortor aliquam nulla facilisi cras fermentum odio eu feugiat. Morbi leo urna molestie at elementum eu facilisis. Sed euismod nisi porta lorem mollis aliquam ut porttitor leo. Est ullamcorper eget nulla facilisi etiam dignissim diam quis. Tincidunt id aliquet risus feugiat in ante metus dictum at. Urna cursus eget nunc scelerisque. Turpis egestas pretium aenean pharetra magna. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue eget.
-
-                    Sed vulputate mi sit amet. Mattis ullamcorper velit sed ullamcorper morbi. Viverra nam libero justo laoreet. Iaculis nunc sed augue lacus viverra vitae. Elementum nisi quis eleifend quam adipiscing vitae proin sagittis. Sit amet consectetur adipiscing elit ut aliquam purus sit. Ut tristique et egestas quis. Massa eget egestas purus viverra. Elementum facilisis leo vel fringilla est ullamcorper eget. Tellus rutrum tellus pellentesque eu tincidunt tortor aliquam. Vel pretium lectus quam id leo in. Turpis egestas integer eget aliquet. At consectetur lorem donec massa. Egestas erat imperdiet sed euismod. Diam in arcu cursus euismod quis viverra nibh cras. Egestas quis ipsum suspendisse ultrices gravida. At consectetur lorem donec massa sapien faucibus et. Faucibus ornare suspendisse sed nisi lacus sed viverra.</p>
-              
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
 
             </div>       
 

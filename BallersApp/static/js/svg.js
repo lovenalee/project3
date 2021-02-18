@@ -98,7 +98,7 @@ function drawPoints(data) {
 
   // UPDATE
       shots.transition()
-           .duration(1500)
+           .duration(1000)
            .attr("r", radius)
 
            .attr("cx", function(d) { return d.locx; })
@@ -110,7 +110,7 @@ function drawPoints(data) {
   // EXIT
      shots.exit()
           .transition()
-          .duration(1500)
+          .duration(1000)
           .attr("r", 0)
           .remove();
 
