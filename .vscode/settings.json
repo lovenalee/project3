@@ -1,4 +1,4 @@
 {
     "liveServer.settings.port": 5501,
-    "python.pythonPath": "C:\\Users\\roman\\AppData\\Local\\Programs\\Python\\Python39\\python.exe"
+    "python.pythonPath": "/opt/anaconda3/bin/python"
 }
