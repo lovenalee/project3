@@ -215,9 +215,6 @@ class g2Stats(db.Model):
     stephen = db.Column(db.Float)
     kevin = db.Column(db.Float)
     
-
-
-  
    
     def __repr__(self):
         return '<g2Stats %r>' % (self.name)
