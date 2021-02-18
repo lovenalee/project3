@@ -280,3 +280,20 @@ font-size: 10px;
    opacity: 0.9;
 };
 
+#my_dataviz {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: -100%; /* aspect ratio */
+    vertical-align: bottom;
+    overflow: hidden;
+  }
+
+#WS_dataviz {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: -100%; /* aspect ratio */
+    vertical-align: bottom;
+    overflow: hidden;
+  }

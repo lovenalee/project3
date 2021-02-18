@@ -10,8 +10,8 @@ var svg = d3.select("#my_dataviz")
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
-
+          "translate(" + margin.left + "," + margin.top + ")")  
+  .classed("svg-content-responive", true);
 //Read the data
 d3.json("api/ws").then(function(wsdata) {
     console.log(wsdata);
@@ -126,7 +126,8 @@ var svg2 = d3.select("#WS_dataviz")
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
+          "translate(" + margin.left + "," + margin.top + ")")
+  .classed("svg-content-responive", true);
 
 //Read the data
 d3.json("api/ws").then(function(wsdata) {
