@@ -1,5 +1,5 @@
 // set the dimensions and margins of the graph
-var margin = {top: 0, right: 200, bottom: 100, left: 200},
+var margin = {top: 10, right: 200, bottom: 100, left: 200},
     width = 1000 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -102,7 +102,8 @@ d3.json("api/ws").then(function(wsdata) {
         // run the updateChart function with this selected option
         update(selectedOption)
     })
-    
+
+
 })
 
 
@@ -141,17 +142,34 @@ d3.json("api/ws").then(function(wsdata) {
   svg2.append("g")
     .call(d3.axisLeft(y));
 
+  // Add X axis label:
+  svg2.append("text")
+    .attr("text-anchor", "end")
+    .attr("x", width/2 + margin.left - 150)
+    .attr("y", height + margin.top +50)
+    .text("Year");
+
+  // Y axis label:
+  svg2.append("text")
+    .attr("text-anchor", "end")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -margin.left + 150)
+    .attr("x", -margin.top - height/2 + 90)
+    .text("Average Win Share")
+
   // color palette
   var res = sumstat.map(function(d){ return d.key }) // list of group names
   var color = d3.scaleOrdinal()
     .domain(res)
-    .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00'])
+    .range(d3.schemeSet2)
 
   // Draw the line
+
   svg2.selectAll(".line")
       .data(sumstat)
       .enter()
       .append("path")
+        .attr("class", function(d){ return d.res })
         .attr("fill", "none")
         .attr("stroke", function(d){ return color(d.key) })
         .attr("stroke-width", 1.5)
@@ -161,5 +179,35 @@ d3.json("api/ws").then(function(wsdata) {
             .y(function(d) { return y(+d.WSmean); })
             (d.values)
         })
+
+
+  // Add one dot in the legend for each name.
+  svg2.selectAll("mydots")
+    .data(res)
+    .enter()
+    .append("circle")
+      .attr("cx", 500)
+      .attr("cy", function(d,i){ return 20 + i*25}) // 200 is where the first dot appears. 25 is the distance between dots
+      .attr("r", 7)
+      .style("fill", function(d){ return color(d)})
+
+    // Add one dot in the legend for each name.
+  svg2.selectAll("mylabels")
+    .data(res)
+    .enter()
+    .append("text")
+      .attr("x", 520)
+      .attr("y", function(d,i){ return 20 + i*25}) // 00 is where the first dot appears. 25 is the distance between dots
+      .style("fill", function(d){ return color(d)})
+      .text(function(d){ return d})
+      .attr("text-anchor", "left")
+      .style("alignment-baseline", "middle")
+    .on("click", function(d){
+      // is the element currently visible ?
+      currentOpacity = d3.selectAll("." + d).style("opacity")
+      // Change the opacity: from 0 to 1 or from 1 to 0
+      d3.selectAll("." + d).transition().style("opacity", currentOpacity == 1 ? 0:1)
+
+    })
 
 })
