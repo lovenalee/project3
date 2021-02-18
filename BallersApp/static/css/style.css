@@ -86,11 +86,12 @@ body{
   }
 
 .axis path,
-  .axis line {
+.axis line {
     fill: none;
-    stroke: #000;
-
-  }
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
 
 .bar {
     fill-opacity: .5;
@@ -268,9 +269,14 @@ font-size: 10px;
    font-size: 1.4vh;
 }
 
-
+.legend {
+    font-size: 16px;
+    font-weight: bold;
+    text-anchor: middle;
+}
 
 .imgP{
    padding-left: 12%;
    opacity: 0.9;
 };
+

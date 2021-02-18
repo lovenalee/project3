@@ -52,10 +52,9 @@ d3.json("api/ws").then(function(wsdata) {
     // Add X axis label:
     svg.append("text")
       .attr("text-anchor", "end")
-      .attr("x", width/2 + margin.left - 170)
+      .attr("x", width/2 + margin.left - 150)
       .attr("y", height + margin.top +50)
-      .text("Year")
-      .style("font", "17px times");
+      .text("Year");
 
     // Y axis label:
     svg.append("text")
@@ -64,7 +63,6 @@ d3.json("api/ws").then(function(wsdata) {
       .attr("y", -margin.left + 150)
       .attr("x", -margin.top - height/2 + 90)
       .text("Average Win Share")
-      .style("font", "17px times")
 
     // Initialize line with first group of the list
     var line = svg
@@ -110,15 +108,6 @@ d3.json("api/ws").then(function(wsdata) {
 
 
 
-// Set the ranges
-var x = d3.scaleLinear().range([0, width]);  
-var y = d3.scaleLinear().range([height, 0]);
-
-// Define the line
-var wsline = d3.line()	
-    .x(function(d) { return x(d.Year); })
-    .y(function(d) { return y(+d.WSmean); })
-
 // append the svg object to the body of the page
 var svg2 = d3.select("#WS_dataviz")
   .append("svg")
@@ -133,77 +122,32 @@ d3.json("api/ws").then(function(wsdata) {
     console.log(wsdata);
     console.log([wsdata]);
 
-    // Scale the range of the data
-    x.domain(d3.extent(wsdata, function(d) { return d.Year; }));
-    y.domain([0, d3.max(wsdata, function(d) { return +d.WSmean; })]);
-  
-    // group the data: I want to draw one line per group
-    var dataNest = d3.nest() // nest function allows to group the calculation per level of a factor
-        .key(function(d) { return d.Rounded_Position;})
-        .entries(wsdata);
+  // group the data: I want to draw one line per group
+  var sumstat = d3.nest() // nest function allows to group the calculation per level of a factor
+    .key(function(d) { return d.Rounded_Position;})
+    .entries(wsdata);
 
-  // color palette
-
-    var color = d3.scaleOrdinal()
-      .domain(dataNest)
-      .range(d3.schemeSet2);
-
-    legendSpace = width/dataNest.length;// spacing for the legend
-
-
-
-dataNest.forEach(function(d,i) { 
-
-    svg2.append("path")
-        .attr("class", "line")
-        .attr("fill", "none")
-        .style("stroke", function() { // Add the colours dynamically
-            return d.color = color(d.key); })
-        .style("stroke-width", 4)
-        .attr("id", 'tag'+d.key.replace(/\s+/g, '')) // assign an ID
-        .attr("d", wsline(d.values));
-
-    // Add the Legend
-    
-    svg2.append("text")
-        .attr("x", (legendSpace/2)+i*legendSpace-20)  // space legend
-        .attr("y", height + (margin.bottom/2)+ 20)
-        .attr("class", "legend")    // style the legend
-        .style("fill", function() { // Add the colours dynamically
-            return d.color = color(d.key); })
-        .on("click", function(){
-            // Determine if current line is visible 
-            var active   = d.active ? false : true,
-            newOpacity = active ? 0 : 1; 
-            // Hide or show the elements based on the ID
-            d3.select("#tag"+d.key.replace(/\s+/g, ''))
-                .transition().duration(100) 
-                .style("opacity", newOpacity); 
-            // Update whether or not the elements are active
-            d.active = active;
-            })  
-        .text(d.key); 
-
-    });
-
-  // Add the X Axis
+  // Add X axis --> it is a date format
+  var x = d3.scaleLinear()
+    .domain(d3.extent(wsdata, function(d) { return d.Year; }))
+    .range([ 0, width ]);
   svg2.append("g")
-      .attr("class", "axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x).ticks(5));
 
-  // Add the Y Axis
+  // Add Y axis
+  var y = d3.scaleLinear()
+    .domain([0, d3.max(wsdata, function(d) { return +d.WSmean; })])
+    .range([ height, 0 ]);
   svg2.append("g")
-      .attr("class", "axis")
-      .call(d3.axisLeft(y));
+    .call(d3.axisLeft(y));
 
   // Add X axis label:
   svg2.append("text")
     .attr("text-anchor", "end")
-    .attr("x", width/2 + margin.left - 170)
-    .attr("y", height + margin.top +30)
-    .text("Year")
-    .style("font", "17px times");
+    .attr("x", width/2 + margin.left - 150)
+    .attr("y", height + margin.top +50)
+    .text("Year");
 
   // Y axis label:
   svg2.append("text")
@@ -212,6 +156,58 @@ dataNest.forEach(function(d,i) {
     .attr("y", -margin.left + 150)
     .attr("x", -margin.top - height/2 + 90)
     .text("Average Win Share")
-    .style("font", "17px times")
 
-});
+  // color palette
+  var res = sumstat.map(function(d){ return d.key }) // list of group names
+  var color = d3.scaleOrdinal()
+    .domain(res)
+    .range(d3.schemeSet2)
+
+  // Draw the line
+
+  svg2.selectAll(".line")
+      .data(sumstat)
+      .enter()
+      .append("path")
+        .attr("class", function(d){ return d.res })
+        .attr("fill", "none")
+        .attr("stroke", function(d){ return color(d.key) })
+        .attr("stroke-width", 1.5)
+        .attr("d", function(d){
+          return d3.line()
+            .x(function(d) { return x(d.Year); })
+            .y(function(d) { return y(+d.WSmean); })
+            (d.values)
+        })
+
+
+  // Add one dot in the legend for each name.
+  svg2.selectAll("mydots")
+    .data(res)
+    .enter()
+    .append("circle")
+      .attr("cx", 500)
+      .attr("cy", function(d,i){ return 20 + i*25}) // 200 is where the first dot appears. 25 is the distance between dots
+      .attr("r", 7)
+      .style("fill", function(d){ return color(d)})
+
+    // Add one dot in the legend for each name.
+  svg2.selectAll("mylabels")
+    .data(res)
+    .enter()
+    .append("text")
+      .attr("x", 520)
+      .attr("y", function(d,i){ return 20 + i*25}) // 00 is where the first dot appears. 25 is the distance between dots
+      .style("fill", function(d){ return color(d)})
+      .text(function(d){ return d})
+      .attr("text-anchor", "left")
+      .style("alignment-baseline", "middle")
+    .on("click", function(d){
+      // is the element currently visible ?
+      currentOpacity = d3.selectAll("." + d).style("opacity")
+      // Change the opacity: from 0 to 1 or from 1 to 0
+      d3.selectAll("." + d).transition().style("opacity", currentOpacity == 1 ? 0:1)
+
+    })
+
+})
