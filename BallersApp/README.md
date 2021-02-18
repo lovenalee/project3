@@ -1,4 +1,5 @@
 # Ballers - Project 3
+### _By: Vena Li, Sharifah Sinclair, George Redak, Jim Tran_
 
 ![Ballers](assets/images/bg.jpg)
 
