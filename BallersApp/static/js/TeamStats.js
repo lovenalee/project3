@@ -21,7 +21,7 @@ d3.json("/api/tStats").then(function(data) {
     .range([ 0, width ]);
   svg1.append("g")
     .attr("transform", "translate(0," + height + ")")
-    .attr('stroke','rgb(9, 47, 218)') 
+    .attr('stroke','rgb(4, 112, 158)') 
     .style("font-size", "14px")
     .call(d3.axisBottom(x));
   // Add X axis label:
@@ -30,23 +30,23 @@ d3.json("/api/tStats").then(function(data) {
     .attr("x", width/2 + margin.bottom + 10)
     .attr("y", height + margin.top - 105)
     .style("font-size", "16px")
-    .attr('stroke','rgb(9, 47, 218)') 
+    .attr('stroke','rgb(4, 112, 158)') 
     .text("Team Wins by Seasons") 
   // Y axis label:
   svg1.append("text")
   .attr("text-anchor", "end")
   .attr("transform", "rotate(-90)")
-  .attr("y", -80)
+  .attr("y", 20)
   .attr("x", 1)
-  .attr('stroke','rgb(9, 47, 218)')  
-  .text("Teams Points Values")
+  .attr('stroke','rgb(4, 112, 158)')  
+  .text("Teams Points")
   // Add Y axis
   var y = d3.scaleLinear()
     .domain([0, 9000])
     .range([ height, 0]);
   svg1.append("g")
     .style("font-size", "16px")
-    .attr('stroke','rgb(9, 47, 218)') 
+    .attr('stroke','rgb(4, 112, 158)') 
     .call(d3.axisLeft(y));
   svg1.append("text")
     .attr("x", (width / 2))             
@@ -55,8 +55,8 @@ d3.json("/api/tStats").then(function(data) {
     .style("font-size", "16px") 
     // .style("text-decoration", "underline")
     .style("font-size", "18px")
-    .attr('stroke','rgb(9, 47, 218)')  
-    .text("2014 to 2018 Team Points and Wins");
+    .attr('stroke','rgb(4, 112, 158)')  
+    .text("2014 - 2018 Team Points and Wins");
   // Color scale for selected seasons
   var NumYears = ["one", "two", "three", "four", "five"]
   var color = d3.scaleOrdinal()
@@ -68,11 +68,11 @@ d3.json("/api/tStats").then(function(data) {
   svg1.append("circle").attr("cx",430).attr("cy",190).attr("r", 6).style("fill", "blue")
   svg1.append("circle").attr("cx",430).attr("cy",220).attr("r", 6).style("fill", "yellow")
   svg1.append("circle").attr("cx",430).attr("cy",250).attr("r", 6).style("fill", "red")
-  svg1.append("text").attr("x", 450).attr("y", 130).text("2014").style("font-size", "15px").attr("alignment-baseline","middle").attr('stroke','black') 
-  svg1.append("text").attr("x", 450).attr("y", 160).text("2015").style("font-size", "15px").attr("alignment-baseline","middle").attr('stroke','black') 
-  svg1.append("text").attr("x", 450).attr("y", 190).text("2016").style("font-size", "15px").attr("alignment-baseline","middle").attr('stroke','black') 
-  svg1.append("text").attr("x", 450).attr("y", 220).text("2017").style("font-size", "15px").attr("alignment-baseline","middle").attr('stroke','black') 
-  svg1.append("text").attr("x", 450).attr("y", 250).text("2018").style("font-size", "15px").attr("alignment-baseline","middle").attr('stroke','black') 
+  svg1.append("text").attr("x", 450).attr("y", 130).text("2014").style("font-size", "15px").attr("alignment-baseline","middle").attr('stroke','rgb(4, 112, 158)') 
+  svg1.append("text").attr("x", 450).attr("y", 160).text("2015").style("font-size", "15px").attr("alignment-baseline","middle").attr('stroke','rgb(4, 112, 158)') 
+  svg1.append("text").attr("x", 450).attr("y", 190).text("2016").style("font-size", "15px").attr("alignment-baseline","middle").attr('stroke','rgb(4, 112, 158)') 
+  svg1.append("text").attr("x", 450).attr("y", 220).text("2017").style("font-size", "15px").attr("alignment-baseline","middle").attr('stroke','rgb(4, 112, 158)') 
+  svg1.append("text").attr("x", 450).attr("y", 250).text("2018").style("font-size", "15px").attr("alignment-baseline","middle").attr('stroke','rgb(4, 112, 158)') 
   // Highlight the season that is hovered
   var highlight = function(d){
     var selected_season = d.Seasons
@@ -95,7 +95,7 @@ d3.json("/api/tStats").then(function(data) {
       .attr("r", 3)
     d3.selectAll("." + colour_group)
       .transition()
-      .duration(200)
+      .duration(1000)
       .style("fill", color(colour_group))
       .attr("r", 7)
   }
@@ -103,7 +103,7 @@ d3.json("/api/tStats").then(function(data) {
   var doNotHighlight = function(){
     d3.selectAll(".dot")
       .transition()
-      .duration(200)
+      .duration(1000)
       .style("fill", "grey")
       .attr("r", 5 )      
   }
@@ -151,10 +151,18 @@ d3.json("/api/tStats").then(function(data) {
                         '\nSeason: ' + (d['Seasons']) +
                         '\nPoints: ' + (d['Points']) +
                         '\nWins: ' + (d['Wins']) })
+        .transition()
+        .duration(100)                       
 })
+var resetbtn = d3.select("#reset-btn");
+
+resetbtn.on("click", () => {
+  window.location.reload()
+})
+
 // SCATTERLINE ========================================================================
 // set the dimensions and margins for scatter line graph
-var margin2 = {top: 100, right: 10, bottom: 120, left: 55},
+var margin2 = {top: 100, right: 60, bottom: 120, left: 55},
     width = 600 - margin2.left - margin2.right,
     height = 500 - margin2.top - margin2.bottom;
 // append the svg object to the body of the page
@@ -208,8 +216,8 @@ var svg2 = d3.select("#scatterLine")
     svg2.append("text")
       .attr("text-anchor", "end")
       .attr("transform", "rotate(-90)")
-      .attr("y", -70)
-      .attr("x", -150)
+      .attr("y", 20)
+      .attr("x", 1)
       .attr('stroke','rgb(62.9%,28.2%,24.9%)') 
       .text("Teams Points")
       //.style("font-size", "20px") 

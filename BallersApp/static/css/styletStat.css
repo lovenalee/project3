@@ -4,8 +4,19 @@
   width: 40%;
   margin-top: 5%;
   padding-bottom: 0%; /* aspect ratio */
-  vertical-align: bottom;
+  vertical-align: middle;
   overflow: hidden;
+}
+
+#reset-btn {
+  font-size: 16px;
+  font-weight: 10px;
+  background-color: rgb(4, 112, 158);
+  transform: translate(30%, -300%);
+}
+
+#reset-btn:hover {
+  background-color: rgb(4, 112, 158);
 }
 
 #scatterLine {
@@ -14,8 +25,15 @@
   width: 40%;
   margin-top: 5%;
   padding-bottom: 0%; /* aspect ratio */
-  vertical-align: bottom;
+  vertical-align: middle;
   overflow: hidden;
+}
+
+#selectButton{
+  position: relative;
+  width: 9%;
+  background-color: rgb(62.9%,28.2%,24.9%);
+  transform: translate(10%, -300%);
 }
 
 .svg-content-responsive {
@@ -67,16 +85,6 @@ body {
   background: rgb(202, 220, 238);
 }
 
-/* .myCircle:hover {
-  stroke: black;
-} */
-
-/* .content {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow: hidden;
-} */
-
  .page-footer{
   background-color: rgb(92, 90, 90);
   margin-top: 10px;
@@ -111,23 +119,6 @@ body {
       padding:inherit;
       height : 1%;
   }
-}
-
-#selectButton{
-  position: relative;
-  background-color: rgb(62.9%,28.2%,24.9%) !important;
-  /* margin-left: 0px;
-  margin-top: 100px;  */
-}
-
-#reset-btn {
-  font-size: 16px;
-  font-weight: 10px;
-  background-color: rgb(62.9%,28.2%,24.9%) !important;
-}
-
-#reset-btn:hover {
-  background-color: rgb(0, 0, 90, 0.8) !important;
 }
 
 .tooltip {
